@@ -76,6 +76,8 @@ public class RegistrationActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Log.d("ONCLICK", "regbutton");
 //                String typeText = type.getSelectedItem().toString();
+                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                startActivity(intent);
             }
         });
         //add user after validating
@@ -83,8 +85,8 @@ public class RegistrationActivity extends AppCompatActivity {
 //        String passText = password.getText().toString();
 //        String emailText = email.getText().toString();
 //        String typeText = type.getSelectedItem().toString();
-        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-        startActivity(intent);
+//        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+//        startActivity(intent);
     }
 
     private void cancel() {
@@ -94,7 +96,7 @@ public class RegistrationActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 //                resetFields();
-//                Intent intent = new Intent("MainActivity");
+//                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
 //                startActivity(intent);
                 finish();
             }
