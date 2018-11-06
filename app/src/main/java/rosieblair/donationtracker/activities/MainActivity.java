@@ -18,8 +18,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        logButton = findViewById(R.id.loginButton);
-        regButton = findViewById(R.id.regButton);
         pressLogin();
         pressRegister();
     }
@@ -28,10 +26,12 @@ public class MainActivity extends AppCompatActivity {
      * Method to handle a login-button press, directs the user to Login screen.
      */
     public void pressLogin() {
+        logButton = findViewById(R.id.loginButton);
         logButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                login();
+                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                startActivity(intent);
             }
         });
     }
@@ -40,22 +40,14 @@ public class MainActivity extends AppCompatActivity {
      * Method to handle a register-button press, directs user to Registration screen.
      */
     public void pressRegister() {
+        regButton = findViewById(R.id.regButton);
         regButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                register();
+                Intent intent = new Intent(getApplicationContext(), RegistrationActivity.class);
+                startActivity(intent);
             }
         });
 
-    }
-
-    private void login() {
-        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-        startActivity(intent);
-    }
-
-    private void register() {
-        Intent intent = new Intent(getApplicationContext(), RegistrationActivity.class);
-        startActivity(intent);
     }
 }
