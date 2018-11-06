@@ -61,4 +61,8 @@ public class ItemDBHelper {
         Log.d("MYAPP", "Warning - Failed to find items for: " + name);
         return itemsName;
     }
+
+    public List<Item> itemList() {
+        return new ArrayList<>();
+    }
 }

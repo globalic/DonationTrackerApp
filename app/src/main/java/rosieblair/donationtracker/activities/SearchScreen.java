@@ -45,8 +45,8 @@ public class SearchScreen extends AppCompatActivity {
                 String locName = location.getSelectedItem().toString();
                 Intent intent = new Intent(getApplicationContext(), ItemsByName.class);
                         //"edu.gatech.micheyang.pbjdonationtracker.ItemsByName");
-                intent.putExtra(ItemsByName.NAME, itemName);
-                intent.putExtra(ItemsByName.LOCATION, locName);
+//                intent.putExtra(ItemsByName.NAME, itemName);
+//                intent.putExtra(ItemsByName.LOCATION, locName);
                 startActivity(intent);
             }
         });
@@ -62,11 +62,11 @@ public class SearchScreen extends AppCompatActivity {
             public void onClick(View view) {
                 String catName = category.getSelectedItem().toString();
                 String locName = location.getSelectedItem().toString();
-                Intent intent = new Intent(getApplicationContext(), ItemsInCategory.class);
-                        //"edu.gatech.micheyang.pbjdonationtracker.ItemsInCategory");
-                intent.putExtra(ItemsInCategory.CATEGORY, catName);
-                intent.putExtra(ItemsInCategory.LOCATION, locName);
-                startActivity(intent);
+//                Intent intent = new Intent(getApplicationContext(), ItemsInCategory.class);
+//                        //"edu.gatech.micheyang.pbjdonationtracker.ItemsInCategory");
+//                intent.putExtra(ItemsInCategory.CATEGORY, catName);
+//                intent.putExtra(ItemsInCategory.LOCATION, locName);
+//                startActivity(intent);
             }
         });
     }
