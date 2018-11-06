@@ -1,13 +1,17 @@
 package rosieblair.donationtracker.activities;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import rosieblair.donationtracker.R;
 import rosieblair.donationtracker.model.Location;
@@ -21,10 +25,10 @@ public class EmployeeAppScreen extends AppCompatActivity {
     private Button locationInventoryButton;
     private Button addDonationButton;
     private Button searchButton;
-    private String locName;
+//    private String locName;
 
-    private User user;
-    private Location loc;
+//    private User user;
+//    private Location loc;
 
 //    private LocationDBHelper locDBhelper;
 
@@ -72,14 +76,54 @@ public class EmployeeAppScreen extends AppCompatActivity {
     }
 
     private void pressViewLocations() {
+        locationListButton = (Button) findViewById(R.id.locListButtonE);
+        locationListButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), ListOfLocations.class);
+//                Intent intent = new Intent("edu.gatech.micheyang.pbjdonationtracker.activities.LocationList");
+                startActivity(intent);
+            }
+        });
 
     }
 
     private void pressViewMyLocationInventory() {
+        locationInventoryButton = (Button) findViewById(R.id.viewInventoryButton);
+        locationInventoryButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), ListOfItems.class);
+//                intent.putExtra("thisLocn", loc);
+//                intent.putExtra(ListOfItems.LOCATION, locName);
+                startActivity(intent);
+            }
+        });
     }
 
     public void onLogOutPressed(View view) {
-
+        Log.d("Edit", "logged out");
+        Intent intent = new Intent(EmployeeAppScreen.this, MainActivity.class);
+        startActivity(intent);
+        //pop-up message notifying user that logout was successful
+        Toast toast = Toast.makeText(getBaseContext(), "Logout successful!",
+                Toast.LENGTH_SHORT);
+        View toastView = toast.getView();
+        //setting the color of notification's background bubble
+        toastView.getBackground().setColorFilter(Color.parseColor("#daeff1"),
+                PorterDuff.Mode.SRC);
+        toast.show();
     }
+
+//    public static final int NAME_POSITION = 1;
+//    public static final int LATITUDE_POSITION = 2;
+//    public static final int LONGITUDE_POSITION = 3;
+//    public static final int STREET_ADDRESS_POSITION = 4;
+//    public static final int CITY_POSITION = 5;
+//    public static final int STATE_POSITION = 6;
+//    public static final int ZIP_CODE_POSITION = 7;
+//    public static final int TYPE_POSITION = 8;
+//    public static final int PHONE_NUMBER_POSITION = 9;
+//    public static final int WEBSITE_POSITION = 10;
 
 }
