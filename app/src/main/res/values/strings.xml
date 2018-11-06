@@ -59,4 +59,5 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_location_employee">LocationEmployee</string>
+    <string name="title_activity_items_by_name">ItemsByName</string>
 </resources>

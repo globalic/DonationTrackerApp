@@ -78,6 +78,10 @@
         <activity
             android:name=".activities.LocationEmployee"
             android:label="@string/title_activity_location_employee"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.ItemsByName"
+            android:label="@string/title_activity_items_by_name"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
