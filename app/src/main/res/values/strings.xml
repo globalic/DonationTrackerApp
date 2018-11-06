@@ -73,6 +73,21 @@
         <item>KEEP NORTH FULTON BEAUTIFUL</item>
     </string-array>
 
+    <!-- For the ItemDetailFragment -->
+    <string name="time">Time: %1$s</string>
+    <string name="place">Item Location: %1$s</string>
+    <string name="shortdesc">Short Description: %1$s</string>
+    <string name="fulldesc">Full Description: %1$s</string>
+    <string name="value">Value: $ %1$s</string>
+    <string name="category">Category: %1$s</string>
+
+    <!-- For the LocationDetailFragment -->
+    <string name="location">Location Type: %1$s</string>
+    <string name="longitude">Longitude: %1$s</string>
+    <string name="latitude">Latitude: %1$s</string>
+    <string name="phone_num">Phone Number: %1$s</string>
+    <string name="address">Address: %1$s</string>
+    <string name="website">Website: %1$s</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
