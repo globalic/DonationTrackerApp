@@ -32,6 +32,7 @@
     <string name="title_activity_list_of_locations">ListOfLocations</string>
     <string name="title_activity_location_detail">LocationDetailActivity</string>
 
+    <!-- These are for the Search, ItemsByName, and ItemsInCategory screens -->
     <string name="searchForItem">Search for this item</string>
     <string name="searchForCat">Search for items in this category</string>
     <string name="searchForLoc"></string>
@@ -53,6 +54,23 @@
         <item>Electronics</item>
         <item>Household</item>
         <item>Other</item>
+    </string-array>
+
+    <!-- These are for the Add Item screen -->
+    <string name="addItem">Add Item</string>
+    <string name="enterTime">Donation Time</string>
+    <string name="enterLocation">Select Donation Location</string>
+    <string name="enterShortDescr">Short Item Description</string>
+    <string name="enterFullDescr">Full Item Description</string>
+    <string name="enterValue">Donation Value</string>
+    <string name="enterCategory">Selection Item Category</string>
+    <string-array name="allLocations">
+        <item>AFD Station 4</item>
+        <item>BOYS &amp; GILRS CLUB W.W. WOOLFOLK</item>
+        <item>PATHWAY UPPER ROOM CHRISTIAN MINISTRIES</item>
+        <item>PAVILION OF HOPE INC</item>
+        <item>D&amp;D CONVENIENCE STORE</item>
+        <item>KEEP NORTH FULTON BEAUTIFUL</item>
     </string-array>
 
 
