@@ -32,6 +32,30 @@
     <string name="title_activity_list_of_locations">ListOfLocations</string>
     <string name="title_activity_location_detail">LocationDetailActivity</string>
 
+    <string name="searchForItem">Search for this item</string>
+    <string name="searchForCat">Search for items in this category</string>
+    <string name="searchForLoc"></string>
+    <string name="enterItemSearch">Enter an item</string>
+    <string name="searchButton">Search</string>
+    <string-array name="everyLocation">
+        <item>All locations</item>
+        <item>AFD Station 4</item>
+        <item>BOYS &amp; GILRS CLUB W.W. WOOLFOLK</item>
+        <item>PATHWAY UPPER ROOM CHRISTIAN MINISTRIES</item>
+        <item>PAVILION OF HOPE INC</item>
+        <item>D&amp;D CONVENIENCE STORE</item>
+        <item>KEEP NORTH FULTON BEAUTIFUL</item>
+    </string-array>
+    <string-array name="itemCategories">
+        <item>Clothing</item>
+        <item>Hat</item>
+        <item>Kitchen</item>
+        <item>Electronics</item>
+        <item>Household</item>
+        <item>Other</item>
+    </string-array>
+
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_location_employee">LocationEmployee</string>
