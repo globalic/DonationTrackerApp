@@ -115,15 +115,15 @@ public class EmployeeAppScreen extends AppCompatActivity {
         toast.show();
     }
 
-//    public static final int NAME_POSITION = 1;
-//    public static final int LATITUDE_POSITION = 2;
-//    public static final int LONGITUDE_POSITION = 3;
-//    public static final int STREET_ADDRESS_POSITION = 4;
-//    public static final int CITY_POSITION = 5;
-//    public static final int STATE_POSITION = 6;
-//    public static final int ZIP_CODE_POSITION = 7;
-//    public static final int TYPE_POSITION = 8;
-//    public static final int PHONE_NUMBER_POSITION = 9;
-//    public static final int WEBSITE_POSITION = 10;
+    public static final int NAME_POSITION = 1;
+    public static final int LATITUDE_POSITION = 2;
+    public static final int LONGITUDE_POSITION = 3;
+    public static final int STREET_ADDRESS_POSITION = 4;
+    public static final int CITY_POSITION = 5;
+    public static final int STATE_POSITION = 6;
+    public static final int ZIP_CODE_POSITION = 7;
+    public static final int TYPE_POSITION = 8;
+    public static final int PHONE_NUMBER_POSITION = 9;
+    public static final int WEBSITE_POSITION = 10;
 
 }

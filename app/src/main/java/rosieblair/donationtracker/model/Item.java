@@ -9,6 +9,7 @@ public class Item {
     private String fullDescription;
     private String value;
     private String category;
+    private int itemKey;
 
     public static int keyCounter;
     private int key;
@@ -19,7 +20,7 @@ public class Item {
 
     public Item(String time, String location, String shortDescription, String fullDescription, String value, String category, int keyCounter) {
         this.time = time;
-        this.location = location;
+        this.location = location; //replace usage with item key value
         this.shortDescription = shortDescription;
         this.fullDescription = fullDescription;
         this.value = value;
@@ -55,6 +56,9 @@ public class Item {
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
     //add equals method
+
+    public int getItemKey() { return itemKey; }
+    public void setItemKey(int itemKey) { this.itemKey = itemKey; }
 
     public String toString() {
         return "Time: " + time + " Location: " + location + " Short Description: " + shortDescription
