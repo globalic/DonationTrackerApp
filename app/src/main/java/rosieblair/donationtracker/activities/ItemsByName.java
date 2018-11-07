@@ -91,6 +91,7 @@ public class ItemsByName extends AppCompatActivity {
         @Override
         public void onBindViewHolder(final ItemsByName.SimpleItemRecyclerViewAdapter.ViewHolder holder, int position) {
             holder.item = mValues.get(position);
+            //changed to get id because getKey() no longer valid
             holder.mIdView.setText("" + mValues.get(position).getId());
             holder.mContentView.setText(mValues.get(position).getShortDescription());
 
