@@ -16,10 +16,12 @@ import android.widget.TextView;
 import java.util.List;
 
 import rosieblair.donationtracker.R;
+import rosieblair.donationtracker.database.LocationDBHelper;
 import rosieblair.donationtracker.model.Location;
 
 public class ListOfLocations extends AppCompatActivity {
-
+    private final AppCompatActivity activity = ListOfLocations.this;
+    LocationDBHelper locDBhelper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +29,7 @@ public class ListOfLocations extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         //toolbar.setTitle(getTitle());
+        locDBhelper = new LocationDBHelper(activity);
 
         View recyclerView = findViewById(R.id.dataitem_list);
         assert recyclerView != null;
@@ -35,7 +38,7 @@ public class ListOfLocations extends AppCompatActivity {
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
-//        recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(LocationDBHelper.INSTANCE.getItems()));
+        recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(locDBhelper.locationList()));
     }
 
     public class SimpleItemRecyclerViewAdapter
@@ -50,7 +53,7 @@ public class ListOfLocations extends AppCompatActivity {
         @Override
         public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View view = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.content_list_of_locations, parent, false);
+                    .inflate(R.layout.item_entry, parent, false);
             return new ViewHolder(view);
         }
 
@@ -63,12 +66,12 @@ public class ListOfLocations extends AppCompatActivity {
             holder.mView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-//                    Context context = v.getContext();
-//                    Intent intent = new Intent(context, LocationDetailActivity.class);
-//                    Log.d("MYAPP", "Switch to detailed view for item: " + holder.location.getKey());
-//                    intent.putExtra(LocationDetailFragment.ARG_ITEM_ID, holder.location.getKey());
-//
-//                    context.startActivity(intent);
+                Context context = v.getContext();
+                Intent intent = new Intent(context, LocationDetailActivity.class);
+                Log.d("MYAPP", "Switch to detailed view for item: " + holder.location.getKey());
+                intent.putExtra(LocationDetailFragment.ARG_ITEM_ID, holder.location.getKey());
+
+                context.startActivity(intent);
                 }
             });
         }
@@ -87,8 +90,8 @@ public class ListOfLocations extends AppCompatActivity {
             public ViewHolder(View view) {
                 super(view);
                 mView = view;
-                mIdView = (TextView) view.findViewById(R.id.id);
-                mContentView = (TextView) view.findViewById(R.id.content);
+                mIdView = (TextView) view.findViewById(R.id.item_id);
+                mContentView = (TextView) view.findViewById(R.id.item_content);
             }
 
             @Override

@@ -1,7 +1,9 @@
 package rosieblair.donationtracker.activities;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.v7.widget.Toolbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.ActionBar;
@@ -56,6 +58,7 @@ public class LocationDetailActivity extends AppCompatActivity {
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();

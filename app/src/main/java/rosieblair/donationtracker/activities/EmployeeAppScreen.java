@@ -25,6 +25,7 @@ public class EmployeeAppScreen extends AppCompatActivity {
     private Button locationInventoryButton;
     private Button addDonationButton;
     private Button searchButton;
+    private Button viewMapButton;
 //    private String locName;
 
 //    private User user;
@@ -45,12 +46,28 @@ public class EmployeeAppScreen extends AppCompatActivity {
         pressAddDonation();
         pressViewLocations();
         pressViewMyLocationInventory();
+        pressViewMap();
     }
 
 //    private void init() {
 //
 //    }
-
+    private void pressViewMap() {
+        viewMapButton = findViewById(R.id.map1);
+        viewMapButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+    //                readCSVFile();
+                Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
+                startActivity(intent);
+    //                Toast toast = Toast.makeText(getBaseContext(), "Clicked location list!", Toast.LENGTH_SHORT);
+    //                View toastView = toast.getView();
+    //                toastView.getBackground().setColorFilter(Color.parseColor("#daeff1"),
+    //                        PorterDuff.Mode.SRC);
+    //                toast.show();
+            }
+        });
+    }
     private void pressSearch() {
         searchButton = (Button) findViewById(R.id.searchButtonE);
         searchButton.setOnClickListener(new View.OnClickListener() {
