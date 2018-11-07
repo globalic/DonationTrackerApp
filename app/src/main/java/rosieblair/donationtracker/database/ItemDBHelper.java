@@ -203,21 +203,46 @@ public class ItemDBHelper extends SQLiteOpenHelper {
      * @param category the item category
      * @return list of all items with category value, or empty list if none
      */
-    public List<Item> getItemsWithCategory(String category) {
-        if (!Item.itemCategories.contains(category)) {
-            return new ArrayList<>();
-        }
-        List<Item> categoryItems = new ArrayList<>();
+//    public List<Item> getItemsWithCategory(String category) {
+//        if (!Item.itemCategories.contains(category)) {
+//            return new ArrayList<>();
+//        }
+//        List<Item> categoryItems = new ArrayList<>();
+//        List<Item> items = itemList();
+//        for (Item i : items) {
+//            if (i.getCategory().equals(category)) {
+//                categoryItems.add(i);
+//            }
+//        }
+//        if (categoryItems.isEmpty()) {
+//            Log.d("MYAPP", "Warning - Failed to find items for: " + category);
+//        }
+//        return categoryItems;
+//    }
+
+    /**
+     *
+     * @param category
+     * @param locKey location key from location spinner on search screen
+     * @return
+     */
+    public List<Item> findItemsByCategory(String category, int locKey) {
+        List<Item> itemsInCat = new ArrayList<>();
         List<Item> items = itemList();
-        for (Item i : items) {
-            if (i.getCategory().equals(category)) {
-                categoryItems.add(i);
+        if (locKey == -1) {
+            for (Item d : items) {
+                if (d.getCategory().equals(category)) itemsInCat.add(d);
             }
-        }
-        if (categoryItems.isEmpty()) {
+            Log.d("MYAPP", "Warning - Failed to find items for: " + category
+                    + " at all locations");
+        } else {
+            List<Item> itemsAtLoc = getLocationInventory(locKey);
+            for (Item d: itemsAtLoc) {
+                if (d.getCategory().equals(category)) itemsInCat.add(d);
+            }
             Log.d("MYAPP", "Warning - Failed to find items for: " + category);
         }
-        return categoryItems;
+        return itemsInCat;
     }
 
     /**
@@ -226,21 +251,46 @@ public class ItemDBHelper extends SQLiteOpenHelper {
      * @param shortD the item short description
      * @return list of all items with short description, or empty list if none
      */
-    public List<Item> getItemsWithName(String shortD) {
-        if (shortD == null) {
-            return new ArrayList<>();
-        }
-        List<Item> nameItems = new ArrayList<>();
+//    public List<Item> getItemsWithName(String shortD) {
+//        if (shortD == null) {
+//            return new ArrayList<>();
+//        }
+//        List<Item> nameItems = new ArrayList<>();
+//        List<Item> items = itemList();
+//        for (Item i : items) {
+//            if (i.getShortDescription().equals(shortD)) {
+//                nameItems.add(i);
+//            }
+//        }
+//        if (nameItems.isEmpty()) {
+//            Log.d("MYAPP", "Warning - Failed to find items for: " + shortD);
+//        }
+//        return nameItems;
+//    }
+
+    /**
+     *
+     * @param name
+     * @param locKey location key from location spinner on search screen
+     * @return
+     */
+    public List<Item> findItemsByName(String name, int locKey) {
+        List<Item> itemsName = new ArrayList<>();
         List<Item> items = itemList();
-        for (Item i : items) {
-            if (i.getShortDescription().equals(shortD)) {
-                nameItems.add(i);
+        if (locKey == -1) {
+            for (Item d : items) {
+                if (d.getShortDescription().contains(name)) itemsName.add(d);
             }
+            Log.d("MYAPP", "Warning - Failed to find items for: " + name
+                    + " at all locations");
+        } else {
+            List<Item> itemsAtLoc = getLocationInventory(locKey);
+            for (Item d: itemsAtLoc) {
+                if (d.getShortDescription().contains(name)) itemsName.add(d);
+            }
+            Log.d("MYAPP", "Warning - Failed to find items for: " + name);
         }
-        if (nameItems.isEmpty()) {
-            Log.d("MYAPP", "Warning - Failed to find items for: " + shortD);
-        }
-        return nameItems;
+        return itemsName;
     }
 
 }
