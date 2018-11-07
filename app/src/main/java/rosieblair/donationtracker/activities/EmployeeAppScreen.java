@@ -85,9 +85,9 @@ public class EmployeeAppScreen extends AppCompatActivity {
         addDonationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent intent = new Intent(getApplicationContext(), AddItemScreen.class);
-//                intent.putExtra("thisLocn", loc);
-//                startActivity(intent);
+                Intent intent = new Intent(getApplicationContext(), AddItemScreen.class);
+                //intent.putExtra("thisLocn", loc);
+                startActivity(intent);
             }
         });
 

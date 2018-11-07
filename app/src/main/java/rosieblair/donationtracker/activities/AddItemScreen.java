@@ -73,14 +73,14 @@ public class AddItemScreen extends AppCompatActivity {
     }
 
     public void add() {
-//        time = (EditText) findViewById(R.id.enterDonateDate);
-//        location = (Spinner) findViewById(R.id.selectLocation);
-//        shortDescription= (EditText) findViewById(R.id.enterShortDescr);
-//        fullDescription = (EditText) findViewById(R.id.enterFullDescr);
-//        value = (EditText) findViewById(R.id.enterItemValue);
-//        category = (Spinner) findViewById(R.id.selectItemCategory);
-//
-//        invalid_Location = (TextView) findViewById(R.id.invalidLocation);
+        time = (EditText) findViewById(R.id.enterDonateDate);
+        location = (Spinner) findViewById(R.id.selectLocation);
+        shortDescription= (EditText) findViewById(R.id.enterShortDescr);
+        fullDescription = (EditText) findViewById(R.id.enterFullDescr);
+        value = (EditText) findViewById(R.id.enterItemValue);
+        category = (Spinner) findViewById(R.id.selectItemCategory);
+
+        invalid_Location = (TextView) findViewById(R.id.invalidLocation);
 //
 //        addButton = (Button) findViewById(R.id.addItemButton);
 //        addButton.setOnClickListener(new View.OnClickListener() {
