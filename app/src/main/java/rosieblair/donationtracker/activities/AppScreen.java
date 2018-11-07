@@ -76,17 +76,17 @@ public class AppScreen extends AppCompatActivity {
      */
     public void onLogOutPressed(View view) {
         Log.d("Edit", "logged out");
-//        Intent intent = new Intent("MainActivity");
-//        startActivity(intent);
-        finish();
+        Intent intent = new Intent("MainActivity");
+        startActivity(intent);
+        //finish();
         //pop-up message notifying user that logout was successful
-//        Toast toast = Toast.makeText(getBaseContext(), "Logout successful!",
-//                Toast.LENGTH_SHORT);
-//        View toastView = toast.getView();
-//        //setting the color of notification's background bubble
-//        toastView.getBackground().setColorFilter(Color.parseColor("#daeff1"),
-//                PorterDuff.Mode.SRC);
-//        toast.show();
+        Toast toast = Toast.makeText(getBaseContext(), "Logout successful!",
+                Toast.LENGTH_SHORT);
+        View toastView = toast.getView();
+        //setting the color of notification's background bubble
+        toastView.getBackground().setColorFilter(Color.parseColor("#daeff1"),
+                PorterDuff.Mode.SRC);
+        toast.show();
     }
 
 }
