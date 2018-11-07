@@ -1,38 +1,43 @@
 package rosieblair.donationtracker.model;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class Item {
 
     private int id;
     private String time;
-    private String location;
     private String shortDescription;
     private String fullDescription;
     private String value;
     private String category;
     private int itemKey;
 
-    public static int keyCounter;
-    private int key;
+//    public static int keyCounter;
+//    private int key;
+
+    public static final List<String> itemCategories = Arrays.asList("Clothing", "Hat", "Kitchen",
+            "Electronics", "Household", "Other");
 
     public Item() {
-        this("Time", "Location", "Short Description", "fullDescription", "0", "category",1);
+        this(null, null, null, null,
+                itemCategories.get(0), 1);
     }
 
-    public Item(String time, String location, String shortDescription, String fullDescription, String value, String category, int keyCounter) {
+    public Item(String time, String shortDescription, String fullDescription, String value, String category, int itemKey) {
         this.time = time;
-        this.location = location; //replace usage with item key value
         this.shortDescription = shortDescription;
         this.fullDescription = fullDescription;
         this.value = value;
         this.category = category;
-        this.key = keyCounter;
+        this.itemKey = itemKey;
     }
 
     public String getTime() { return time; }
     public void setTime(String time) { this.time = time; }
 
-    public String getLocation() { return location; }
-    public void setLocation(String location) { this.location = location; }
+//    public String getLocation() { return location; }
+//    public void setLocation(String location) { this.location = location; }
 
     public String getShortDescription() { return shortDescription; }
     public void setShortDescription(String shortDescription) {this.shortDescription = shortDescription; }
@@ -46,12 +51,12 @@ public class Item {
     public String getCategory() { return category; }
     public void setCategory(String category) { this.category = category; }
 
-    public int getKey() {
-        return key;
-    }
-    public void setKey(int key) {
-        this.key = key;
-    }
+//    public int getKey() {
+//        return key;
+//    }
+//    public void setKey(int key) {
+//        this.key = key;
+//    }
 
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
@@ -61,8 +66,8 @@ public class Item {
     public void setItemKey(int itemKey) { this.itemKey = itemKey; }
 
     public String toString() {
-        return "Time: " + time + " Location: " + location + " Short Description: " + shortDescription
-                + " Full Description: " + fullDescription + " Value: " + value + " Category: " + category;
+        return "Time: " + time + " Short Description: " + shortDescription + " Full Description: "
+                + fullDescription + " Value: " + value + " Category: " + category;
     }
 
 
