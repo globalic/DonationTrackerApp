@@ -2,6 +2,7 @@ package rosieblair.donationtracker.activities;
 
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -12,10 +13,14 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import rosieblair.donationtracker.R;
+import rosieblair.donationtracker.database.LocationDBHelper;
+import rosieblair.donationtracker.model.Location;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
+    private LocationDBHelper locDBhelper;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +45,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+        locDBhelper = new LocationDBHelper(MapsActivity.this);
+
 
 //        // Add a marker in Sydney and move the camera
 //        LatLng sydney = new LatLng(-34, 151);
@@ -50,11 +57,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         //need to uncomment this and replace the location list stuff with location database
 //        Log.d("MAP","Locations" + LocationList.INSTANCE.getLocations());
-//        for (Location loc: LocationList.INSTANCE.getLocations()) {
-//            LatLng locLL = new LatLng(Double.parseDouble(loc.getLatitude()), Double.parseDouble(loc.getLongitude()));
-//            mMap.addMarker(new MarkerOptions().position(locLL).title(loc.getName()).snippet(loc.getPhoneNumber()));
-//            mMap.moveCamera(CameraUpdateFactory.newLatLng(locLL));
-//
-//        }
+        for (Location loc: locDBhelper.locationList()) {
+            LatLng locLL = new LatLng(Double.parseDouble(loc.getLatitude()), Double.parseDouble(loc.getLongitude()));
+            mMap.addMarker(new MarkerOptions().position(locLL).title(loc.getName()).snippet(loc.getPhoneNumber()));
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(locLL));
+
+        }
     }
 }
