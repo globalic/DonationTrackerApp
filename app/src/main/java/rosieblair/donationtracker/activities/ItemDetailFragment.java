@@ -54,7 +54,7 @@ public class ItemDetailFragment extends Fragment {
         // Show the dummy content as text in a TextView.
         if (mItem != null) {
             ((TextView) rootView.findViewById(R.id.time)).setText(getResources().getString(R.string.time, mItem.getTime()));
-            ((TextView) rootView.findViewById(R.id.location)).setText(getResources().getString(R.string.place, mItem.getLocation()));
+            //((TextView) rootView.findViewById(R.id.location)).setText(getResources().getString(R.string.place, mItem.getLocation()));
             ((TextView) rootView.findViewById(R.id.short_desc)).setText(getResources().getString(R.string.shortdesc, mItem.getShortDescription()));
             ((TextView) rootView.findViewById(R.id.full_desc)).setText(getResources().getString(R.string.fulldesc, mItem.getFullDescription()));
             ((TextView) rootView.findViewById(R.id.value)).setText(getResources().getString(R.string.value, mItem.getValue()));
