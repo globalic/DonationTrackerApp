@@ -18,10 +18,16 @@ public class Location {
     private String locType;
     private String phoneNumber;
     private String website;
-    private List<Item> inventory;
-    private List<User> employeeList;
+//    private List<Item> inventory;
+//    private List<User> employeeList;
 
     public static final List<String> locTypes = Arrays.asList("DROPOFF", "STORE", "WAREHOUSE");
+
+    public Location() {
+        this(-1, null, null, null, null,
+                null, null, null, locTypes.get(0), null,
+                null);
+    }
 
     public Location(int key, String name, String latitude, String longitude,
                     String streetAddress, String city, String state, String zipCode,
@@ -38,8 +44,6 @@ public class Location {
         this.locType = locTypes.contains(locType) ? locType : locTypes.get(0);
         this.phoneNumber = phoneNumber;
         this.website = website;
-        this.inventory = new ArrayList<>();
-        this.employeeList = new ArrayList<>();
     }
 
     public int getId() {
@@ -126,20 +130,20 @@ public class Location {
     public void setWebsite(String website) {
         this.website = website;
     }
-
-    public List<Item> getInventory() {
-        return inventory;
-    }
-    public void setInventory(List<Item> inventory) {
-        this.inventory = inventory;
-    }
-
-    public List<User> getEmployeeList() {
-        return employeeList;
-    }
-    public void setEmployeeList(List<User> employeeList) {
-        this.employeeList = employeeList;
-    }
+//
+//    public List<Item> getInventory() {
+//        return inventory;
+//    }
+//    public void setInventory(List<Item> inventory) {
+//        this.inventory = inventory;
+//    }
+//
+//    public List<User> getEmployeeList() {
+//        return employeeList;
+//    }
+//    public void setEmployeeList(List<User> employeeList) {
+//        this.employeeList = employeeList;
+//    }
 
     public static List<String> getLocTypes() {
         return locTypes;

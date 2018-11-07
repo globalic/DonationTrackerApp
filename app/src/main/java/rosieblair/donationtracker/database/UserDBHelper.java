@@ -1,125 +1,305 @@
 package rosieblair.donationtracker.database;
 
-import java.util.HashMap;
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import rosieblair.donationtracker.model.User;
 
-public class UserDBHelper {
-    //stores username as key with associated User object as value
-    private HashMap<String, User> users;
 
-    //constructor to initialize database with empty hashmap
-    public UserDBHelper() {
-        users = new HashMap<>();
+public class UserDBHelper extends SQLiteOpenHelper {
+
+    private static final int VERSION = 1;
+    private static final String DB_NAME = "User.db";
+    private static final String USER_TABLE = "User";
+
+    private static final String ID_COL = "id";
+    private static final String USERNAME_COL = "username";
+    private static final String PASSWORD_COL = "password";
+    private static final String EMAIL_COL = "email";
+    private static final String LOCKED_COL = "locked";
+    private static final String TYPE_COL = "type";
+    private static final String LOC_COL = "locId";
+
+    private String CREATE_UT = "CREATE TABLE " + USER_TABLE + "("
+            + ID_COL + " INTEGER PRIMARY KEY AUTOINCREMENT," + USERNAME_COL
+            + " TEXT," + PASSWORD_COL + " TEXT," + EMAIL_COL + " TEXT,"
+            + LOCKED_COL + " TEXT," + TYPE_COL + " TEXT," + LOC_COL + " INTEGER" + ")";
+
+    private String DROP_UT = "DROP TABLE IF EXISTS " + USER_TABLE;
+
+    public UserDBHelper(Context context) {
+        super(context, DB_NAME, null, VERSION);
+    }
+
+    @Override
+    public void onCreate(SQLiteDatabase db) {
+        db.execSQL(CREATE_UT);
+    }
+
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int i, int i1) {
+        db.execSQL(DROP_UT);
+        onCreate(db);
     }
 
     /**
-     * Adds a new user to the database.
+     * Add the inputted user's info to the user database.
      *
-     * @param user User to add to user database
-     * @return true if user was added, false if user was not added
-     * @throws IllegalArgumentException if user is null
+     * @param user to add
      */
-    public boolean addUser(User user) {
-        if (user == null) {
-            throw new IllegalArgumentException("Cannot add a null User.");
-        }
-        if (users.containsKey(user.getUsername())) {
-            return false;
-        } else {
-            users.put(user.getUsername(), user);
-            return true;
-        }
+    public void addUser(User user) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(USERNAME_COL, user.getUsername());
+        values.put(EMAIL_COL, user.getEmail());
+        values.put(PASSWORD_COL, user.getPassword());
+        String state = (user.getLocked() ? "true" : "false");
+        values.put(LOCKED_COL, state);
+        values.put(TYPE_COL, user.getType());
+        values.put(LOC_COL, user.getEmpId());
+        //add user info, put in table as new row
+        db.insert(USER_TABLE, null, values);
+        db.close();
     }
 
     /**
-     * Removes an existing user from database.
+     * Removes the user from the user database.
      *
-     * @param user User to remove from user database
-     * @return the removed User value (or null)
-     * @throws IllegalArgumentException if user is null or user doesn't exist
+     * @param user to remove
      */
-    public User removeUser(User user) {
-        if (user == null) {
-            throw new IllegalArgumentException("Cannot use null argument.");
-        } else if (!users.containsKey(user.getUsername())) {
-            throw new IllegalArgumentException("Cannot remove nonexistant user.");
-        }
-        return users.remove(user.getUsername());
+    public void removeUser(User user) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(USER_TABLE, ID_COL + " = ?", new String[] {
+                String.valueOf(user.getId())
+        });
+        db.close();
     }
 
     /**
-     * Gets a user from the database.
-     *
-     * @param username the username of the user to fetch
-     * @return the User object from our database
-     * @throws IllegalArgumentException if username is null/user doesn't exist
+     * Updates this user's info in the database.
+     * @param user to update
      */
-    public User getUser(String username) {
+    public void updateUser(User user) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(USERNAME_COL, user.getUsername());
+        values.put(EMAIL_COL, user.getEmail());
+        values.put(PASSWORD_COL, user.getPassword());
+        String state = (user.getLocked() ? "true" : "false");
+        values.put(LOCKED_COL, state);
+        values.put(TYPE_COL, user.getType());
+        values.put(LOC_COL, user.getEmpId());
+        db.update(USER_TABLE, values, ID_COL + " = ?", new String[] {
+                String.valueOf(user.getId())
+        });
+        db.close();
+
+    }
+
+    /**
+     * Checks if the username exists in database.
+     *
+     * @param username the string username to check for
+     * @return true if username exists, false if no such username exists
+     */
+    public boolean checkUsername(String username) {
         if (username == null) {
-            throw new IllegalArgumentException("Cannot use null argument.");
-        } else if (users.containsKey(username)) {
-            throw new IllegalArgumentException("User not found in system.");
-        } else {
-            return users.get(username);
+            return false;
         }
+        SQLiteDatabase db = this.getReadableDatabase();
+        String[] cols = { ID_COL };
+        String col = USERNAME_COL + " = ?";
+        String[] arg = { username };
+
+        Cursor cursor = db.query(USER_TABLE, cols, col, arg, null,
+                null, null);
+        int count = cursor.getCount();
+        cursor.close();
+        db.close();
+
+        return (count > 0);
     }
 
     /**
-     * Checks if a user w/ inputted username exists in our database.
+     * Checks if the email exists in the database.
      *
-     * @param username the username to search the database for
-     * @return true if user exists in database, false if no user exists
+     * @param email the string email to check for
+     * @return true if email exists, false if no such email exists
      */
-    public boolean containsUser(String username) {
-        return users.containsKey(username);
+    public boolean checkEmail(String email) {
+        if (email == null) {
+            return false;
+        }
+        SQLiteDatabase db = this.getReadableDatabase();
+        String[] cols = { ID_COL };
+        String col = EMAIL_COL + " = ?";
+        String[] arg = { email };
+
+        Cursor cursor = db.query(USER_TABLE, cols, col, arg, null,
+                null, null);
+        int count = cursor.getCount();
+        cursor.close();
+        db.close();
+
+        return (count > 0);
     }
 
     /**
-     * Checks if the password input matches the password of the User input
-     * @param password the password that may/may not match
-     * @param user the user with password to compare input with
-     * @return true if values of passwords match, false if they don't match
-     * @throws IllegalArgumentException if null inputs/user doesn't exist
-     */
-    public boolean matchPassword(String password, User user) {
-        if (user == null || password == null) {
-            throw new IllegalArgumentException("Cannot have null arguments.");
-        }
-        if (!users.containsKey(user.getUsername())) {
-            throw new IllegalArgumentException("User does not exist.");
-        } else {
-            User u = users.get(user.getUsername());
-            return u.getPassword().equals(password);
-        }
-    }
-
-    /**
-     * Updates the user entry in database. If their username doesn't change, we
-     * just replace its value with updatedUser. If username changes, we remove
-     * the entry entirely because a new key is needed. Then, we print the
-     * changes made to the user into the System.
+     * Checks if username and password exist for same user in database.
      *
-     * @param username the username of the user to be updated
-     * @param updatedUser contains new data for user to be updated with
-     * @throws IllegalArgumentException if null inputs/user doesn't exist
+     * @param username to check for
+     * @param password to match with username
+     * @return true if the combo exists and matches, false otherwise
      */
-    public void updateUser(String username, User updatedUser) {
-        if (username == null || updatedUser == null) {
-            throw new IllegalArgumentException("Cannot have null arguments.");
-        } else if (!users.containsKey(username)) {
-            throw new IllegalArgumentException("User does not exist.");
+    public boolean checkUserPass(String username, String password) {
+        if (username == null || password == null) {
+            return false;
         }
-        User oldUser;
-        //if different username than before, remove key&value.
-        if (!username.equals(updatedUser.getUsername())) {
-            oldUser = users.remove(username);
-            users.put(updatedUser.getUsername(), updatedUser);
-        } else {
-            oldUser = users.put(username, updatedUser);
-        }
-        System.out.println("Updated information:\n" + oldUser.toString() + "\n"
-                + updatedUser.toString());
+        SQLiteDatabase db = this.getReadableDatabase();
+        String[] cols = { ID_COL };
+        String col = USERNAME_COL + " = ?" + " AND " + PASSWORD_COL + " = ?";
+        String[] arg = { username, password };
 
+        Cursor cursor = db.query(USER_TABLE, cols, col, arg, null,
+                null, null);
+        int count = cursor.getCount();
+        cursor.close();
+        db.close();
+
+        return (count > 0);
     }
+
+    /**
+     * Checks if user with inputted username is a location employee
+     *
+     * @param username to check for
+     * @return true if this user's type = employee, false otherwise
+     */
+    public boolean checkIfEmployee(String username) {
+        if (username == null) {
+            return false;
+        }
+        String empStr = "EMPLOYEE";
+        SQLiteDatabase db = this.getReadableDatabase();
+        String[] cols = { ID_COL };
+        String col = USERNAME_COL + " = ?" + " AND " + TYPE_COL + " = ?";
+        String[] arg = { username, empStr };
+
+        Cursor cursor = db.query(USER_TABLE, cols, col, arg, null,
+                null, null);
+        int count = cursor.getCount();
+        cursor.close();
+        db.close();
+
+        return (count > 0);
+    }
+
+
+
+    /**
+     * Returns an alphabetically sorted list of all User objects stored in the database.
+     *
+     * @return list of all users
+     */
+    public List<User> userList() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        List<User> list = new ArrayList<>();
+
+        String[] cols = { ID_COL, USERNAME_COL, EMAIL_COL, PASSWORD_COL, LOCKED_COL, TYPE_COL, LOC_COL };
+        String orderBy = USERNAME_COL + " ASC";
+
+        Cursor cursor = db.query(USER_TABLE, cols, null,
+                null, null, null, orderBy);
+        if (cursor.moveToFirst()) {
+            do {
+                User user = new User();
+                user.setId(Integer.parseInt(cursor.getString(cursor.getColumnIndex(ID_COL))));
+                user.setUsername(cursor.getString(cursor.getColumnIndex(USERNAME_COL)));
+                user.setEmail(cursor.getString(cursor.getColumnIndex(EMAIL_COL)));
+                user.setPassword(cursor.getString(cursor.getColumnIndex(PASSWORD_COL)));
+                String lock = (cursor.getString(cursor.getColumnIndex(LOCKED_COL)));
+                user.setLock(lock.equals("true"));
+                user.setType(cursor.getString(cursor.getColumnIndex(TYPE_COL)));
+                user.setEmpId(Integer.parseInt(cursor.getString(cursor.getColumnIndex(LOC_COL))));
+                list.add(user);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return list;
+    }
+
+//    /**
+//     * Gets either a list of all location employees when indicator argument is not
+//     * equal to 1, or the list of location employees working at the location with key
+//     * equal to lockKey (when indicator == 1).
+//     *
+//     * @param locKey the key of a location, if returning its employees only
+//     * @param indicator determines which list to return
+//     * @return a list of either all current location employees in database, or
+//     * if the indicator == 1, then the list will contain only the employees of the
+//     * location with key == locKey
+//     */
+//    public List<User> getEmpList(int locKey, int indicator) {
+//        List<User> list = userList();
+//        List<User> emp_list = new ArrayList<>();
+//        List<User> all_list = new ArrayList<>();
+//        for (User u : list) {
+//            if (u.getType().equals("EMPLOYEE")) {
+//                if (indicator == 1 && u.getEmpId() == locKey) {
+//                    emp_list.add(u);
+//                } else {
+//                    all_list.add(u);
+//                }
+//            }
+//        }
+//        if (indicator == 1) {
+//            return emp_list;
+//        } else {
+//            return all_list;
+//        }
+//    }
+
+
+
 }
+
+
+
+//    public String getUserType(String username) {
+//        if (username == null) {
+//            return null;
+//        } else if (!checkUsername(username)) {
+//            return null;
+//        }
+//        List<User> list = userList();
+//        for (User u : list) {
+//            if (u.getUsername().equals(username)) {
+//                return u.getType();
+//            }
+//        }
+//        return null;
+//    }
+
+  //  public boolean checkEmployee(String username, Location loc) {
+//        if (username == null || loc == null) {
+//            return false;
+//        } else if (!checkUsername(username)) {
+//            return false;
+//        }
+//        List<User> uList = userList();
+//        for (User u : uList) {
+//            if (u.getUsername().equals(username)) {
+//                if (u.getType().equals("EMPLOYEE")) {
+//                    return (loc.getKey() == u.getEmpId());
+//                }
+//            }
+//        }
+//        return false;
+//    }

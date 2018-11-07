@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -31,6 +32,7 @@ public class LocationEmployee extends AppCompatActivity {
     private Spinner type;
     private Location loc;
     private ArrayList<Location> temp; //temporary arraylist to load locations so user can select on and assign it to them
+    private String data;
 
 
     @Override
@@ -38,13 +40,22 @@ public class LocationEmployee extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_location_employee);
 
+        data = getIntent().getStringExtra("empUsername");
+        check();
         select();
     }
 
+    private void check() {
+        if (data == null) {
+            finish();
+            Toast.makeText(getBaseContext(), "Error; redirected to main screen", Toast.LENGTH_SHORT).show();
+        }
+        Log.d("intents", "username of this employee: " + data);
+    }
     public void select() {
+        Log.d("intents", "success");
         type = findViewById(R.id.employeeSelectLocSpinner);
         select = findViewById(R.id.select);
-
         select.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
