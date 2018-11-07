@@ -45,8 +45,8 @@ public class SearchScreen extends AppCompatActivity {
                 String locName = location.getSelectedItem().toString();
                 Intent intent = new Intent(getApplicationContext(), ItemsByName.class);
                         //"edu.gatech.micheyang.pbjdonationtracker.ItemsByName");
-//                intent.putExtra(ItemsByName.NAME, itemName);
-//                intent.putExtra(ItemsByName.LOCATION, locName);
+                intent.putExtra(ItemsByName.NAME, itemName);
+                intent.putExtra(ItemsByName.LOCATION, locName);
                 startActivity(intent);
             }
         });
