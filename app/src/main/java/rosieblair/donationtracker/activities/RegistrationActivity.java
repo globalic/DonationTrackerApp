@@ -95,11 +95,13 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
         String type = User.findTypeByString(typeDropDown.getSelectedItem().toString());
 
         if (!validate(usernm, eml)) {
-            user = addtoDB(usernm, eml, pass, type);
+            addtoDB(usernm, eml, pass, type);
             if (user == null) {
                 invalid_attempt.setVisibility(View.VISIBLE);
+                Log.d("ERROR", "registration");
+                finish();
             } else {
-                if (!dbhelper.checkIfEmployee(usernm)) {
+                if (!(user.getType().equalsIgnoreCase("EMPLOYEE"))) {
                     Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                     startActivity(intent);
                     Toast toast = Toast.makeText(getBaseContext(), "Registration successful!",
@@ -110,8 +112,8 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
                             PorterDuff.Mode.SRC);
                     toast.show();
                 } else {
-                    Intent intent = new Intent(getApplicationContext(), LocationEmployee.class);
-                    intent.putExtra("empUsername", usernm);
+                    Intent intent = new Intent(RegistrationActivity.this, LocationEmployee.class);
+                    intent.putExtra("empUsername", user.getUsername());
                     startActivity(intent);
                 }
             }
@@ -122,10 +124,10 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
         return (dbhelper.checkUsername(usernm) || dbhelper.checkEmail(eml));
     }
 
-    private User addtoDB(String usernm, String eml, String pass, String acctType) {
+    private void addtoDB(String usernm, String eml, String pass, String acctType) {
         if (usernm == null || eml == null || pass == null) {
             Log.d("Database", "failure: null user data");
-            return null;
+            return;
         }
         user.setUsername(usernm);
         user.setEmail(eml);
@@ -135,7 +137,6 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
         user.setEmpId(-1);
         dbhelper.addUser(user);
         Log.d("Database", "success: added user");
-        return user;
     }
 
     private void resetFields() {

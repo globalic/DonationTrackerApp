@@ -28,12 +28,12 @@ public class ItemDBHelper extends SQLiteOpenHelper {
     private static final String CATEGORY_COL = "category";
     private static final String LOC_COL = "locId";
 
-    private String CREATE_IT = "CREATE TABLE " + ITEM_TABLE + "(" + ID_COL
+    private final String CREATE_IT = "CREATE TABLE " + ITEM_TABLE + "(" + ID_COL
             + " INTEGER PRIMARY KEY AUTOINCREMENT," + TIME_COL + " TEXT,"
             + SHORT_COL + " TEXT," + FULL_COL + " TEXT," + VALUE_COL + " TEXT,"
             + CATEGORY_COL + " TEXT," + LOC_COL + " INTEGER" + ")";
 
-    private String DROP_IT = "DROP TABLE IF EXISTS " + ITEM_TABLE;
+    private final String DROP_IT = "DROP TABLE IF EXISTS " + ITEM_TABLE;
 
     public ItemDBHelper(Context context) {
         super(context, DB_NAME, null, VERSION);

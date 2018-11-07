@@ -235,6 +235,16 @@ public class UserDBHelper extends SQLiteOpenHelper {
         return list;
     }
 
+    public User findUserByUsername(String username) {
+        List<User> list = userList();
+        for (User u : list) {
+            if (u.getUsername().equals(username)) {
+                return u;
+            }
+        }
+        return null;
+    }
+
 //    /**
 //     * Gets either a list of all location employees when indicator argument is not
 //     * equal to 1, or the list of location employees working at the location with key
