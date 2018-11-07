@@ -99,11 +99,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     intent.putExtra("locKey", location_key);
                     startActivity(intent);
                 }
+            } else {
+                Log.d("login", "not employee");
+                Intent intent = new Intent(getApplicationContext(), AppScreen.class);
+                resetFields();
+                startActivity(intent);
             }
-            Log.d("login", "not employee");
-            Intent intent = new Intent(getApplicationContext(), AppScreen.class);
-            resetFields();
-            startActivity(intent);
         } else {
             Log.d("login", "user entered invalid login credentials");
             failedLogin.setVisibility(View.VISIBLE);

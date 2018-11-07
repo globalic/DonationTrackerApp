@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
         dbhelper = new LocationDBHelper(activity);
 
-        populateDB();
+        //populateDB();
         pressLogin();
         pressRegister();
     }
