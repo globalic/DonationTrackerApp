@@ -25,8 +25,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private Button buttonLogin;
     private Button buttonCancel;
     private TextView failedLogin;
-
-    private User user;
+//    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,9 +34,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         init();
     }
 
+    /**
+     * Initializes the views, objects, and listeners.
+     */
     private void init() {
         dbhelper = new UserDBHelper(activity);
-        user = new User();
+//        user = new User();
 
         inputUsername = findViewById(R.id.enterUsernameLogin);
         inputPassword = findViewById(R.id.enterPasswordLogin);
@@ -50,10 +52,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         buttonCancel.setOnClickListener(this);
     }
 
-
+    /**
+     * Button click handler.
+     * If cancel button clicked, finish activity (restarts back at the main screen).
+     * If login button clicked, call validate method to determine next set of actions.
+     * @param view the selected view
+     */
     @Override
     public void onClick(View view) {
-        switch(view.getId()) {
+        switch (view.getId()) {
             case R.id.cancelButton:
 //                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
 //                resetFields();
@@ -66,6 +73,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
+    /**
+     * Checks user's login credentials for:
+     *   - Existence of username/password combination in database
+     *   - User's type to determine what app screen they will be directed to
+     *   - If invalid values entered, will notify this user of login failure
+     */
     private void validate() {
         String username = inputUsername.getText().toString().trim();
         String password = inputPassword.getText().toString().trim();
@@ -81,20 +94,32 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     }
                 }
                 if (location_key != -1) {
-                    Log.d("validate", "this user's empId = " + location_key + "");
+                    Log.d("login", "this user's empId = " + location_key + "");
                     Intent intent = new Intent(getApplicationContext(), EmployeeAppScreen.class);
                     intent.putExtra("locKey", location_key);
                     startActivity(intent);
                 }
             }
-            Log.d("validate", "user not employee/empId == -1");
+            Log.d("login", "not employee");
             Intent intent = new Intent(getApplicationContext(), AppScreen.class);
             resetFields();
             startActivity(intent);
         } else {
+            Log.d("login", "user entered invalid login credentials");
             failedLogin.setVisibility(View.VISIBLE);
         }
-//        if (dbhelper.checkUserPass(username, password)) {
+    }
+
+    /**
+     * Clears the login/password input text boxes.
+     */
+    private void resetFields() {
+        inputUsername.setText(null);
+        inputPassword.setText(null);
+    }
+
+}
+    //        if (dbhelper.checkUserPass(username, password)) {
 //            for (User u : dbhelper.userList()) {
 //                if (u.getUsername().equals(username)) user = u;
 //            }
@@ -119,12 +144,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 //        } else {
 //            failedLogin.setVisibility(View.VISIBLE);
 //        }
-    }
-
-    private void resetFields() {
-        inputUsername.setText(null);
-        inputPassword.setText(null);
-    }
 
 //    private EditText username; //username input
 //    private EditText password; //password input
@@ -260,4 +279,4 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 //        }
 //    }
 
-}
+
