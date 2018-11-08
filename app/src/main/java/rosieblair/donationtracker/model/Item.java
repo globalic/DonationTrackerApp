@@ -13,17 +13,29 @@ public class Item {
     private String category;
     private int itemKey;
 
-//    public static int keyCounter;
-//    private int key;
-
+    /**
+     * A list of all possible categories defined for an item.
+     */
     public static final List<String> itemCategories = Arrays.asList("Clothing", "Hat", "Kitchen",
             "Electronics", "Household", "Other");
 
+    /**
+     * No-Arg Constructor to create an Item object (for use with activities only).
+     */
     public Item() {
         this(null, null, null, null,
                 itemCategories.get(0), 1);
     }
 
+    /**
+     * Constructor to make a new Item Object
+     * @param time the item's donation time
+     * @param shortDescription a short description of the item
+     * @param fullDescription a full (longer) description of the item
+     * @param value the item's value
+     * @param category the item's category
+     * @param itemKey the key that links the item to a location
+     */
     public Item(String time, String shortDescription, String fullDescription, String value, String category, int itemKey) {
         this.time = time;
         this.shortDescription = shortDescription;
@@ -33,11 +45,14 @@ public class Item {
         this.itemKey = itemKey;
     }
 
+    /*******************************************
+     * Getters & Setters for all of Item's attributes
+     * */
+    public int getId() { return id; }
+    public void setId(int id) { this.id = id; }
+
     public String getTime() { return time; }
     public void setTime(String time) { this.time = time; }
-
-//    public String getLocation() { return location; }
-//    public void setLocation(String location) { this.location = location; }
 
     public String getShortDescription() { return shortDescription; }
     public void setShortDescription(String shortDescription) {this.shortDescription = shortDescription; }
@@ -51,20 +66,13 @@ public class Item {
     public String getCategory() { return category; }
     public void setCategory(String category) { this.category = category; }
 
-//    public int getKey() {
-//        return key;
-//    }
-//    public void setKey(int key) {
-//        this.key = key;
-//    }
-
-    public int getId() { return id; }
-    public void setId(int id) { this.id = id; }
-    //add equals method
-
     public int getItemKey() { return itemKey; }
     public void setItemKey(int itemKey) { this.itemKey = itemKey; }
 
+    /**
+     * Returns a string representation of this item's attributes.
+     * @return the String description of this item
+     */
     public String toString() {
         return "Time: " + time + " Short Description: " + shortDescription + " Full Description: "
                 + fullDescription + " Value: " + value + " Category: " + category;
