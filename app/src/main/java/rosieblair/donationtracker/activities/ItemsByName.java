@@ -29,6 +29,9 @@ import rosieblair.donationtracker.database.LocationDBHelper;
 //import model.Item;
 //import model.ItemDatabase;
 
+/**
+ * Class showing search results after searching for items by name
+ */
 public class ItemsByName extends AppCompatActivity {
 
     public static final String LOCATION = "location";
@@ -80,6 +83,10 @@ public class ItemsByName extends AppCompatActivity {
 
         private final List<Item> mValues;
 
+        /**
+         * Recycler view for showing all the resulting items
+         * @param items list of items
+         */
         public SimpleItemRecyclerViewAdapter(List<Item> items) {
             mValues = items;
         }
@@ -122,6 +129,10 @@ public class ItemsByName extends AppCompatActivity {
             public final TextView mContentView;
             public Item item;
 
+            /**
+             * Viewholder for the recycler
+             * @param view view for the holder
+             */
             public ViewHolder(View view) {
                 super(view);
                 mView = view;
