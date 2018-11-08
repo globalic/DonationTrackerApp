@@ -15,7 +15,6 @@ import java.util.List;
 import rosieblair.donationtracker.R;
 import rosieblair.donationtracker.database.ItemDBHelper;
 import rosieblair.donationtracker.database.LocationDBHelper;
-import rosieblair.donationtracker.model.Item;
 import rosieblair.donationtracker.model.Location;
 
 /**

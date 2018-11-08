@@ -12,7 +12,6 @@ import android.widget.TextView;
 
 import rosieblair.donationtracker.R;
 import rosieblair.donationtracker.model.Location;
-import rosieblair.donationtracker.database.LocationDBHelper;
 
 /**
  * A fragment representing a single Location detail screen.

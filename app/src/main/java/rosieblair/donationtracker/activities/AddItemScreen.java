@@ -2,8 +2,6 @@ package rosieblair.donationtracker.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -14,28 +12,11 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
 import rosieblair.donationtracker.R;
-import rosieblair.donationtracker.model.Item;
 import rosieblair.donationtracker.model.Location;
-
-import static rosieblair.donationtracker.activities.EmployeeAppScreen.CITY_POSITION;
-import static rosieblair.donationtracker.activities.EmployeeAppScreen.LATITUDE_POSITION;
-import static rosieblair.donationtracker.activities.EmployeeAppScreen.LONGITUDE_POSITION;
-import static rosieblair.donationtracker.activities.EmployeeAppScreen.NAME_POSITION;
-import static rosieblair.donationtracker.activities.EmployeeAppScreen.PHONE_NUMBER_POSITION;
-import static rosieblair.donationtracker.activities.EmployeeAppScreen.STATE_POSITION;
-import static rosieblair.donationtracker.activities.EmployeeAppScreen.STREET_ADDRESS_POSITION;
-import static rosieblair.donationtracker.activities.EmployeeAppScreen.TYPE_POSITION;
-import static rosieblair.donationtracker.activities.EmployeeAppScreen.WEBSITE_POSITION;
-import static rosieblair.donationtracker.activities.EmployeeAppScreen.ZIP_CODE_POSITION;
 
 import rosieblair.donationtracker.database.ItemDBHelper;
 import rosieblair.donationtracker.database.LocationDBHelper;
