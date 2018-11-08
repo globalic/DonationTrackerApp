@@ -169,7 +169,7 @@ public class LocationDBHelper extends SQLiteOpenHelper {
     }
 
     public Location getLocationByName(String name) {
-        if (name == null || !checkLocation(name)) {
+        if (name == null || (!checkLocation(name))) {
             Log.d("LocationByName", "name of location is null");
             return null; }
         List<Location> _list = locationList();

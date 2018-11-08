@@ -24,12 +24,6 @@ public class ItemDetailFragment extends Fragment {
 
     private Item mItem;
 
-    /**
-     * Constructor used to instantiate item detail
-     */
-    public ItemDetailFragment() {
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

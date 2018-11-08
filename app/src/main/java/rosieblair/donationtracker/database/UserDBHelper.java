@@ -156,7 +156,7 @@ public class UserDBHelper extends SQLiteOpenHelper {
      * @return true if the combo exists and matches, false otherwise
      */
     public boolean checkUserPass(String username, String password) {
-        if (username == null || password == null) {
+        if (username == null || (password == null)) {
             return false;
         }
         SQLiteDatabase db = this.getReadableDatabase();

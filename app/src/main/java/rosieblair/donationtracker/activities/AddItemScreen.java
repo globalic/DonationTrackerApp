@@ -129,7 +129,9 @@ public class AddItemScreen extends AppCompatActivity {
      */
     public Location findLocationByKey(int key) {
         for (Location d : temp) {
-            if (d.getKey() == key) return d;
+            if (d.getKey() == key) {
+                return d;
+            }
         }
         Log.d("MYAPP", "Warning - Failed to find key: " + key);
         return null;

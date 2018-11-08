@@ -96,10 +96,10 @@ public class User implements Serializable {
     @Override
     public int hashCode() {
         int result = 17;
-        result = 31 * result + username.hashCode();
-        result = 31 * result + password.hashCode();
-        result = 31 * result + email.hashCode();
-        result = 31 * result + type.hashCode();
+        result = ((31 * result) + username.hashCode());
+        result = ((31 * result) + password.hashCode());
+        result = ((31 * result) + email.hashCode());
+        result = ((31 * result) + type.hashCode());
         return result;
     }
 
