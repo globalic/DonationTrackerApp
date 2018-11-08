@@ -9,6 +9,9 @@ import android.view.MenuItem;
 
 import rosieblair.donationtracker.R;
 
+/**
+ * Class to allow functionality of item selection
+ */
 public class ItemDetailActivity extends AppCompatActivity {
 
     @Override

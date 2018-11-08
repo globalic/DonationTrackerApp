@@ -17,6 +17,9 @@ import rosieblair.donationtracker.R;
 import rosieblair.donationtracker.model.Location;
 import rosieblair.donationtracker.model.User;
 
+/**
+ * Class to allow functionality of employee app screen
+ */
 public class EmployeeAppScreen extends AppCompatActivity {
 
     private final AppCompatActivity activity = EmployeeAppScreen.this;
@@ -119,6 +122,11 @@ public class EmployeeAppScreen extends AppCompatActivity {
         });
     }
 
+    /**
+     * Method to redirect user to main app screen once logout
+     * button is pressed
+     * @param view the view
+     */
     public void onLogOutPressed(View view) {
         Log.d("Edit", "logged out");
         Intent intent = new Intent(EmployeeAppScreen.this, MainActivity.class);

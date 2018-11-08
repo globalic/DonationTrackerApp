@@ -16,6 +16,9 @@ import rosieblair.donationtracker.R;
 import rosieblair.donationtracker.database.LocationDBHelper;
 import rosieblair.donationtracker.model.Location;
 
+/**
+ * Class to provide functionality of maps
+ */
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;

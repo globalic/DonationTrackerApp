@@ -17,11 +17,17 @@ import rosieblair.donationtracker.database.ItemDBHelper;
 
 import rosieblair.donationtracker.R;
 
+/**
+ * Class to list item details
+ */
 public class ItemDetailFragment extends Fragment {
     public static final String ARG_ITEM_ID = "item_id";
 
     private Item mItem;
 
+    /**
+     * Constructor used to instantiate item detail
+     */
     public ItemDetailFragment() {
     }
 

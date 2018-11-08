@@ -41,6 +41,9 @@ import rosieblair.donationtracker.database.ItemDBHelper;
 import rosieblair.donationtracker.database.LocationDBHelper;
 import rosieblair.donationtracker.model.Item;
 
+/**
+ * Class to allow functionality of adding items
+ */
 public class AddItemScreen extends AppCompatActivity {
 
 //    private final AppCompatActivity activity = AddItemScreen.this;
@@ -72,6 +75,9 @@ public class AddItemScreen extends AppCompatActivity {
         cancel();
     }
 
+    /**
+     * Method used to add item into inventory
+     */
     public void add() {
 
         lochelper = new LocationDBHelper(AddItemScreen.this);
@@ -167,6 +173,9 @@ public class AddItemScreen extends AppCompatActivity {
 //        });
     }
 
+    /**
+     * Method to cancel addition of item
+     */
     public void cancel() {
         Log.d("Cancel", "cancel register");
         cancelButton = (Button) findViewById(R.id.cancelItemButton);
@@ -216,6 +225,11 @@ public class AddItemScreen extends AppCompatActivity {
 //        }
 //    }
 
+    /**
+     * Method used to find location by key
+     * @param key key used to find location
+     * @return the requested location to find
+     */
     public Location findLocationByKey(int key) {
         for (Location d : temp) {
             if (d.getKey() == key) return d;

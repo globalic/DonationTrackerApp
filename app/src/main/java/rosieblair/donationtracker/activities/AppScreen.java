@@ -13,6 +13,9 @@ import android.widget.Toast;
 
 import rosieblair.donationtracker.R;
 
+/**
+ * Class to allow functionality of app screen
+ */
 public class AppScreen extends AppCompatActivity {
 
     private Button locationListButton;

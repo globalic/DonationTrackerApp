@@ -20,6 +20,9 @@ import rosieblair.donationtracker.database.LocationDBHelper;
 import rosieblair.donationtracker.model.Item;
 import rosieblair.donationtracker.R;
 
+/**
+ * Class to get item count and toolbar creation
+ */
 public class ItemsInCategory extends AppCompatActivity {
 
     public static final String CATEGORY = "category";
@@ -62,6 +65,9 @@ public class ItemsInCategory extends AppCompatActivity {
         recyclerView.setAdapter(new ItemsInCategory.SimpleItemRecyclerViewAdapter(itemhelper.findItemsByCategory(catName, locKey)));
     }
 
+    /**
+     * Class to recycle items in adapter
+     */
     public class SimpleItemRecyclerViewAdapter
             extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
 
@@ -103,6 +109,9 @@ public class ItemsInCategory extends AppCompatActivity {
             return mValues.size();
         }
 
+        /**
+         * Class to make viewholder
+         */
         public class ViewHolder extends RecyclerView.ViewHolder {
             public final View mView;
             public final TextView mIdView;
