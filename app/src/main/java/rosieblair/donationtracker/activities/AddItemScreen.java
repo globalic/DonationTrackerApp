@@ -126,51 +126,6 @@ public class AddItemScreen extends AppCompatActivity {
             }
         });
 
-//        addButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                //loc = (Location) getIntent().getSerializableExtra("thisLocn");
-//
-//                ItemDatabase.times.add(time.getText().toString());
-//                ItemDatabase.locations.add(null);  //need to change this
-//                ItemDatabase.sDesriptions.add(shortDescription.getText().toString());
-//                ItemDatabase.fDescriptions.add(fullDescription.getText().toString());
-//                ItemDatabase.values.add(value.getText().toString());
-//                ItemDatabase.categories.add(category.getSelectedItem().toString());
-//                readCSVFile();
-//
-//                /*Log.d("Location name", "Location selected:" + location.getSelectedItem().toString());
-//                Log.d("LocationListInstance", "LocationListInstance: " + temp.getItems());
-//                Log.d("Location add", "Location add: " + findLocationByKey(UserDatabase.location.get(userIndex)).getName());
-//                Log.d("LocationListInstance", "LocationListInstance: " + temp);
-//                if (location.getSelectedItem().toString().equals(findLocationByKey(UserDatabase.location.get(userIndex)).getName())) {
-//                    ItemDatabase.INSTANCE.getItems().add(new Item(time.getText().toString(), location.getSelectedItem().toString(),
-//                            shortDescription.getText().toString(), fullDescription.getText().toString(),
-//                            value.getText().toString(), category.getSelectedItem().toString(),++keyCounter));
-//                    startActivity(intent);
-//                if (loc != null) {
-//                Item item = new Item(time.getText().toString(), loc.getName(),
-//                        shortDescription.getText().toString(), fullDescription.getText().toString(),
-//                        value.getText().toString(), category.getSelectedItem().toString(),++keyCounter);
-//                ItemDatabase.INSTANCE.getItems().add(item);
-//                Intent intent = new Intent(getApplicationContext(), EmployeeAppScreen.class); //change to item list screen
-//                intent.putExtra("thisLocn", loc);
-//                    List<Item> item_list = loc.getInventory();
-//                    item_list.add(item);
-//
-//                    ItemDatabase.INSTANCE.getItems().add(new Item(time.getText().toString(), loc.getName(),
-//                            shortDescription.getText().toString(), fullDescription.getText().toString(),
-//                            value.getText().toString(), category.getSelectedItem().toString(),++keyCounter));
-//                startActivity(intent);
-//                } else {
-//                    invalid_Location.setVisibility(View.VISIBLE); //when location employee doesnt select correct location to add item to, notify
-//                }
-//
-//                currentItemDatabase();
-//
-//
-//            }*/
-//        });
     }
 
     /**
@@ -188,42 +143,6 @@ public class AddItemScreen extends AppCompatActivity {
         });
     }
 
-//    private void currentItemDatabase() {
-//        for (int i = 0; i < ItemDatabase.INSTANCE.getItems().size(); i++) {
-//            Log.d("Item", "Item: " + ItemDatabase.INSTANCE.getItems().get(i));
-//
-//        }
-//    }
-
-    //use to read and load temporary list of locations to check if adding to right location
-//    private void readCSVFile() {
-//        temp = new ArrayList<>();
-
-//        try {
-//            //Open a stream on the raw file
-//            InputStream is = getResources().openRawResource(R.raw.locationdata);
-//            //From here we probably should call a model method and pass the InputStream
-//            //Wrap it in a BufferedReader so that we get the readLine() method
-//            BufferedReader br = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8));
-//
-//            String line;
-//            br.readLine(); //get rid of header line
-//            while ((line = br.readLine()) != null) {
-//                //Log.d(MainActivity.TAG, line);
-//                String[] details = line.split(",");
-//                int key = Integer.parseInt(details[0]);
-//                boolean add;
-//                if (temp.add(new Location(key, details[NAME_POSITION], details[LATITUDE_POSITION],
-//                        details[LONGITUDE_POSITION], details[STREET_ADDRESS_POSITION], details[CITY_POSITION],
-//                        details[STATE_POSITION], details[ZIP_CODE_POSITION], details[TYPE_POSITION],
-//                        details[PHONE_NUMBER_POSITION], details[WEBSITE_POSITION]))) add = true;
-//                else add = false;
-//            }
-//            br.close();
-//        } catch (IOException e) {
-//            //Log.e(MainActivity.TAG, "error reading assets", e);
-//        }
-//    }
 
     /**
      * Method used to find location by key

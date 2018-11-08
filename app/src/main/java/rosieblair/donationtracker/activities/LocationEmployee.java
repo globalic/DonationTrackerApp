@@ -36,7 +36,7 @@ public class LocationEmployee extends AppCompatActivity {
     private Button selectButton;
     private Spinner locSpinner;
     private Location loc;
-    private ArrayList<Location> temp; //temporary arraylist to load locations so user can select on and assign it to them
+    private ArrayList<Location> temp;
 
     private UserDBHelper dbhelper;
     private LocationDBHelper loc_dbhelper;

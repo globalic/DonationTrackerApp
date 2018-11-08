@@ -62,7 +62,8 @@ public class ItemsInCategory extends AppCompatActivity {
         } else {
             locKey = -1;
         }
-        recyclerView.setAdapter(new ItemsInCategory.SimpleItemRecyclerViewAdapter(itemhelper.findItemsByCategory(catName, locKey)));
+        recyclerView.setAdapter(new ItemsInCategory.SimpleItemRecyclerViewAdapter(itemhelper
+                .findItemsByCategory(catName, locKey)));
     }
 
     /**
@@ -78,14 +79,16 @@ public class ItemsInCategory extends AppCompatActivity {
         }
 
         @Override
-        public ItemsInCategory.SimpleItemRecyclerViewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        public ItemsInCategory.SimpleItemRecyclerViewAdapter
+                .ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View view = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.content_list_of_items, parent, false);
             return new ItemsInCategory.SimpleItemRecyclerViewAdapter.ViewHolder(view);
         }
 
         @Override
-        public void onBindViewHolder(final ItemsInCategory.SimpleItemRecyclerViewAdapter.ViewHolder holder, int position) {
+        public void onBindViewHolder(final ItemsInCategory.SimpleItemRecyclerViewAdapter
+                .ViewHolder holder, int position) {
             holder.item = mValues.get(position);
             //changed to get id because getKey() no longer valid
             holder.mIdView.setText("" + mValues.get(position).getId());
@@ -96,8 +99,7 @@ public class ItemsInCategory extends AppCompatActivity {
                 public void onClick(View v) {
                     Context context = v.getContext();
                     Intent intent = new Intent(context, ItemDetailActivity.class);
-//                    Log.d("MYAPP", "Switch to detailed view for item: " + holder.item.getLocation());
-//                    intent.putExtra(ItemDetailFragment.ARG_ITEM_ID, holder.item.getKey());
+
 
                     context.startActivity(intent);
                 }

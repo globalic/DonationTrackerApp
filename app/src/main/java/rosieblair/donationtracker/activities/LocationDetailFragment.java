@@ -52,7 +52,8 @@ public class LocationDetailFragment extends Fragment {
             //mItem = LocationDBHelper.INSTANCE.findLocationByKey(item_id);
 
             Activity activity = this.getActivity();
-            CollapsingToolbarLayout appBarLayout = (CollapsingToolbarLayout) activity.findViewById(R.id.toolbar_layout);
+            CollapsingToolbarLayout appBarLayout = (CollapsingToolbarLayout) activity
+                    .findViewById(R.id.toolbar_layout);
             if (appBarLayout != null) {
                 appBarLayout.setTitle(mItem.getName());
             }
@@ -66,15 +67,23 @@ public class LocationDetailFragment extends Fragment {
 
         // Show the dummy content as text in a TextView.
         if (mItem != null) {
-            //((TextView) rootView.findViewById(R.id.type)).setText(getResources().getString(R.string.location, mItem.getType()));
-            ((TextView) rootView.findViewById(R.id.phone_number)).setText(getResources().getString(R.string.phone_num, mItem.getPhoneNumber()));
-            ((TextView) rootView.findViewById(R.id.website)).setText(getResources().getString(R.string.website, mItem.getWebsite()));
-            ((TextView) rootView.findViewById(R.id.longitude)).setText(getResources().getString(R.string.longitude, mItem.getLongitude()));
-            ((TextView) rootView.findViewById(R.id.latitude)).setText(getResources().getString(R.string.latitude, mItem.getLatitude()));
-            ((TextView) rootView.findViewById(R.id.street_address)).setText(getResources().getString(R.string.address, mItem.getStreetAddress()));
-            ((TextView) rootView.findViewById(R.id.city)).setText(mItem.getCity());
-            ((TextView) rootView.findViewById(R.id.state)).setText(mItem.getState());
-            ((TextView) rootView.findViewById(R.id.zip_code)).setText(mItem.getZipCode());
+
+            ((TextView) rootView.findViewById(R.id.phone_number))
+                    .setText(getResources().getString(R.string.phone_num, mItem.getPhoneNumber()));
+            ((TextView) rootView.findViewById(R.id.website))
+                    .setText(getResources().getString(R.string.website, mItem.getWebsite()));
+            ((TextView) rootView.findViewById(R.id.longitude))
+                    .setText(getResources().getString(R.string.longitude, mItem.getLongitude()));
+            ((TextView) rootView.findViewById(R.id.latitude))
+                    .setText(getResources().getString(R.string.latitude, mItem.getLatitude()));
+            ((TextView) rootView.findViewById(R.id.street_address))
+                    .setText(getResources().getString(R.string.address, mItem.getStreetAddress()));
+            ((TextView) rootView.findViewById(R.id.city))
+                    .setText(mItem.getCity());
+            ((TextView) rootView.findViewById(R.id.state))
+                    .setText(mItem.getState());
+            ((TextView) rootView.findViewById(R.id.zip_code))
+                    .setText(mItem.getZipCode());
         }
 
         return rootView;
