@@ -232,14 +232,18 @@ public class ItemDBHelper extends SQLiteOpenHelper {
         List<Item> items = itemList();
         if (locKey == -1) {
             for (Item d : items) {
-                if (d.getCategory().equals(category)) itemsInCat.add(d);
+                if (d.getCategory().equals(category)) {
+                    itemsInCat.add(d);
+                }
             }
             Log.d("MYAPP", "Warning - Failed to find items for: " + category
                     + " at all locations");
         } else {
             List<Item> itemsAtLoc = getLocationInventory(locKey);
             for (Item d: itemsAtLoc) {
-                if (d.getCategory().equals(category)) itemsInCat.add(d);
+                if (d.getCategory().equals(category)) {
+                    itemsInCat.add(d);
+                }
             }
             Log.d("MYAPP", "Warning - Failed to find items for: " + category);
         }
@@ -279,14 +283,18 @@ public class ItemDBHelper extends SQLiteOpenHelper {
         List<Item> items = itemList();
         if (locKey == -1) {
             for (Item d : items) {
-                if (d.getShortDescription().contains(name)) itemsName.add(d);
+                if (d.getShortDescription().contains(name)) {
+                    itemsName.add(d);
+                }
             }
             Log.d("MYAPP", "Warning - Failed to find items for: " + name
                     + " at all locations");
         } else {
             List<Item> itemsAtLoc = getLocationInventory(locKey);
             for (Item d: itemsAtLoc) {
-                if (d.getShortDescription().contains(name)) itemsName.add(d);
+                if (d.getShortDescription().contains(name)) {
+                    itemsName.add(d);
+                }
             }
             Log.d("MYAPP", "Warning - Failed to find items for: " + name);
         }
@@ -302,7 +310,9 @@ public class ItemDBHelper extends SQLiteOpenHelper {
         List<Item> itemsName = new ArrayList<>();
         List<Item> items = itemList();
             for (Item d : items) {
-                if (d.getShortDescription().contains(name)) itemsName.add(d);
+                if (d.getShortDescription().contains(name)) {
+                    itemsName.add(d);
+                }
             }
             Log.d("MYAPP", "Warning - Failed to find items for: " + name
                     + " at all locations");

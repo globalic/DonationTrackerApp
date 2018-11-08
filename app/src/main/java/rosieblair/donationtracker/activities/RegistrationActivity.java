@@ -129,7 +129,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
     }
 
     private void addtoDB(String usernm, String eml, String pass, String acctType) {
-        if (usernm == null || eml == null || pass == null) {
+        if (usernm == null || eml == null || (pass == null)) {
             Log.d("Database", "failure: null user data");
             return;
         }

@@ -29,7 +29,7 @@ public class ListOfLocations extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         locDBhelper = new LocationDBHelper(ListOfLocations.this);
         setContentView(R.layout.activity_list_of_locations);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         //toolbar.setTitle(getTitle());
 
@@ -103,8 +103,8 @@ public class ListOfLocations extends AppCompatActivity {
             public ViewHolder(View view) {
                 super(view);
                 mView = view;
-                mIdView = (TextView) view.findViewById(R.id.id);
-                mContentView = (TextView) view.findViewById(R.id.content);
+                mIdView = view.findViewById(R.id.id);
+                mContentView = view.findViewById(R.id.content);
             }
 
             @Override

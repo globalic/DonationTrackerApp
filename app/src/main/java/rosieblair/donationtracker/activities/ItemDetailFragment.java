@@ -24,12 +24,6 @@ public class ItemDetailFragment extends Fragment {
 
     private Item mItem;
 
-    /**
-     * Constructor used to instantiate item detail
-     */
-    public ItemDetailFragment() {
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,7 +38,7 @@ public class ItemDetailFragment extends Fragment {
             //mItem = ItemDBHelper.INSTANCE.findItemsByKey(item_id);
 
             Activity activity = this.getActivity();
-            CollapsingToolbarLayout appBarLayout = (CollapsingToolbarLayout) activity.findViewById(
+            CollapsingToolbarLayout appBarLayout = activity.findViewById(
                     R.id.toolbar_layout);
             if (appBarLayout != null) {
                 appBarLayout.setTitle(mItem.getShortDescription());
