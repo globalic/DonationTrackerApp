@@ -35,9 +35,6 @@ import static rosieblair.donationtracker.activities.EmployeeAppScreen.ZIP_CODE_P
  */
 public class MainActivity extends AppCompatActivity {
 
-    private Button logButton;
-    private Button regButton;
-
     private final AppCompatActivity activity = MainActivity.this;
     private LocationDBHelper dbhelper;
 
@@ -57,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
      * Method to handle a login-button press, directs the user to Login screen.
      */
     public void pressLogin() {
-        logButton = findViewById(R.id.loginButton);
+        Button logButton = findViewById(R.id.loginButton);
         logButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -71,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
      * Method to handle a register-button press, directs user to Registration screen.
      */
     public void pressRegister() {
-        regButton = findViewById(R.id.regButton);
+        Button regButton = findViewById(R.id.regButton);
         regButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

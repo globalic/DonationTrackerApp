@@ -25,7 +25,6 @@ public class LocationEmployee extends AppCompatActivity {
 
     private final AppCompatActivity activity = LocationEmployee.this;
 
-    private Button selectButton;
     private Spinner locSpinner;
     private Location loc;
     private ArrayList<Location> temp; //temporary arraylist to load locations so user can select on and assign it to them
@@ -81,7 +80,7 @@ public class LocationEmployee extends AppCompatActivity {
 
     private void select() {
         Log.d("locationEmployee", "SUCCESS: user with username found in DB" + username);
-        selectButton = findViewById(R.id.select);
+        Button selectButton = findViewById(R.id.select);
         selectButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

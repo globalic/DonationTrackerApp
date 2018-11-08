@@ -28,24 +28,22 @@ public class ItemDBHelper extends SQLiteOpenHelper {
     private static final String CATEGORY_COL = "category";
     private static final String LOC_COL = "locId";
 
-    private final String CREATE_IT = "CREATE TABLE " + ITEM_TABLE + "(" + ID_COL
-            + " INTEGER PRIMARY KEY AUTOINCREMENT," + TIME_COL + " TEXT,"
-            + SHORT_COL + " TEXT," + FULL_COL + " TEXT," + VALUE_COL + " TEXT,"
-            + CATEGORY_COL + " TEXT," + LOC_COL + " INTEGER" + ")";
-
-    private final String DROP_IT = "DROP TABLE IF EXISTS " + ITEM_TABLE;
-
     public ItemDBHelper(Context context) {
         super(context, DB_NAME, null, VERSION);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+        final String CREATE_IT = "CREATE TABLE " + ITEM_TABLE + "(" + ID_COL
+                + " INTEGER PRIMARY KEY AUTOINCREMENT," + TIME_COL + " TEXT,"
+                + SHORT_COL + " TEXT," + FULL_COL + " TEXT," + VALUE_COL + " TEXT,"
+                + CATEGORY_COL + " TEXT," + LOC_COL + " INTEGER" + ")";
         db.execSQL(CREATE_IT);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        final String DROP_IT = "DROP TABLE IF EXISTS " + ITEM_TABLE;
         db.execSQL(DROP_IT);
         onCreate(db);
     }

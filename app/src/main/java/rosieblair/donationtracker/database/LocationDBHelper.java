@@ -31,26 +31,24 @@ public class LocationDBHelper extends SQLiteOpenHelper {
     private static final String PHONE_COL = "phone";
     private static final String WEB_COL = "website";
 
-    private String CREATE_LT = "CREATE TABLE " + LOCN_TABLE + "(" + ID_COL
-            + " INTEGER PRIMARY KEY AUTOINCREMENT," + KEY_COL + " INTEGER,"
-            + NAME_COL + " TEXT," + LAT_COL + " TEXT," + LON_COL + " TEXT,"
-            + ADDR_COL + " TEXT," + CITY_COL + " TEXT," + STATE_COL + " TEXT,"
-            + ZIP_COL + " TEXT," + TYPE_COL + " TEXT," + PHONE_COL + " TEXT,"
-            + WEB_COL + " TEXT" + ")";
-
-    private String DROP_LT = "DROP TABLE IF EXISTS " + LOCN_TABLE;
-
     public LocationDBHelper(Context context) {
         super(context, DB_NAME, null, VERSION);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+        String CREATE_LT = "CREATE TABLE " + LOCN_TABLE + "(" + ID_COL
+                + " INTEGER PRIMARY KEY AUTOINCREMENT," + KEY_COL + " INTEGER,"
+                + NAME_COL + " TEXT," + LAT_COL + " TEXT," + LON_COL + " TEXT,"
+                + ADDR_COL + " TEXT," + CITY_COL + " TEXT," + STATE_COL + " TEXT,"
+                + ZIP_COL + " TEXT," + TYPE_COL + " TEXT," + PHONE_COL + " TEXT,"
+                + WEB_COL + " TEXT" + ")";
         db.execSQL(CREATE_LT);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        String DROP_LT = "DROP TABLE IF EXISTS " + LOCN_TABLE;
         db.execSQL(DROP_LT);
         onCreate(db);
     }

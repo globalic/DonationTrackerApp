@@ -25,8 +25,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private EditText inputUsername;
     private EditText inputPassword;
-    private Button buttonLogin;
-    private Button buttonCancel;
     private TextView failedLogin;
 //    private User user;
 
@@ -49,8 +47,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         failedLogin = findViewById(R.id.invalidLoginAttempt);
 
-        buttonLogin = findViewById(R.id.logButton);
-        buttonCancel = findViewById(R.id.cancelButton);
+        Button buttonLogin = findViewById(R.id.logButton);
+        Button buttonCancel = findViewById(R.id.cancelButton);
         buttonLogin.setOnClickListener(this);
         buttonCancel.setOnClickListener(this);
     }

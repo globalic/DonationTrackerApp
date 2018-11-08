@@ -19,10 +19,6 @@ import rosieblair.donationtracker.model.Location;
  */
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
-    private GoogleMap mMap;
-    private LocationDBHelper locDBhelper;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,8 +41,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
      */
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        mMap = googleMap;
-        locDBhelper = new LocationDBHelper(MapsActivity.this);
+        GoogleMap mMap = googleMap;
+        LocationDBHelper locDBhelper = new LocationDBHelper(MapsActivity.this);
 
 
 //        // Add a marker in Sydney and move the camera

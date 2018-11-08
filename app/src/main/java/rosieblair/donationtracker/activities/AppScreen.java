@@ -20,8 +20,6 @@ public class AppScreen extends AppCompatActivity {
 
     private Button locationListButton;
 //    private Button viewDatabaseButton;
-    private Button searchButton;
-    private Button viewMapButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +37,7 @@ public class AppScreen extends AppCompatActivity {
     }
 
     private void pressViewMap() {
-        viewMapButton = findViewById(R.id.map);
+        Button viewMapButton = findViewById(R.id.map);
         viewMapButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -73,7 +71,7 @@ public class AppScreen extends AppCompatActivity {
     }
 
     private void pressSearch() {
-        searchButton = findViewById(R.id.searchButton);
+        Button searchButton = findViewById(R.id.searchButton);
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

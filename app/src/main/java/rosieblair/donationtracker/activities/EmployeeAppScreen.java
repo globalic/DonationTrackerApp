@@ -20,11 +20,6 @@ public class EmployeeAppScreen extends AppCompatActivity {
 
     private final AppCompatActivity activity = EmployeeAppScreen.this;
 
-    private Button locationListButton;
-    private Button locationInventoryButton;
-    private Button addDonationButton;
-    private Button searchButton;
-    private Button viewMapButton;
 //    private String locName;
 
 //    private User user;
@@ -52,7 +47,7 @@ public class EmployeeAppScreen extends AppCompatActivity {
 //
 //    }
     private void pressViewMap() {
-        viewMapButton = findViewById(R.id.map1);
+        Button viewMapButton = findViewById(R.id.map1);
         viewMapButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -63,7 +58,7 @@ public class EmployeeAppScreen extends AppCompatActivity {
         });
     }
     private void pressSearch() {
-        searchButton = (Button) findViewById(R.id.searchButtonE);
+        Button searchButton = (Button) findViewById(R.id.searchButtonE);
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -75,7 +70,7 @@ public class EmployeeAppScreen extends AppCompatActivity {
     }
 
     private void pressAddDonation() {
-        addDonationButton = (Button) findViewById(R.id.addItemButton);
+        Button addDonationButton = (Button) findViewById(R.id.addItemButton);
         addDonationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -88,7 +83,7 @@ public class EmployeeAppScreen extends AppCompatActivity {
     }
 
     private void pressViewLocations() {
-        locationListButton = (Button) findViewById(R.id.locListButtonE);
+        Button locationListButton = (Button) findViewById(R.id.locListButtonE);
         locationListButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -100,7 +95,7 @@ public class EmployeeAppScreen extends AppCompatActivity {
     }
 
     private void pressViewMyLocationInventory() {
-        locationInventoryButton = (Button) findViewById(R.id.viewInventoryButton);
+        Button locationInventoryButton = (Button) findViewById(R.id.viewInventoryButton);
         locationInventoryButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

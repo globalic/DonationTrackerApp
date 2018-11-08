@@ -30,7 +30,6 @@ public class ItemsByName extends AppCompatActivity {
     public static final String LOCATION = "location";
     public static final String NAME = "name";
     private ItemDBHelper itemhelper;
-    private LocationDBHelper lochelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +38,7 @@ public class ItemsByName extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        lochelper = new LocationDBHelper(this);
+        LocationDBHelper lochelper = new LocationDBHelper(this);
         itemhelper = new ItemDBHelper(this);
 
         /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);

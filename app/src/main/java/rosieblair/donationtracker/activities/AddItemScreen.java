@@ -35,9 +35,6 @@ public class AddItemScreen extends AppCompatActivity {
     private EditText fullDescription;
     private EditText value;
     private Spinner category;
-    private TextView invalid_Location;
-    private Button addButton;
-    private Button cancelButton;
     private ArrayList<Location> temp;
 
     private Location loc;
@@ -71,7 +68,7 @@ public class AddItemScreen extends AppCompatActivity {
         category = (Spinner) findViewById(R.id.selectItemCategory);
 
 
-        invalid_Location = (TextView) findViewById(R.id.invalidLocation);
+        TextView invalid_Location = (TextView) findViewById(R.id.invalidLocation);
 
         List<Location> locList = lochelper.locationList();
         String[] spinEntries = new String[locList.size()];
@@ -85,7 +82,7 @@ public class AddItemScreen extends AppCompatActivity {
         location.setAdapter(spinAdapt);
 
 
-        addButton = (Button) findViewById(R.id.addItemButton);
+        Button addButton = (Button) findViewById(R.id.addItemButton);
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view)
@@ -159,7 +156,7 @@ public class AddItemScreen extends AppCompatActivity {
      */
     public void cancel() {
         Log.d("Cancel", "cancel register");
-        cancelButton = (Button) findViewById(R.id.cancelItemButton);
+        Button cancelButton = (Button) findViewById(R.id.cancelItemButton);
         cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

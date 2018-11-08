@@ -25,11 +25,8 @@ public class SearchScreen extends AppCompatActivity {
     private EditText item;            // item input
     private Spinner category;         // category spinner
     private Spinner location;         // location spinner
-    private Button searchForItem;     // item search button
-    private Button searchForCat;      // category search button
     //private Button searchForLoc;      // location search button
     private LocationDBHelper lochelper;
-    private ItemDBHelper itemhelper;
     //private String catName;
 
     @Override
@@ -40,7 +37,7 @@ public class SearchScreen extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         lochelper = new LocationDBHelper(this);
-        itemhelper = new ItemDBHelper(this);
+        ItemDBHelper itemhelper = new ItemDBHelper(this);
         pressSearchItem();
         pressSearchCat();
         //pressSearchLoc();
@@ -52,7 +49,7 @@ public class SearchScreen extends AppCompatActivity {
     public void pressSearchItem() {
         location = (Spinner) findViewById(R.id.locSearchSpinner);
         item = (EditText) findViewById(R.id.enterSearchItem);
-        searchForItem = (Button) findViewById(R.id.itemSearchButton);
+        Button searchForItem = (Button) findViewById(R.id.itemSearchButton);
 
         List<Location> locList = lochelper.locationList();
         String[] spinEntries = new String[locList.size()];
@@ -87,6 +84,7 @@ public class SearchScreen extends AppCompatActivity {
     public void pressSearchCat() {
         location = (Spinner) findViewById(R.id.locSearchSpinner);
         category = (Spinner) findViewById(R.id.catSearchSpinner);
+        Button searchForCat;
         searchForCat = (Button) findViewById(R.id.catSearchButton);
 
         searchForCat.setOnClickListener(new View.OnClickListener() {
