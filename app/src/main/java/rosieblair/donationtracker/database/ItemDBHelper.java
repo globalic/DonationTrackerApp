@@ -30,7 +30,7 @@ public class ItemDBHelper extends SQLiteOpenHelper {
 
     /**
      * Constructor to create a new ItemDBHelper object.
-     * @param context
+     * @param context the context of activity passed into helper
      */
     public ItemDBHelper(Context context) {
         super(context, DB_NAME, null, VERSION);

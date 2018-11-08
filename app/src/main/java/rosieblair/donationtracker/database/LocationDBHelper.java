@@ -35,7 +35,7 @@ public class LocationDBHelper extends SQLiteOpenHelper {
     /**
      * Constructor to create a new LocationDBHelper object.
      *
-     * @param context
+     * @param context the context of activity passed into helper
      */
     public LocationDBHelper(Context context) {
         super(context, DB_NAME, null, VERSION);
