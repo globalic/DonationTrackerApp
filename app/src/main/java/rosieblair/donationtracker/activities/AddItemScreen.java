@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -19,6 +20,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.List;
 
 import rosieblair.donationtracker.R;
 import rosieblair.donationtracker.model.Item;
@@ -34,6 +36,10 @@ import static rosieblair.donationtracker.activities.EmployeeAppScreen.STREET_ADD
 import static rosieblair.donationtracker.activities.EmployeeAppScreen.TYPE_POSITION;
 import static rosieblair.donationtracker.activities.EmployeeAppScreen.WEBSITE_POSITION;
 import static rosieblair.donationtracker.activities.EmployeeAppScreen.ZIP_CODE_POSITION;
+
+import rosieblair.donationtracker.database.ItemDBHelper;
+import rosieblair.donationtracker.database.LocationDBHelper;
+import rosieblair.donationtracker.model.Item;
 
 public class AddItemScreen extends AppCompatActivity {
 
@@ -51,6 +57,9 @@ public class AddItemScreen extends AppCompatActivity {
     private ArrayList<Location> temp;
 
     private Location loc;
+    private Item newItem;
+    private ItemDBHelper itemhelper;
+    private LocationDBHelper lochelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,20 +68,14 @@ public class AddItemScreen extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
-
         add();
         cancel();
     }
 
     public void add() {
+
+        lochelper = new LocationDBHelper(AddItemScreen.this);
+        itemhelper = new ItemDBHelper(AddItemScreen.this);
         time = (EditText) findViewById(R.id.enterDonateDate);
         location = (Spinner) findViewById(R.id.selectLocation);
         shortDescription= (EditText) findViewById(R.id.enterShortDescr);
@@ -80,13 +83,48 @@ public class AddItemScreen extends AppCompatActivity {
         value = (EditText) findViewById(R.id.enterItemValue);
         category = (Spinner) findViewById(R.id.selectItemCategory);
 
+
         invalid_Location = (TextView) findViewById(R.id.invalidLocation);
-//
-//        addButton = (Button) findViewById(R.id.addItemButton);
+
+        List<Location> locList = lochelper.locationList();
+        String[] spinEntries = new String[locList.size()];
+        for (int i = 0; i < locList.size(); i++) {
+            spinEntries[i] = locList.get(i).getName();
+        }
+
+        ArrayAdapter<String> spinAdapt = new ArrayAdapter<>(this,
+                android.R.layout.simple_spinner_item, spinEntries);
+        spinAdapt.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        location.setAdapter(spinAdapt);
+
+
+        addButton = (Button) findViewById(R.id.addItemButton);
+        addButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                String locName = location.getSelectedItem().toString();
+                loc = lochelper.getLocationByName(locName);
+                int locKey = loc.getKey();
+                newItem = new Item();
+                newItem.setTime(time.getText().toString());
+                newItem.setShortDescription(shortDescription.getText().toString());
+                newItem.setFullDescription(fullDescription.getText().toString());
+                newItem.setValue(value.getText().toString());
+                newItem.setCategory(category.getSelectedItem().toString());
+                newItem.setItemKey(locKey);
+                itemhelper.addItem(newItem);
+
+                Intent intent = new Intent(getApplicationContext(), EmployeeAppScreen.class);
+                startActivity(intent);
+            }
+        });
+
 //        addButton.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
-//                loc = (Location) getIntent().getSerializableExtra("thisLocn");
+//                //loc = (Location) getIntent().getSerializableExtra("thisLocn");
+//
 //                ItemDatabase.times.add(time.getText().toString());
 //                ItemDatabase.locations.add(null);  //need to change this
 //                ItemDatabase.sDesriptions.add(shortDescription.getText().toString());
@@ -94,9 +132,9 @@ public class AddItemScreen extends AppCompatActivity {
 //                ItemDatabase.values.add(value.getText().toString());
 //                ItemDatabase.categories.add(category.getSelectedItem().toString());
 //                readCSVFile();
-
-//                Log.d("Location name", "Location selected:" + location.getSelectedItem().toString());
-////                Log.d("LocationListInstance", "LocationListInstance: " + temp.getItems());
+//
+//                /*Log.d("Location name", "Location selected:" + location.getSelectedItem().toString());
+//                Log.d("LocationListInstance", "LocationListInstance: " + temp.getItems());
 //                Log.d("Location add", "Location add: " + findLocationByKey(UserDatabase.location.get(userIndex)).getName());
 //                Log.d("LocationListInstance", "LocationListInstance: " + temp);
 //                if (location.getSelectedItem().toString().equals(findLocationByKey(UserDatabase.location.get(userIndex)).getName())) {
@@ -113,7 +151,7 @@ public class AddItemScreen extends AppCompatActivity {
 //                intent.putExtra("thisLocn", loc);
 //                    List<Item> item_list = loc.getInventory();
 //                    item_list.add(item);
-
+//
 //                    ItemDatabase.INSTANCE.getItems().add(new Item(time.getText().toString(), loc.getName(),
 //                            shortDescription.getText().toString(), fullDescription.getText().toString(),
 //                            value.getText().toString(), category.getSelectedItem().toString(),++keyCounter));
@@ -121,32 +159,32 @@ public class AddItemScreen extends AppCompatActivity {
 //                } else {
 //                    invalid_Location.setVisibility(View.VISIBLE); //when location employee doesnt select correct location to add item to, notify
 //                }
-
+//
 //                currentItemDatabase();
-
-
-//            }
+//
+//
+//            }*/
 //        });
     }
 
     public void cancel() {
-//        Log.d("Cancel", "cancel register");
-//        cancelButton = (Button) findViewById(R.id.cancelItemButton);
-//        cancelButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent("edu.gatech.micheyang.pbjdonationtracker.EmployeeAppScreen");
-//                startActivity(intent);
-//            }
-//        });
+        Log.d("Cancel", "cancel register");
+        cancelButton = (Button) findViewById(R.id.cancelItemButton);
+        cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), EmployeeAppScreen.class);
+                startActivity(intent);
+            }
+        });
     }
 
-    private void currentItemDatabase() {
+//    private void currentItemDatabase() {
 //        for (int i = 0; i < ItemDatabase.INSTANCE.getItems().size(); i++) {
 //            Log.d("Item", "Item: " + ItemDatabase.INSTANCE.getItems().get(i));
 //
 //        }
-    }
+//    }
 
     //use to read and load temporary list of locations to check if adding to right location
 //    private void readCSVFile() {
@@ -187,3 +225,4 @@ public class AddItemScreen extends AppCompatActivity {
     }
 
 }
+

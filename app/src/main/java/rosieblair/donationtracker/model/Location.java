@@ -43,28 +43,28 @@ public class Location {
 //    private List<User> employeeList;
 
     public static final List<String> locTypes = Arrays.asList("DROPOFF", "STORE", "WAREHOUSE");
-    public Location() {
-        this(-1, null, null, null, null,
-                null, null, null, locTypes.get(0), null,
-                null);
-    }
-
-    public Location(int key, String name, String latitude, String longitude,
-                    String streetAddress, String city, String state, String zipCode,
-                    String locType, String phoneNumber, String website) {
-
-        this.key = key;
-        this.name = name;
-        this.latitude = latitude;
-        this.longitude = longitude;
-        this.streetAddress = streetAddress;
-        this.city = city;
-        this.state = state;
-        this.zipCode = zipCode;
-        this.locType = locTypes.contains(locType) ? locType : locTypes.get(0);
-        this.phoneNumber = phoneNumber;
-        this.website = website;
-    }
+//    public Location() {
+//        this(-1, null, null, null, null,
+//                null, null, null, locTypes.get(0), null,
+//                null);
+//    }
+//
+//    public Location(int key, String name, String latitude, String longitude,
+//                    String streetAddress, String city, String state, String zipCode,
+//                    String locType, String phoneNumber, String website) {
+//
+//        this.key = key;
+//        this.name = name;
+//        this.latitude = latitude;
+//        this.longitude = longitude;
+//        this.streetAddress = streetAddress;
+//        this.city = city;
+//        this.state = state;
+//        this.zipCode = zipCode;
+//        this.locType = locTypes.contains(locType) ? locType : locTypes.get(0);
+//        this.phoneNumber = phoneNumber;
+//        this.website = website;
+//    }
 
     public int getId() {
         return id;

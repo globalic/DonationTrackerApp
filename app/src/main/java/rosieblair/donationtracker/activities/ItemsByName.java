@@ -43,6 +43,9 @@ public class ItemsByName extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        lochelper = new LocationDBHelper(this);
+        itemhelper = new ItemDBHelper(this);
+
         /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,15 +64,15 @@ public class ItemsByName extends AppCompatActivity {
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
         String itemName = getIntent().getStringExtra(NAME);
         Log.d("itemName", "" + itemName);
-        String locName = getIntent().getStringExtra(LOCATION);
-        Log.d("locName", "" + locName);
-        int locKey;
-        if (!(lochelper.getLocationByName(locName) == null)) {
-            locKey = lochelper.getLocationByName(locName).getKey();
-        } else {
-            locKey = -1;
-        }
-        recyclerView.setAdapter(new ItemsByName.SimpleItemRecyclerViewAdapter(itemhelper.findItemsByName(itemName, locKey)));
+//        String locName = getIntent().getStringExtra(LOCATION);
+//        Log.d("locName", "" + locName);
+//        int locKey;
+//        if (!(lochelper.getLocationByName(locName) == null)) {
+//            locKey = lochelper.getLocationByName(locName).getKey();
+//        } else {
+//            locKey = -1;
+//        }
+        recyclerView.setAdapter(new ItemsByName.SimpleItemRecyclerViewAdapter(itemhelper.findItemsByName(itemName)));
     }
 
     public class SimpleItemRecyclerViewAdapter
