@@ -20,17 +20,17 @@ import rosieblair.donationtracker.database.LocationDBHelper;
 import rosieblair.donationtracker.model.Location;
 
 public class ListOfLocations extends AppCompatActivity {
-    private final AppCompatActivity activity = ListOfLocations.this;
-    LocationDBHelper locDBhelper;
+    private LocationDBHelper locDBhelper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        locDBhelper = new LocationDBHelper(ListOfLocations.this);
         setContentView(R.layout.activity_list_of_locations);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         //toolbar.setTitle(getTitle());
-        locDBhelper = new LocationDBHelper(activity);
 
+//        locDBhelper = new LocationDBHelper(ListOfLocations.this);
         View recyclerView = findViewById(R.id.dataitem_list);
         assert recyclerView != null;
         setupRecyclerView((RecyclerView) recyclerView);
@@ -53,13 +53,15 @@ public class ListOfLocations extends AppCompatActivity {
         @Override
         public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View view = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.item_entry, parent, false);
+                    .inflate(R.layout.content_list_of_locations, parent, false);
             return new ViewHolder(view);
         }
 
         @Override
         public void onBindViewHolder(final ViewHolder holder, int position) {
             holder.location = mValues.get(position);
+            Log.d("List of Locations", "" + mValues.get(position).getKey());
+            Log.d("List of Locations", mValues.get(position).getName());
             holder.mIdView.setText("" + mValues.get(position).getKey());
             holder.mContentView.setText(mValues.get(position).getName());
 
@@ -90,8 +92,8 @@ public class ListOfLocations extends AppCompatActivity {
             public ViewHolder(View view) {
                 super(view);
                 mView = view;
-                mIdView = (TextView) view.findViewById(R.id.item_id);
-                mContentView = (TextView) view.findViewById(R.id.item_content);
+                mIdView = (TextView) view.findViewById(R.id.id);
+                mContentView = (TextView) view.findViewById(R.id.content);
             }
 
             @Override
