@@ -29,6 +29,9 @@ import rosieblair.donationtracker.database.LocationDBHelper;
 //import model.Item;
 //import model.ItemDatabase;
 
+/**
+ * Class showing search results after searching for items by name
+ */
 public class ItemsByName extends AppCompatActivity {
 
     public static final String LOCATION = "location";
@@ -72,7 +75,8 @@ public class ItemsByName extends AppCompatActivity {
 //        } else {
 //            locKey = -1;
 //        }
-        recyclerView.setAdapter(new ItemsByName.SimpleItemRecyclerViewAdapter(itemhelper.findItemsByName(itemName)));
+        recyclerView.setAdapter(new ItemsByName.SimpleItemRecyclerViewAdapter(
+                itemhelper.findItemsByName(itemName)));
     }
 
     public class SimpleItemRecyclerViewAdapter
@@ -80,19 +84,25 @@ public class ItemsByName extends AppCompatActivity {
 
         private final List<Item> mValues;
 
+        /**
+         * Recycler view for showing all the resulting items
+         * @param items list of items
+         */
         public SimpleItemRecyclerViewAdapter(List<Item> items) {
             mValues = items;
         }
 
         @Override
-        public ItemsByName.SimpleItemRecyclerViewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        public ItemsByName.SimpleItemRecyclerViewAdapter.ViewHolder onCreateViewHolder(
+                ViewGroup parent, int viewType) {
             View view = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.content_list_of_items, parent, false);
             return new ItemsByName.SimpleItemRecyclerViewAdapter.ViewHolder(view);
         }
 
         @Override
-        public void onBindViewHolder(final ItemsByName.SimpleItemRecyclerViewAdapter.ViewHolder holder, int position) {
+        public void onBindViewHolder(final ItemsByName.SimpleItemRecyclerViewAdapter.ViewHolder
+                                                     holder, int position) {
             holder.item = mValues.get(position);
             //changed to get id because getKey() no longer valid
             holder.mIdView.setText("" + mValues.get(position).getId());
@@ -103,8 +113,6 @@ public class ItemsByName extends AppCompatActivity {
                 public void onClick(View v) {
                     Context context = v.getContext();
                     Intent intent = new Intent(context, ItemDetailActivity.class);
-//                    Log.d("MYAPP", "Switch to detailed view for item: " + holder.item.getLocation());
-//                    intent.putExtra(ItemDetailFragment.ARG_ITEM_ID, holder.item.getKey());
 
                     context.startActivity(intent);
                 }
@@ -122,6 +130,10 @@ public class ItemsByName extends AppCompatActivity {
             public final TextView mContentView;
             public Item item;
 
+            /**
+             * Viewholder for the recycler
+             * @param view view for the holder
+             */
             public ViewHolder(View view) {
                 super(view);
                 mView = view;

@@ -63,11 +63,6 @@ public class EmployeeAppScreen extends AppCompatActivity {
     //                readCSVFile();
                 Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
                 startActivity(intent);
-    //                Toast toast = Toast.makeText(getBaseContext(), "Clicked location list!", Toast.LENGTH_SHORT);
-    //                View toastView = toast.getView();
-    //                toastView.getBackground().setColorFilter(Color.parseColor("#daeff1"),
-    //                        PorterDuff.Mode.SRC);
-    //                toast.show();
             }
         });
     }
@@ -102,7 +97,6 @@ public class EmployeeAppScreen extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), ListOfLocations.class);
-//                Intent intent = new Intent("edu.gatech.micheyang.pbjdonationtracker.activities.LocationList");
                 startActivity(intent);
             }
         });

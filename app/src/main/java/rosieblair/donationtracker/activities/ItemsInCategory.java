@@ -74,6 +74,10 @@ public class ItemsInCategory extends AppCompatActivity {
 
         private final List<Item> mValues;
 
+        /**
+         * Adapter for recycler view
+         * @param items list of items
+         */
         public SimpleItemRecyclerViewAdapter(List<Item> items) {
             mValues = items;
         }
@@ -120,6 +124,10 @@ public class ItemsInCategory extends AppCompatActivity {
             public final TextView mContentView;
             public Item item;
 
+            /**
+             * Viewholder for the recycler
+             * @param view View for the holder
+             */
             public ViewHolder(View view) {
                 super(view);
                 mView = view;
