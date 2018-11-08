@@ -17,6 +17,9 @@ import rosieblair.donationtracker.database.ItemDBHelper;
 import rosieblair.donationtracker.model.Item;
 import rosieblair.donationtracker.model.Location;
 
+/**
+ * Class to show the inventory at a location
+ */
 public class ListOfItems extends AppCompatActivity {
 
     private final AppCompatActivity activity = ListOfItems.this;
