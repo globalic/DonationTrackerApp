@@ -11,7 +11,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import rosieblair.donationtracker.model.Item;
-import rosieblair.donationtracker.database.ItemDBHelper;
 //import model.Item;
 //import model.ItemDatabase;
 

@@ -7,30 +7,10 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
-import rosieblair.donationtracker.R;
-import rosieblair.donationtracker.activities.EmployeeAppScreen;
-import rosieblair.donationtracker.activities.MainActivity;
 import rosieblair.donationtracker.model.Location;
-
-import static rosieblair.donationtracker.activities.EmployeeAppScreen.CITY_POSITION;
-import static rosieblair.donationtracker.activities.EmployeeAppScreen.LATITUDE_POSITION;
-import static rosieblair.donationtracker.activities.EmployeeAppScreen.LONGITUDE_POSITION;
-import static rosieblair.donationtracker.activities.EmployeeAppScreen.NAME_POSITION;
-import static rosieblair.donationtracker.activities.EmployeeAppScreen.PHONE_NUMBER_POSITION;
-import static rosieblair.donationtracker.activities.EmployeeAppScreen.STATE_POSITION;
-import static rosieblair.donationtracker.activities.EmployeeAppScreen.STREET_ADDRESS_POSITION;
-import static rosieblair.donationtracker.activities.EmployeeAppScreen.TYPE_POSITION;
-import static rosieblair.donationtracker.activities.EmployeeAppScreen.WEBSITE_POSITION;
-import static rosieblair.donationtracker.activities.EmployeeAppScreen.ZIP_CODE_POSITION;
 
 public class LocationDBHelper extends SQLiteOpenHelper {
 

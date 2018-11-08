@@ -1,20 +1,12 @@
 package rosieblair.donationtracker.database;
 
-import org.junit.Before;
-import org.junit.Test;
-import android.content.Context;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.Mock;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 import rosieblair.donationtracker.model.Item;
-import org.mockito.runners.MockitoJUnitRunner;
 
 import java.util.ArrayList;
 import java.util.List;
+import org.junit.Test;
 
-import rosieblair.donationtracker.database.ItemDBHelper;
 import rosieblair.donationtracker.model.Location;
 
 //import static android.support.test.InstrumentationRegistry.getContext;
