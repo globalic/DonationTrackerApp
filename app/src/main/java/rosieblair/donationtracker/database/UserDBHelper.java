@@ -26,10 +26,20 @@ public class UserDBHelper extends SQLiteOpenHelper {
     private static final String TYPE_COL = "type";
     private static final String LOC_COL = "locId";
 
+    /**
+     * Constructor to create a new UserDBHelper object.
+     *
+     * @param context the context of an activity passed in
+     */
     public UserDBHelper(Context context) {
         super(context, DB_NAME, null, VERSION);
     }
 
+    /**
+     * The method to create the SQLite database table for user.
+     *
+     * @param db the database object to be used
+     */
     @Override
     public void onCreate(SQLiteDatabase db) {
         String CREATE_UT = "CREATE TABLE " + USER_TABLE + "("
@@ -39,6 +49,13 @@ public class UserDBHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_UT);
     }
 
+    /**
+     * The method to upgrade the SQLite database table for user.
+     *
+     * @param db the user database
+     * @param i  int representing version
+     * @param i1 int representing version
+     */
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
         String DROP_UT = "DROP TABLE IF EXISTS " + USER_TABLE;
@@ -73,7 +90,7 @@ public class UserDBHelper extends SQLiteOpenHelper {
      */
     public void removeUser(User user) {
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(USER_TABLE, ID_COL + " = ?", new String[] {
+        db.delete(USER_TABLE, ID_COL + " = ?", new String[]{
                 String.valueOf(user.getId())
         });
         db.close();
@@ -81,6 +98,7 @@ public class UserDBHelper extends SQLiteOpenHelper {
 
     /**
      * Updates this user's info in the database.
+     *
      * @param user to update
      */
     public void updateUser(User user) {
@@ -93,11 +111,10 @@ public class UserDBHelper extends SQLiteOpenHelper {
         values.put(LOCKED_COL, state);
         values.put(TYPE_COL, user.getType());
         values.put(LOC_COL, user.getEmpId());
-        db.update(USER_TABLE, values, ID_COL + " = ?", new String[] {
+        db.update(USER_TABLE, values, ID_COL + " = ?", new String[]{
                 String.valueOf(user.getId())
         });
         db.close();
-
     }
 
     /**
@@ -111,9 +128,9 @@ public class UserDBHelper extends SQLiteOpenHelper {
             return false;
         }
         SQLiteDatabase db = this.getReadableDatabase();
-        String[] cols = { ID_COL };
+        String[] cols = {ID_COL};
         String col = USERNAME_COL + " = ?";
-        String[] arg = { username };
+        String[] arg = {username};
 
         Cursor cursor = db.query(USER_TABLE, cols, col, arg, null,
                 null, null);
@@ -135,9 +152,9 @@ public class UserDBHelper extends SQLiteOpenHelper {
             return false;
         }
         SQLiteDatabase db = this.getReadableDatabase();
-        String[] cols = { ID_COL };
+        String[] cols = {ID_COL};
         String col = EMAIL_COL + " = ?";
-        String[] arg = { email };
+        String[] arg = {email};
 
         Cursor cursor = db.query(USER_TABLE, cols, col, arg, null,
                 null, null);
@@ -160,9 +177,9 @@ public class UserDBHelper extends SQLiteOpenHelper {
             return false;
         }
         SQLiteDatabase db = this.getReadableDatabase();
-        String[] cols = { ID_COL };
+        String[] cols = {ID_COL};
         String col = USERNAME_COL + " = ?" + " AND " + PASSWORD_COL + " = ?";
-        String[] arg = { username, password };
+        String[] arg = {username, password};
 
         Cursor cursor = db.query(USER_TABLE, cols, col, arg, null,
                 null, null);
@@ -185,9 +202,9 @@ public class UserDBHelper extends SQLiteOpenHelper {
         }
         String empStr = "EMPLOYEE";
         SQLiteDatabase db = this.getReadableDatabase();
-        String[] cols = { ID_COL };
+        String[] cols = {ID_COL};
         String col = USERNAME_COL + " = ?" + " AND " + TYPE_COL + " = ?";
-        String[] arg = { username, empStr };
+        String[] arg = {username, empStr};
 
         Cursor cursor = db.query(USER_TABLE, cols, col, arg, null,
                 null, null);
@@ -197,7 +214,6 @@ public class UserDBHelper extends SQLiteOpenHelper {
 
         return (count > 0);
     }
-
 
 
     /**
@@ -234,6 +250,12 @@ public class UserDBHelper extends SQLiteOpenHelper {
         return list;
     }
 
+    /**
+     * A method to find the User object in the database linked to a username String.
+     *
+     * @param username the string username to check for
+     * @return the User object that has username, or null if none found.
+     */
     public User findUserByUsername(String username) {
         List<User> list = userList();
         for (User u : list) {
@@ -243,72 +265,4 @@ public class UserDBHelper extends SQLiteOpenHelper {
         }
         return null;
     }
-
-//    /**
-//     * Gets either a list of all location employees when indicator argument is not
-//     * equal to 1, or the list of location employees working at the location with key
-//     * equal to lockKey (when indicator == 1).
-//     *
-//     * @param locKey the key of a location, if returning its employees only
-//     * @param indicator determines which list to return
-//     * @return a list of either all current location employees in database, or
-//     * if the indicator == 1, then the list will contain only the employees of the
-//     * location with key == locKey
-//     */
-//    public List<User> getEmpList(int locKey, int indicator) {
-//        List<User> list = userList();
-//        List<User> emp_list = new ArrayList<>();
-//        List<User> all_list = new ArrayList<>();
-//        for (User u : list) {
-//            if (u.getType().equals("EMPLOYEE")) {
-//                if (indicator == 1 && u.getEmpId() == locKey) {
-//                    emp_list.add(u);
-//                } else {
-//                    all_list.add(u);
-//                }
-//            }
-//        }
-//        if (indicator == 1) {
-//            return emp_list;
-//        } else {
-//            return all_list;
-//        }
-//    }
-
-
-
 }
-
-
-
-//    public String getUserType(String username) {
-//        if (username == null) {
-//            return null;
-//        } else if (!checkUsername(username)) {
-//            return null;
-//        }
-//        List<User> list = userList();
-//        for (User u : list) {
-//            if (u.getUsername().equals(username)) {
-//                return u.getType();
-//            }
-//        }
-//        return null;
-//    }
-
-  //  public boolean checkEmployee(String username, Location loc) {
-//        if (username == null || loc == null) {
-//            return false;
-//        } else if (!checkUsername(username)) {
-//            return false;
-//        }
-//        List<User> uList = userList();
-//        for (User u : uList) {
-//            if (u.getUsername().equals(username)) {
-//                if (u.getType().equals("EMPLOYEE")) {
-//                    return (loc.getKey() == u.getEmpId());
-//                }
-//            }
-//        }
-//        return false;
-//    }

@@ -28,10 +28,18 @@ public class ItemDBHelper extends SQLiteOpenHelper {
     private static final String CATEGORY_COL = "category";
     private static final String LOC_COL = "locId";
 
+    /**
+     * Constructor to create a new ItemDBHelper object.
+     * @param context
+     */
     public ItemDBHelper(Context context) {
         super(context, DB_NAME, null, VERSION);
     }
 
+    /**
+     * The method to create the SQLite database table for item.
+     * @param db the database object to be used
+     */
     @Override
     public void onCreate(SQLiteDatabase db) {
         final String CREATE_IT = "CREATE TABLE " + ITEM_TABLE + "(" + ID_COL
@@ -41,6 +49,10 @@ public class ItemDBHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_IT);
     }
 
+    /**
+     * The method to update the SQLite database table for item.
+     * @param db the database object to be used
+     */
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         final String DROP_IT = "DROP TABLE IF EXISTS " + ITEM_TABLE;
@@ -49,8 +61,7 @@ public class ItemDBHelper extends SQLiteOpenHelper {
     }
 
     /**
-     * Adds item to database.
-     *
+     * Adds the item to database.
      * @param item the item to add
      */
     public void addItem(Item item) {
@@ -68,7 +79,6 @@ public class ItemDBHelper extends SQLiteOpenHelper {
 
     /**
      * Removes the item from database.
-     *
      * @param item the item to remove
      */
     public void removeItem(Item item) {
@@ -81,7 +91,6 @@ public class ItemDBHelper extends SQLiteOpenHelper {
 
     /**
      * Updates the item's information in the database.
-     *
      * @param item the item to update
      */
     public void updateItem(Item item) {
@@ -100,8 +109,7 @@ public class ItemDBHelper extends SQLiteOpenHelper {
     }
 
     /**
-     * Checks if an item exists with inputted short description.
-     *
+     * Checks if an item exists with matching short description to input.
      * @param shortD the short description of item to look for
      * @return true if exists, false otherwise
      */
@@ -124,8 +132,7 @@ public class ItemDBHelper extends SQLiteOpenHelper {
     }
 
     /**
-     * Returns a  list of all of the items currently in database.
-     *
+     * Returns a list of all of the items currently in database.
      * @return list of all items in ascending order of id.
      */
     public List<Item> itemList() {
@@ -157,10 +164,8 @@ public class ItemDBHelper extends SQLiteOpenHelper {
 
     /**
      * Gets the inventory of the specified location (with key = locKey).
-     * <p>
      * For any item, the key of the item will match the key of the location it is held at.
      * So all items that have matching key values will belong to the location having that key.
-     *
      * @param locKey location's key
      * @return list of all items at the location (or empty list if none found)
      */
@@ -173,18 +178,13 @@ public class ItemDBHelper extends SQLiteOpenHelper {
             }
         }
         if (items.isEmpty()) {
-            System.out.print("here");
-            return null;
-            //Log.d("MYAPP", "Warning - No items found for location w/ key: " + locKey);
-        } else {
-            System.out.print("only here");
-            return items;
+            Log.d("MYAPP", "Warning - No items found for location w/ key: " + locKey);
         }
+        return items;
     }
 
     /**
      * Retrieves the item with given id from the database, given it exists.
-     *
      * @param i the item we want with given id
      * @return the item with id = i if exists, null if no item found with id
      */
@@ -201,7 +201,6 @@ public class ItemDBHelper extends SQLiteOpenHelper {
 
     /**
      * Gets list of any/all items with specified category value.
-     *
      * @param category the item category
      * @return list of all items with category value, or empty list if none
      */
@@ -223,8 +222,8 @@ public class ItemDBHelper extends SQLiteOpenHelper {
 //    }
 
     /**
-     *
-     * @param category
+     * Find all items that have matching value as input for category.
+     * @param category the category of item to check for
      * @param locKey location key from location spinner on search screen
      * @return
      */
@@ -249,7 +248,6 @@ public class ItemDBHelper extends SQLiteOpenHelper {
 
     /**
      * Gets list of any/all items with specified short description value.
-     *
      * @param shortD the item short description
      * @return list of all items with short description, or empty list if none
      */
@@ -271,10 +269,10 @@ public class ItemDBHelper extends SQLiteOpenHelper {
 //    }
 
     /**
-     *
-     * @param name
+     * Fetches all items that have matching short descriptions as input.
+     * @param name the name to check for
      * @param locKey location key from location spinner on search screen
-     * @return
+     * @return the list of any/all items found
      */
     public List<Item> findItemsByName(String name, int locKey) {
         List<Item> itemsName = new ArrayList<>();
@@ -295,6 +293,11 @@ public class ItemDBHelper extends SQLiteOpenHelper {
         return itemsName;
     }
 
+    /**
+     * Fetches all items with names matching the inputted name.
+     * @param name the name of item to check for
+     * @return the list of any/all items found
+     */
     public List<Item> findItemsByName(String name) {
         List<Item> itemsName = new ArrayList<>();
         List<Item> items = itemList();
@@ -307,63 +310,3 @@ public class ItemDBHelper extends SQLiteOpenHelper {
     }
 
 }
-
-
-
-//    private List<Item> items;
-//    //    public static final ItemDatabase INSTANCE = new ItemDatabase();
-//    public List<Item> getItems() {
-//        return items;
-//    }
-//    public ItemDBHelper() {
-//        items = new ArrayList<>();
-//    }
-//
-//    //    public Item findItemsAtLocation(String location) {
-////        for (Item d : items) {
-////            if (d.getLocation().equals(location)) return d;
-////        }
-////        Log.d("MYAPP", "Warning - Failed to find items for: " + location);
-////        return null;
-////    }
-//    public ArrayList<Item> findItemsAtLocation(String location) {
-//        ArrayList<Item> itemsAtLoc = new ArrayList<>();
-//        for (Item d : items) {
-//            if (d.getLocation().equals(location)) itemsAtLoc.add(d);
-//        }
-//        Log.d("MYAPP", "Warning - Failed to find items for: " + location);
-//        return itemsAtLoc;
-//    }
-//    public Item getItem(int index) {
-//        return items.get(index);
-//    }
-//    public Item findItemsByKey(int key) {
-//        for (Item d : items) {
-//            if (d.getKey() == key) return d;
-//        }
-//        Log.d("MYAPP", "Warning - Failed to find items for: " + key);
-//        return null;
-//    }
-//
-//    public ArrayList<Item> findItemsByCategory(String category) {
-//        ArrayList<Item> itemsInCat = new ArrayList<>();
-//        for (Item d : items) {
-//            if (d.getCategory().equals(category)) itemsInCat.add(d);
-//        }
-//        Log.d("MYAPP", "Warning - Failed to find items for: " + category);
-//        return itemsInCat;
-//    }
-//
-//    public ArrayList<Item> findItemsByName(String name) {
-//        ArrayList<Item> itemsName = new ArrayList<>();
-//        for (Item d : items) {
-//            if (d.getShortDescription().equals(name)) itemsName.add(d);
-//        }
-//        Log.d("MYAPP", "Warning - Failed to find items for: " + name);
-//        return itemsName;
-//    }
-//
-//    public List<Item> itemList() {
-//        return new ArrayList<>();
-//    }
-

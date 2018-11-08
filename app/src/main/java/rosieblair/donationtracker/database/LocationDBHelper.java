@@ -12,6 +12,7 @@ import java.util.List;
 
 import rosieblair.donationtracker.model.Location;
 
+
 public class LocationDBHelper extends SQLiteOpenHelper {
 
     private static final int VERSION = 1;
@@ -31,10 +32,19 @@ public class LocationDBHelper extends SQLiteOpenHelper {
     private static final String PHONE_COL = "phone";
     private static final String WEB_COL = "website";
 
+    /**
+     * Constructor to create a new LocationDBHelper object.
+     *
+     * @param context
+     */
     public LocationDBHelper(Context context) {
         super(context, DB_NAME, null, VERSION);
     }
-
+    /**
+     * The method to create the SQLite database table for location.
+     *
+     * @param db the database object to be used
+     */
     @Override
     public void onCreate(SQLiteDatabase db) {
         String CREATE_LT = "CREATE TABLE " + LOCN_TABLE + "(" + ID_COL
@@ -46,6 +56,11 @@ public class LocationDBHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_LT);
     }
 
+    /**
+     * The method to update the SQLite database table for location.
+     *
+     * @param db the database object to be used
+     */
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         String DROP_LT = "DROP TABLE IF EXISTS " + LOCN_TABLE;
@@ -53,6 +68,11 @@ public class LocationDBHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
+    /**
+     * Method that adds a location object to the database.
+     *
+     * @param loc the location being added
+     */
     public void addLocation(Location loc) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -71,14 +91,24 @@ public class LocationDBHelper extends SQLiteOpenHelper {
         db.close();
     }
 
+    /**
+     * Method to remove a location object from the database.
+     *
+     * @param loc the location being removed
+     */
     public void removeLocation(Location loc) {
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(LOCN_TABLE, ID_COL + " = ?", new String[] {
+        db.delete(LOCN_TABLE, ID_COL + " = ?", new String[]{
                 String.valueOf(loc.getId())
         });
         db.close();
     }
 
+    /**
+     * Method to update a location in the database.
+     *
+     * @param loc the location being updated
+     */
     public void updateLocation(Location loc) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -93,7 +123,7 @@ public class LocationDBHelper extends SQLiteOpenHelper {
         values.put(TYPE_COL, loc.getLocType());
         values.put(PHONE_COL, loc.getPhoneNumber());
         values.put(WEB_COL, loc.getWebsite());
-        db.update(LOCN_TABLE, values, ID_COL + " = ?", new String[] {
+        db.update(LOCN_TABLE, values, ID_COL + " = ?", new String[]{
                 String.valueOf(loc.getId())
         });
         db.close();
@@ -101,6 +131,7 @@ public class LocationDBHelper extends SQLiteOpenHelper {
 
     /**
      * Checks if a location exists in database with the inputted name.
+     *
      * @param name the name of location to look for
      * @return true if exists, false otherwise
      */
@@ -109,9 +140,9 @@ public class LocationDBHelper extends SQLiteOpenHelper {
             return false;
         }
         SQLiteDatabase db = this.getReadableDatabase();
-        String[] cols = { ID_COL };
+        String[] cols = {ID_COL};
         String col = NAME_COL + " = ?";
-        String[] arg = { name };
+        String[] arg = {name};
 
         Cursor cursor = db.query(LOCN_TABLE, cols, col, arg, null,
                 null, null);
@@ -122,6 +153,11 @@ public class LocationDBHelper extends SQLiteOpenHelper {
         return (count > 0);
     }
 
+    /**
+     * Returns a list of all locations that currently exist in the database.
+     *
+     * @return the list of locations
+     */
     public List<Location> locationList() {
         SQLiteDatabase db = this.getReadableDatabase();
         List<Location> list = new ArrayList<>();
@@ -155,6 +191,12 @@ public class LocationDBHelper extends SQLiteOpenHelper {
         return list;
     }
 
+    /**
+     * Gets the location with key value matching locKey.
+     *
+     * @param locKey the location key to check for
+     * @return the location with matching key or null if none found.
+     */
     public Location getLocationByKey(int locKey) {
         if (locKey <= 0) {
             return null;
@@ -168,54 +210,24 @@ public class LocationDBHelper extends SQLiteOpenHelper {
         return null;
     }
 
+    /**
+     * Gets the location object with name matching the String passed in.
+     *
+     * @param name the name to look for
+     * @return the location with name, or null if none found
+     */
     public Location getLocationByName(String name) {
         if (name == null || !checkLocation(name)) {
             Log.d("LocationByName", "name of location is null");
-            return null; }
+            return null;
+        }
         List<Location> _list = locationList();
         for (Location l : _list) {
             if (l.getName().equalsIgnoreCase(name)) {
-                return l; }
+                return l;
+            }
         }
         Log.d("LocationByName", "no location matched in list");
         return null;
     }
-
-
-
-
-////    public static final LocationDBHelper INSTANCE = new LocationDBHelper();
-//
-//    private List<Location> locations;
-//
-//    public LocationDBHelper() {
-//        locations = new ArrayList<>();
-//    }
-//
-//
-//    public void addLocation(Location location) {
-//        locations.add(location);
-//    }
-//
-//    public List<Location> getItems() {
-//        return locations;
-//    }
-//
-//    //Below method may be needed in the future to search by location IDs
-//    public Location findLocationByKey(int key) {
-//        for (Location d : locations) {
-//            if (d.getKey() == key) return d;
-//        }
-//        Log.d("MYAPP", "Warning - Failed to find key: " + key);
-//        return null;
-//    }
-//
-//    //method to search by location name
-//    public Location findLocationByName(String name) {
-//        for (Location d : locations) {
-//            if (d.getName().equals(name)) return d;
-//        }
-//        Log.d("MYAPP", "Warning - Failed to find name: " + name);
-//        return null;
-//    }
 }

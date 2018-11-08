@@ -18,33 +18,15 @@ public class Location {
     private String locType;
     private String phoneNumber;
     private String website;
-//    private List<Item> inventory;
-//    private List<User> employeeList;
 
+    /**
+     * A list of possible types a location can be defined as.
+     */
     public static final List<String> locTypes = Arrays.asList("DROPOFF", "STORE", "WAREHOUSE");
-//    public Location() {
-//        this(-1, null, null, null, null,
-//                null, null, null, locTypes.get(0), null,
-//                null);
-//    }
-//
-//    public Location(int key, String name, String latitude, String longitude,
-//                    String streetAddress, String city, String state, String zipCode,
-//                    String locType, String phoneNumber, String website) {
-//
-//        this.key = key;
-//        this.name = name;
-//        this.latitude = latitude;
-//        this.longitude = longitude;
-//        this.streetAddress = streetAddress;
-//        this.city = city;
-//        this.state = state;
-//        this.zipCode = zipCode;
-//        this.locType = locTypes.contains(locType) ? locType : locTypes.get(0);
-//        this.phoneNumber = phoneNumber;
-//        this.website = website;
-//    }
 
+    /*************
+     * Getters & setters for all of Location's attributes
+     */
     public int getId() {
         return id;
     }
@@ -128,24 +110,6 @@ public class Location {
     }
     public void setWebsite(String website) {
         this.website = website;
-    }
-//
-//    public List<Item> getInventory() {
-//        return inventory;
-//    }
-//    public void setInventory(List<Item> inventory) {
-//        this.inventory = inventory;
-//    }
-//
-//    public List<User> getEmployeeList() {
-//        return employeeList;
-//    }
-//    public void setEmployeeList(List<User> employeeList) {
-//        this.employeeList = employeeList;
-//    }
-
-    public static List<String> getLocTypes() {
-        return locTypes;
     }
 
 }

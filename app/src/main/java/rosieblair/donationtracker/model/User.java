@@ -14,48 +14,13 @@ public class User implements Serializable {
     private String type;
     private boolean locked;
 
+    /**
+     * A list of all possible types a User may be defined as.
+     */
     public static final List<String> types = Arrays.asList("USER", "EMPLOYEE", "MANAGER", "ADMIN");
 
-//    /**
-//     * Create a new user w/o email, set type to default "User".
-//     *
-//     * @param username
-//     * @param password
-//     */
-//    public User(String username, String password) {
-//        this(username, password, null, types.get(0));
-//    }
-//
-//    /**
-//     * Create new user, set type to default "User".
-//     *
-//     * @param username the username of this user's account
-//     * @param password the password of this user's account
-//     * @param email the user's email to be used for contact
-//     */
-//    public User(String username, String password, String email) {
-//        this(username, password, email, types.get(0));
-//    }
-//
-//    /**
-//     * Constructor that initializes data for new User object.
-//     * Newly registered user accounts are 'unlocked' by default.
-//     *
-//     * @param username the username of this user's account
-//     * @param password the password of this user's account
-//     * @param email    the user's email to be used for contact
-//     */
-//    public User(String username, String password, String email, String type) {
-//        this.empId = -1;
-//        this.username = username;
-//        this.password = password;
-//        this.email = email;
-//        this.type = types.contains(type) ? type : types.get(0);
-//        this.locked = false;
-//    }
-
     /**
-     * Getters/setters for this User's attributes
+     * Getters & setters for all of User's attributes
      */
     public String getUsername() { return username; }
     public void setUsername(String _username) { username = _username; }
@@ -80,7 +45,6 @@ public class User implements Serializable {
 
 
     /**
-     *
      * @return String representation of this user's data.
      */
     @Override
@@ -104,7 +68,7 @@ public class User implements Serializable {
     }
 
     /**
-     * Method to test if this user is equal to some other object.
+     * Method to test if a user is equal to some other object.
      *
      * @param other the object to test equality with
      * @return true if objects are equal, false if not equal
@@ -121,6 +85,11 @@ public class User implements Serializable {
                 && this.type.equals(that.getType());
     }
 
+    /**
+     * Method to link a string represention to the listed legal types.
+     * @param str
+     * @return
+     */
     public static String findTypeByString(String str) {
         for (String t : types) {
             if (str.equalsIgnoreCase(t)) {
