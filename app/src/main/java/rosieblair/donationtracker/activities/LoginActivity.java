@@ -207,10 +207,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 ////                    invalid_login.setVisibility(View.VISIBLE); //notify user of bad attempt
 ////                } else { //successful attempt will direct user to application
 ////                    if (userTypeValidate()) { //if user is a location employee
-////                        Intent intent = new Intent("edu.gatech.micheyang.pbjdonationtracker.EmployeeAppScreen");
+////                        Intent intent = new Intent(
+/// "edu.gatech.micheyang.pbjdonationtracker.EmployeeAppScreen");
 ////                        startActivity(intent);
 ////                    } else {
-////                        Intent intent = new Intent("edu.gatech.micheyang.pbjdonationtracker.AppScreen");
+////                        Intent intent = new Intent(
+/// "edu.gatech.micheyang.pbjdonationtracker.AppScreen");
 ////                        startActivity(intent);
 ////                    }
 ////                }

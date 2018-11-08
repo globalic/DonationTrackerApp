@@ -35,7 +35,7 @@ public class ItemsByName extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_items_by_name);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         LocationDBHelper lochelper = new LocationDBHelper(this);
@@ -129,8 +129,8 @@ public class ItemsByName extends AppCompatActivity {
             public ViewHolder(View view) {
                 super(view);
                 mView = view;
-                mIdView = (TextView) view.findViewById(R.id.id);
-                mContentView = (TextView) view.findViewById(R.id.content);
+                mIdView = view.findViewById(R.id.id);
+                mContentView = view.findViewById(R.id.content);
             }
 
             @Override

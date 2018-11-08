@@ -31,7 +31,7 @@ public class EmployeeAppScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_employee_app_screen);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
 
@@ -58,7 +58,7 @@ public class EmployeeAppScreen extends AppCompatActivity {
         });
     }
     private void pressSearch() {
-        Button searchButton = (Button) findViewById(R.id.searchButtonE);
+        Button searchButton = findViewById(R.id.searchButtonE);
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -70,7 +70,7 @@ public class EmployeeAppScreen extends AppCompatActivity {
     }
 
     private void pressAddDonation() {
-        Button addDonationButton = (Button) findViewById(R.id.addItemButton);
+        Button addDonationButton = findViewById(R.id.addItemButton);
         addDonationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -83,7 +83,7 @@ public class EmployeeAppScreen extends AppCompatActivity {
     }
 
     private void pressViewLocations() {
-        Button locationListButton = (Button) findViewById(R.id.locListButtonE);
+        Button locationListButton = findViewById(R.id.locListButtonE);
         locationListButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -95,7 +95,7 @@ public class EmployeeAppScreen extends AppCompatActivity {
     }
 
     private void pressViewMyLocationInventory() {
-        Button locationInventoryButton = (Button) findViewById(R.id.viewInventoryButton);
+        Button locationInventoryButton = findViewById(R.id.viewInventoryButton);
         locationInventoryButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

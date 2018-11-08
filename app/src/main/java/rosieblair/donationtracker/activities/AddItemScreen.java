@@ -46,7 +46,7 @@ public class AddItemScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_item_screen);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         add();
@@ -60,15 +60,15 @@ public class AddItemScreen extends AppCompatActivity {
 
         lochelper = new LocationDBHelper(AddItemScreen.this);
         itemhelper = new ItemDBHelper(AddItemScreen.this);
-        time = (EditText) findViewById(R.id.enterDonateDate);
-        location = (Spinner) findViewById(R.id.selectLocation);
-        shortDescription= (EditText) findViewById(R.id.enterShortDescr);
-        fullDescription = (EditText) findViewById(R.id.enterFullDescr);
-        value = (EditText) findViewById(R.id.enterItemValue);
-        category = (Spinner) findViewById(R.id.selectItemCategory);
+        time = findViewById(R.id.enterDonateDate);
+        location = findViewById(R.id.selectLocation);
+        shortDescription= findViewById(R.id.enterShortDescr);
+        fullDescription = findViewById(R.id.enterFullDescr);
+        value = findViewById(R.id.enterItemValue);
+        category = findViewById(R.id.selectItemCategory);
 
 
-        TextView invalid_Location = (TextView) findViewById(R.id.invalidLocation);
+        TextView invalid_Location = findViewById(R.id.invalidLocation);
 
         List<Location> locList = lochelper.locationList();
         String[] spinEntries = new String[locList.size()];
@@ -82,7 +82,7 @@ public class AddItemScreen extends AppCompatActivity {
         location.setAdapter(spinAdapt);
 
 
-        Button addButton = (Button) findViewById(R.id.addItemButton);
+        Button addButton = findViewById(R.id.addItemButton);
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view)
@@ -111,7 +111,7 @@ public class AddItemScreen extends AppCompatActivity {
      */
     public void cancel() {
         Log.d("Cancel", "cancel register");
-        Button cancelButton = (Button) findViewById(R.id.cancelItemButton);
+        Button cancelButton = findViewById(R.id.cancelItemButton);
         cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

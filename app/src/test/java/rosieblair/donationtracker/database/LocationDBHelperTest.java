@@ -11,15 +11,11 @@ import rosieblair.donationtracker.model.Location;
 
 import static junit.framework.TestCase.assertEquals;
 
-import static org.junit.Assert.assertNull;
 //import static org.mockito.Mockito.*;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 //import static android.support.test.InstrumentationRegistry.getContext;
 //import static com.google.common.truth.Truth.assertThat;
-import static org.mockito.Mockito.when;
-
 
 import static org.junit.Assert.*;
 

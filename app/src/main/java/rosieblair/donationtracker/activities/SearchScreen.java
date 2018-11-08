@@ -33,7 +33,7 @@ public class SearchScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_screen);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         lochelper = new LocationDBHelper(this);
@@ -47,9 +47,9 @@ public class SearchScreen extends AppCompatActivity {
      * Method that handles searching items from location selection and input
      */
     public void pressSearchItem() {
-        location = (Spinner) findViewById(R.id.locSearchSpinner);
-        item = (EditText) findViewById(R.id.enterSearchItem);
-        Button searchForItem = (Button) findViewById(R.id.itemSearchButton);
+        location = findViewById(R.id.locSearchSpinner);
+        item = findViewById(R.id.enterSearchItem);
+        Button searchForItem = findViewById(R.id.itemSearchButton);
 
         List<Location> locList = lochelper.locationList();
         String[] spinEntries = new String[locList.size()];
@@ -82,10 +82,10 @@ public class SearchScreen extends AppCompatActivity {
      * Method that handles searching items from location and category selection
      */
     public void pressSearchCat() {
-        location = (Spinner) findViewById(R.id.locSearchSpinner);
-        category = (Spinner) findViewById(R.id.catSearchSpinner);
+        location = findViewById(R.id.locSearchSpinner);
+        category = findViewById(R.id.catSearchSpinner);
         Button searchForCat;
-        searchForCat = (Button) findViewById(R.id.catSearchButton);
+        searchForCat = findViewById(R.id.catSearchButton);
 
         searchForCat.setOnClickListener(new View.OnClickListener() {
             @Override
