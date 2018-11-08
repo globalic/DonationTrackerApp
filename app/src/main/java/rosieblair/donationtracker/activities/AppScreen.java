@@ -41,14 +41,8 @@ public class AppScreen extends AppCompatActivity {
         viewMapButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                readCSVFile();
                 Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
                 startActivity(intent);
-//                Toast toast = Toast.makeText(getBaseContext(), "Clicked location list!", Toast.LENGTH_SHORT);
-//                View toastView = toast.getView();
-//                toastView.getBackground().setColorFilter(Color.parseColor("#daeff1"),
-//                        PorterDuff.Mode.SRC);
-//                toast.show();
             }
         });
     }
@@ -58,14 +52,8 @@ public class AppScreen extends AppCompatActivity {
         locationListButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                readCSVFile();
                 Intent intent = new Intent(getApplicationContext(), ListOfLocations.class);
                 startActivity(intent);
-//                Toast toast = Toast.makeText(getBaseContext(), "Clicked location list!", Toast.LENGTH_SHORT);
-//                View toastView = toast.getView();
-//                toastView.getBackground().setColorFilter(Color.parseColor("#daeff1"),
-//                        PorterDuff.Mode.SRC);
-//                toast.show();
             }
         });
     }
@@ -77,11 +65,6 @@ public class AppScreen extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), SearchScreen.class);
                 startActivity(intent);
-//                Toast toast = Toast.makeText(getBaseContext(), "Clicked Search!", Toast.LENGTH_SHORT);
-//                View toastView = toast.getView();
-//                toastView.getBackground().setColorFilter(Color.parseColor("#daeff1"),
-//                PorterDuff.Mode.SRC);
-//                toast.show();
             }
         });
 
