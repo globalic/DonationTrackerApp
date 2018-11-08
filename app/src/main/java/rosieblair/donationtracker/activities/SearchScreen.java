@@ -18,6 +18,9 @@ import rosieblair.donationtracker.database.LocationDBHelper;
 import rosieblair.donationtracker.model.Item;
 import rosieblair.donationtracker.model.Location;
 
+/**
+ * Class to search for donated items
+ */
 public class SearchScreen extends AppCompatActivity {
 
     private EditText item;            // item input
@@ -44,6 +47,9 @@ public class SearchScreen extends AppCompatActivity {
         //pressSearchLoc();
     }
 
+    /**
+     * Method that handles searching items from location selection and input
+     */
     public void pressSearchItem() {
         location = (Spinner) findViewById(R.id.locSearchSpinner);
         item = (EditText) findViewById(R.id.enterSearchItem);
@@ -76,6 +82,9 @@ public class SearchScreen extends AppCompatActivity {
         });
     }
 
+    /**
+     * Method that handles searching items from location and category selection
+     */
     public void pressSearchCat() {
         location = (Spinner) findViewById(R.id.locSearchSpinner);
         category = (Spinner) findViewById(R.id.catSearchSpinner);

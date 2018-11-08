@@ -19,6 +19,9 @@ import rosieblair.donationtracker.R;
 import rosieblair.donationtracker.database.LocationDBHelper;
 import rosieblair.donationtracker.model.Location;
 
+/**
+ * Class that shows the location list
+ */
 public class ListOfLocations extends AppCompatActivity {
     private LocationDBHelper locDBhelper;
     @Override
@@ -46,6 +49,10 @@ public class ListOfLocations extends AppCompatActivity {
 
         private final List<Location> mValues;
 
+        /**
+         * Adapter that puts the list into a recycler view
+         * @param items List of all locations
+         */
         public SimpleItemRecyclerViewAdapter(List<Location> items) {
             mValues = items;
         }
@@ -89,6 +96,10 @@ public class ListOfLocations extends AppCompatActivity {
             public final TextView mContentView;
             public Location location;
 
+            /**
+             * Method for the recycler view holder
+             * @param view view for the recycler
+             */
             public ViewHolder(View view) {
                 super(view);
                 mView = view;

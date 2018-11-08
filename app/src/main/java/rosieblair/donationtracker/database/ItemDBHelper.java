@@ -175,9 +175,13 @@ public class ItemDBHelper extends SQLiteOpenHelper {
             }
         }
         if (items.isEmpty()) {
-            Log.d("MYAPP", "Warning - No items found for location w/ key: " + locKey);
+            System.out.print("here");
+            return null;
+            //Log.d("MYAPP", "Warning - No items found for location w/ key: " + locKey);
+        } else {
+            System.out.print("only here");
+            return items;
         }
-        return items;
     }
 
     /**
