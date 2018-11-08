@@ -148,8 +148,8 @@ public class LocationDBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         List<Location> list = new ArrayList<>();
 
-        String[] cols = { ID_COL, KEY_COL, NAME_COL, LAT_COL, LON_COL, ADDR_COL, CITY_COL, STATE_COL,
-                ZIP_COL, TYPE_COL, PHONE_COL, WEB_COL };
+        String[] cols = { ID_COL, KEY_COL, NAME_COL, LAT_COL, LON_COL, ADDR_COL, CITY_COL,
+                STATE_COL, ZIP_COL, TYPE_COL, PHONE_COL, WEB_COL };
         String orderBy = KEY_COL + " ASC";
 
         Cursor cursor = db.query(LOCN_TABLE, cols, null,

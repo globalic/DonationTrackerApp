@@ -72,7 +72,8 @@ public class ItemsByName extends AppCompatActivity {
 //        } else {
 //            locKey = -1;
 //        }
-        recyclerView.setAdapter(new ItemsByName.SimpleItemRecyclerViewAdapter(itemhelper.findItemsByName(itemName)));
+        recyclerView.setAdapter(new ItemsByName.SimpleItemRecyclerViewAdapter(
+                itemhelper.findItemsByName(itemName)));
     }
 
     public class SimpleItemRecyclerViewAdapter
@@ -85,14 +86,16 @@ public class ItemsByName extends AppCompatActivity {
         }
 
         @Override
-        public ItemsByName.SimpleItemRecyclerViewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        public ItemsByName.SimpleItemRecyclerViewAdapter.ViewHolder onCreateViewHolder(
+                ViewGroup parent, int viewType) {
             View view = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.content_list_of_items, parent, false);
             return new ItemsByName.SimpleItemRecyclerViewAdapter.ViewHolder(view);
         }
 
         @Override
-        public void onBindViewHolder(final ItemsByName.SimpleItemRecyclerViewAdapter.ViewHolder holder, int position) {
+        public void onBindViewHolder(final ItemsByName.SimpleItemRecyclerViewAdapter.ViewHolder
+                                                     holder, int position) {
             holder.item = mValues.get(position);
             //changed to get id because getKey() no longer valid
             holder.mIdView.setText("" + mValues.get(position).getId());
@@ -103,8 +106,6 @@ public class ItemsByName extends AppCompatActivity {
                 public void onClick(View v) {
                     Context context = v.getContext();
                     Intent intent = new Intent(context, ItemDetailActivity.class);
-//                    Log.d("MYAPP", "Switch to detailed view for item: " + holder.item.getLocation());
-//                    intent.putExtra(ItemDetailFragment.ARG_ITEM_ID, holder.item.getKey());
 
                     context.startActivity(intent);
                 }

@@ -211,7 +211,8 @@ public class UserDBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         List<User> list = new ArrayList<>();
 
-        String[] cols = { ID_COL, USERNAME_COL, EMAIL_COL, PASSWORD_COL, LOCKED_COL, TYPE_COL, LOC_COL };
+        String[] cols = { ID_COL, USERNAME_COL, EMAIL_COL, PASSWORD_COL, LOCKED_COL, TYPE_COL,
+                LOC_COL };
         String orderBy = USERNAME_COL + " ASC";
 
         Cursor cursor = db.query(USER_TABLE, cols, null,

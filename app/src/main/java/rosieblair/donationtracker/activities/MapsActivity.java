@@ -61,8 +61,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         //need to uncomment this and replace the location list stuff with location database
 //        Log.d("MAP","Locations" + LocationList.INSTANCE.getLocations());
         for (Location loc: locDBhelper.locationList()) {
-            LatLng locLL = new LatLng(Double.parseDouble(loc.getLatitude()), Double.parseDouble(loc.getLongitude()));
-            mMap.addMarker(new MarkerOptions().position(locLL).title(loc.getName()).snippet(loc.getPhoneNumber()));
+            LatLng locLL = new LatLng(Double.parseDouble(loc.getLatitude()),
+                    Double.parseDouble(loc.getLongitude()));
+            mMap.addMarker(new MarkerOptions().position(locLL).title(
+                    loc.getName()).snippet(loc.getPhoneNumber()));
             mMap.moveCamera(CameraUpdateFactory.newLatLng(locLL));
 
         }
