@@ -293,6 +293,17 @@ public class ItemDBHelper extends SQLiteOpenHelper {
         return itemsName;
     }
 
+    public List<Item> findItemsByName(String name) {
+        List<Item> itemsName = new ArrayList<>();
+        List<Item> items = itemList();
+            for (Item d : items) {
+                if (d.getShortDescription().contains(name)) itemsName.add(d);
+            }
+            Log.d("MYAPP", "Warning - Failed to find items for: " + name
+                    + " at all locations");
+        return itemsName;
+    }
+
 }
 
 
