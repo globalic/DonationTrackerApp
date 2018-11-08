@@ -17,8 +17,6 @@ import rosieblair.donationtracker.R;
  * Class to allow functionality of app screen
  */
 public class AppScreen extends AppCompatActivity {
-
-    private Button locationListButton;
 //    private Button viewDatabaseButton;
 
     @Override
@@ -48,7 +46,7 @@ public class AppScreen extends AppCompatActivity {
     }
 
     private void pressViewLocations() {
-        locationListButton = findViewById(R.id.locListButton);
+        Button locationListButton = findViewById(R.id.locListButton);
         locationListButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -26,24 +26,22 @@ public class UserDBHelper extends SQLiteOpenHelper {
     private static final String TYPE_COL = "type";
     private static final String LOC_COL = "locId";
 
-    private String CREATE_UT = "CREATE TABLE " + USER_TABLE + "("
-            + ID_COL + " INTEGER PRIMARY KEY AUTOINCREMENT," + USERNAME_COL
-            + " TEXT," + PASSWORD_COL + " TEXT," + EMAIL_COL + " TEXT,"
-            + LOCKED_COL + " TEXT," + TYPE_COL + " TEXT," + LOC_COL + " INTEGER" + ")";
-
-    private String DROP_UT = "DROP TABLE IF EXISTS " + USER_TABLE;
-
     public UserDBHelper(Context context) {
         super(context, DB_NAME, null, VERSION);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+        String CREATE_UT = "CREATE TABLE " + USER_TABLE + "("
+                + ID_COL + " INTEGER PRIMARY KEY AUTOINCREMENT," + USERNAME_COL
+                + " TEXT," + PASSWORD_COL + " TEXT," + EMAIL_COL + " TEXT,"
+                + LOCKED_COL + " TEXT," + TYPE_COL + " TEXT," + LOC_COL + " INTEGER" + ")";
         db.execSQL(CREATE_UT);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
+        String DROP_UT = "DROP TABLE IF EXISTS " + USER_TABLE;
         db.execSQL(DROP_UT);
         onCreate(db);
     }
