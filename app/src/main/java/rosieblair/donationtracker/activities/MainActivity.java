@@ -31,6 +31,9 @@ import static rosieblair.donationtracker.activities.EmployeeAppScreen.TYPE_POSIT
 import static rosieblair.donationtracker.activities.EmployeeAppScreen.WEBSITE_POSITION;
 import static rosieblair.donationtracker.activities.EmployeeAppScreen.ZIP_CODE_POSITION;
 
+/**
+ * Class for the app screen that let's the user click to login or register
+ */
 public class MainActivity extends AppCompatActivity {
 
     private Button logButton;
@@ -46,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
         dbhelper = new LocationDBHelper(activity);
 
-        //populateDB();
+        populateDB();
         pressLogin();
         pressRegister();
     }
@@ -81,6 +84,9 @@ public class MainActivity extends AppCompatActivity {
     }
 //    public static Context getContext() { return context; }
 
+    /**
+     * Method that loads the CVS file location data into the location database
+     */
     public void populateDB() {
         List<Location> locs = new ArrayList<>();
         try {
