@@ -4,6 +4,9 @@ package rosieblair.donationtracker.model;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Model class for a location
+ */
 public class Location {
 
     private int id;

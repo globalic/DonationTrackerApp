@@ -4,6 +4,9 @@ import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Model class for a User
+ */
 public class User implements Serializable {
 
     private int id;
@@ -87,8 +90,8 @@ public class User implements Serializable {
 
     /**
      * Method to link a string represention to the listed legal types.
-     * @param str
-     * @return
+     * @param str passed in type string from spinner
+     * @return String of the user's type
      */
     public static String findTypeByString(String str) {
         for (String t : types) {
