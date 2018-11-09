@@ -89,7 +89,7 @@ public class User implements Serializable {
     }
 
     /**
-     * Method to link a string represention to the listed legal types.
+     * Method to link a string representation to the listed legal types.
      * @param str passed in type string from spinner
      * @return String of the user's type
      */
