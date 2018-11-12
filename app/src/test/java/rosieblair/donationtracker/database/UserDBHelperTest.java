@@ -9,6 +9,7 @@ import static org.mockito.Mockito.*;
 
 /**
  * Tests checkUsername method in UserDBHelper class
+ * @author Sabrina Wilson
  */
 @RunWith(MockitoJUnitRunner.class)
 public class UserDBHelperTest {
