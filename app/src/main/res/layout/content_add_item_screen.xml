@@ -29,7 +29,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="5dp"
             android:ems="10"
-            android:hint="1/1/2018 8:00 am"
+            android:hint="@string/dateTimeHint"
             android:inputType="datetime" />
 
         <TextView
@@ -60,7 +60,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="5dp"
-            android:text="You do not have permission to add to this Location"
+            android:text="@string/addAtLocationDenied"
             android:textColor="#e00d0d"
             android:textStyle="bold"
             android:visibility="invisible" />
@@ -104,7 +104,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="5dp"
             android:ems="10"
-            android:hint="1.00"
+            android:hint="@string/itemValueHint"
             android:inputType="numberDecimal" />
 
         <TextView
@@ -126,7 +126,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="5dp"
             android:ems="10"
-            android:hint="Short description of item."
+            android:hint="@string/shortDescriptionOfItem"
             android:inputType="textShortMessage"
             android:singleLine="true" />
 
@@ -149,7 +149,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="5dp"
             android:ems="10"
-            android:hint="Detailed description of item."
+            android:hint="@string/detailedDescriptionOfItem"
             android:inputType="textMultiLine"
             android:singleLine="false" />
 

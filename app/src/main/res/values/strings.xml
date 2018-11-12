@@ -95,4 +95,27 @@
     <string name="title_activity_items_by_name">ItemsByName</string>
     <string name="title_activity_items_in_category">ItemsInCategory</string>
     <string name="title_activity_maps">Map</string>
+
+    <!-- added to fix Android warnings: hardcoded strings -->
+    <string name="select">Select</string>
+    <string name="dateTimeHint">1/1/2018 8:00 am</string>
+    <string name="addAtLocationDenied">You do not have permission to add to this Location</string>
+    <string name="itemValueHint">1.00</string>
+    <string name="shortDescriptionOfItem">Short description of item.</string>
+    <string name="detailedDescriptionOfItem">Detailed description of item.</string>
+    <string name="viewMap">View Map</string>
+    <string name="viewLocationInventory">View location\'s inventory</string>
+    <string name="viewInventory">View Inventory</string>
+    <string name="updateLocationInventory">Update location\'s inventory</string>
+    <string name="addDonation">Add Donation</string>
+    <string name="searchSpecificItem">Search for a specific item</string>
+    <string name="seeListAllLocations">See list of all locations</string>
+    <string name="usernameAlreadyExists">Username already exists.</string>
+    <string name="emailHint">email@example.com</string>
+    <string name="enterEmail">Enter email</string>
+    <string name="createPass">Create password</string>
+    <string name="selectAcctType">Select account type</string>
+    <string name="chooseLocation">Choose a location</string>
+    <string name="searchItemOrCat">Search by item or by category</string>
+
 </resources>
