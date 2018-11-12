@@ -89,9 +89,8 @@ public class MainActivity extends AppCompatActivity {
             InputStream is = getResources().openRawResource(R.raw.locationdata);
             BufferedReader br = new BufferedReader(new InputStreamReader(
                     is, Charset.forName("UTF-8")));
-            String line;
-            br.readLine();
-            while ((line = br.readLine()) != null) {
+            String line = br.readLine();
+            while (line != null) {
                 Location locn = new Location();
                 String[] details = line.split(",");
                 locn.setKey(Integer.parseInt(details[0]));
