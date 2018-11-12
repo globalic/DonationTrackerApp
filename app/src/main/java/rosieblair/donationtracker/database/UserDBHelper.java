@@ -173,7 +173,7 @@ public class UserDBHelper extends SQLiteOpenHelper {
      * @return true if the combo exists and matches, false otherwise
      */
     public boolean checkUserPass(String username, String password) {
-        if (username == null || (password == null)) {
+        if ((username == null) || (password == null)) {
             return false;
         }
         SQLiteDatabase db = this.getReadableDatabase();
@@ -239,7 +239,8 @@ public class UserDBHelper extends SQLiteOpenHelper {
                 user.setEmail(cursor.getString(cursor.getColumnIndex(EMAIL_COL)));
                 user.setPassword(cursor.getString(cursor.getColumnIndex(PASSWORD_COL)));
                 String lock = (cursor.getString(cursor.getColumnIndex(LOCKED_COL)));
-                user.setLock(lock.equals("true"));
+                // user.setLock(lock.equals("true")); <-- code style warning
+                user.setLock("true".equals(lock));
                 user.setType(cursor.getString(cursor.getColumnIndex(TYPE_COL)));
                 user.setEmpId(Integer.parseInt(cursor.getString(cursor.getColumnIndex(LOC_COL))));
                 list.add(user);

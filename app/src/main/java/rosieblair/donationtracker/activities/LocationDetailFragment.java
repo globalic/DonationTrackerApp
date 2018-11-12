@@ -31,12 +31,12 @@ public class LocationDetailFragment extends Fragment {
      */
     private Location mItem;
 
-    /**
-     * Mandatory empty constructor for the fragment manager to instantiate the
-     * fragment (e.g. upon screen orientation changes).
-     */
-    public LocationDetailFragment() {
-    }
+//    /**
+//     * Mandatory empty constructor for the fragment manager to instantiate the
+//     * fragment (e.g. upon screen orientation changes).
+//     */
+//    public LocationDetailFragment() {
+//    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

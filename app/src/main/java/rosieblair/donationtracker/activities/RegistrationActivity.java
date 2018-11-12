@@ -105,7 +105,8 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
                 Log.d("ERROR", "registration");
                 finish();
             } else {
-                if (!(user.getType().equalsIgnoreCase("EMPLOYEE"))) {
+                // if (!(user.getType().equalsIgnoreCase("EMPLOYEE"))) <-- code style warning
+                if(!("EMPLOYEE".equalsIgnoreCase(user.getType()))) {
                     Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                     startActivity(intent);
                     Toast toast = Toast.makeText(getBaseContext(), "Registration successful!",
@@ -129,7 +130,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
     }
 
     private void addtoDB(String usernm, String eml, String pass, String acctType) {
-        if (usernm == null || eml == null || (pass == null)) {
+        if ((usernm == null) || (eml == null) || (pass == null)) {
             Log.d("Database", "failure: null user data");
             return;
         }
