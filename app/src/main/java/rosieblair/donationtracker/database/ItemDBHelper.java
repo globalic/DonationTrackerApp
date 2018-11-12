@@ -199,9 +199,9 @@ public class ItemDBHelper extends SQLiteOpenHelper {
         return null;
     }
 
-    /**
-     * Gets list of any/all items with specified category value.
-     * @param category the item category
+    /*
+      Gets list of any/all items with specified category value.
+      @param category the item category
      * @return list of all items with category value, or empty list if none
      */
 //    public List<Item> getItemsWithCategory(String category) {
@@ -250,9 +250,9 @@ public class ItemDBHelper extends SQLiteOpenHelper {
         return itemsInCat;
     }
 
-    /**
-     * Gets list of any/all items with specified short description value.
-     * @param shortD the item short description
+    /*
+      Gets list of any/all items with specified short description value.
+      @param shortD the item short description
      * @return list of all items with short description, or empty list if none
      */
 //    public List<Item> getItemsWithName(String shortD) {
