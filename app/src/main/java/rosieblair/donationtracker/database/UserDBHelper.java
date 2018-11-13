@@ -11,7 +11,9 @@ import java.util.List;
 
 import rosieblair.donationtracker.model.User;
 
-
+/**
+ * A database class to manage users
+ */
 public class UserDBHelper extends SQLiteOpenHelper {
 
     private static final int VERSION = 1;

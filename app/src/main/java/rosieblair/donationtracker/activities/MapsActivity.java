@@ -41,7 +41,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
      */
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        GoogleMap mMap = googleMap;
         LocationDBHelper locDBhelper = new LocationDBHelper(MapsActivity.this);
 
 
@@ -50,16 +49,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 //        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
 //        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
 
-        mMap.getUiSettings().setZoomControlsEnabled(true);
+        googleMap.getUiSettings().setZoomControlsEnabled(true);
 
         //need to uncomment this and replace the location list stuff with location database
 //        Log.d("MAP","Locations" + LocationList.INSTANCE.getLocations());
         for (Location loc: locDBhelper.locationList()) {
             LatLng locLL = new LatLng(Double.parseDouble(loc.getLatitude()),
                     Double.parseDouble(loc.getLongitude()));
-            mMap.addMarker(new MarkerOptions().position(locLL).title(
+            googleMap.addMarker(new MarkerOptions().position(locLL).title(
                     loc.getName()).snippet(loc.getPhoneNumber()));
-            mMap.moveCamera(CameraUpdateFactory.newLatLng(locLL));
+            googleMap.moveCamera(CameraUpdateFactory.newLatLng(locLL));
 
         }
     }

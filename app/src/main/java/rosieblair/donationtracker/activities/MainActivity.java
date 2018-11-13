@@ -105,6 +105,7 @@ public class MainActivity extends AppCompatActivity {
                 locn.setPhoneNumber(details[PHONE_NUMBER_POSITION]);
                 locn.setWebsite(details[WEBSITE_POSITION]);
                 locs.add(locn);
+                line = br.readLine();
             }
             br.close();
         } catch (IOException e) {

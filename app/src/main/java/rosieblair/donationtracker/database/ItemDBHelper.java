@@ -12,7 +12,9 @@ import java.util.List;
 
 import rosieblair.donationtracker.model.Item;
 
-
+/**
+ * A database class to manage items
+ */
 public class ItemDBHelper extends SQLiteOpenHelper {
 
 
@@ -225,7 +227,7 @@ public class ItemDBHelper extends SQLiteOpenHelper {
      * Find all items that have matching value as input for category.
      * @param category the category of item to check for
      * @param locKey location key from location spinner on search screen
-     * @return
+     * @return list of items with selected category
      */
     public List<Item> findItemsByCategory(String category, int locKey) {
         List<Item> itemsInCat = new ArrayList<>();

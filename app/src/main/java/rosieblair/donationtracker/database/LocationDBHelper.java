@@ -12,7 +12,9 @@ import java.util.List;
 
 import rosieblair.donationtracker.model.Location;
 
-
+/**
+ * A database class to manage locations
+ */
 public class LocationDBHelper extends SQLiteOpenHelper {
 
     private static final int VERSION = 1;
