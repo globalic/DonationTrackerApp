@@ -2,6 +2,7 @@ package rosieblair.donationtracker.activities;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -29,6 +30,7 @@ public class ItemDetailFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         Log.d("MYAPP", "arguments: " + getArguments());
+        assert getArguments() != null;
         if (getArguments().containsKey(ARG_ITEM_ID)) {
             // Load the dummy content specified by the fragment
             // arguments. In a real-world scenario, use a Loader
@@ -47,7 +49,8 @@ public class ItemDetailFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    @NonNull
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.content_item_detail, container, false);
 

@@ -1,5 +1,7 @@
 package rosieblair.donationtracker.model;
 
+import android.support.annotation.NonNull;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -116,6 +118,7 @@ public class Item {
      *
      * @return the String description of this item
      */
+    @NonNull
     public String toString() {
         return "Time: " + time + " Short Description: " + shortDescription + " Full Description: "
                 + fullDescription + " Value: " + value + " Category: " + category;

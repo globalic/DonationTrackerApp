@@ -58,14 +58,14 @@ public class ListOfLocations extends AppCompatActivity {
         }
 
         @Override
-        public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        @NonNull
+        public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
             View view = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.content_list_of_locations, parent, false);
             return new ViewHolder(view);
         }
 
-        @Override
-        public void onBindViewHolder(final ViewHolder holder, int position) {
+        @Override public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
             holder.location = mValues.get(position);
             Log.d("List of Locations", "" + mValues.get(position).getKey());
             Log.d("List of Locations", mValues.get(position).getName());
@@ -108,6 +108,7 @@ public class ListOfLocations extends AppCompatActivity {
             }
 
             @Override
+            @NonNull
             public String toString() {
                 return super.toString() + " '" + mContentView.getText() + "'";
             }

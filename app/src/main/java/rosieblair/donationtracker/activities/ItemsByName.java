@@ -85,15 +85,15 @@ public class ItemsByName extends AppCompatActivity {
         }
 
         @Override
+        @NonNull
         public ItemsByName.SimpleItemRecyclerViewAdapter.ViewHolder onCreateViewHolder(
-                ViewGroup parent, int viewType) {
+                @NonNull ViewGroup parent, int viewType) {
             View view = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.content_list_of_items, parent, false);
             return new ItemsByName.SimpleItemRecyclerViewAdapter.ViewHolder(view);
         }
 
-        @Override
-        public void onBindViewHolder(final ItemsByName.SimpleItemRecyclerViewAdapter.ViewHolder
+        @Override public void onBindViewHolder(@NonNull final ItemsByName.SimpleItemRecyclerViewAdapter.ViewHolder
                                                      holder, int position) {
             holder.item = mValues.get(position);
             //changed to get id because getKey() no longer valid
@@ -134,6 +134,7 @@ public class ItemsByName extends AppCompatActivity {
             }
 
             @Override
+            @NonNull
             public String toString() {
                 return super.toString() + " '" + mContentView.getText() + "'";
             }

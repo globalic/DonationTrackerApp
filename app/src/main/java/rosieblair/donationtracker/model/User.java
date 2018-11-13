@@ -1,5 +1,7 @@
 package rosieblair.donationtracker.model;
 
+import android.support.annotation.NonNull;
+
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
@@ -51,6 +53,7 @@ public class User implements Serializable {
      * @return String representation of this user's data.
      */
     @Override
+    @NonNull
     public String toString() {
         String state = (locked) ? "LOCKED" : "UNLOCKED";
         return "User: " + username + ", Email: " + email
