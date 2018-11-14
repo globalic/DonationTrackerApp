@@ -44,11 +44,11 @@ public class ListOfItems extends AppCompatActivity {
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
-        String locName = getIntent().getStringExtra(LOCATION);
+        int locKey = getIntent().getIntExtra("locKey", 0);
 //        String locName = "AFD Station 4";
-        recyclerView.setAdapter(new ListOfItems.SimpleItemRecyclerViewAdapter(itemDBhelper.itemList()));
-        Log.d("LocName", "" + locName);
-//        recyclerView.setAdapter(new ListOfItems.SimpleItemRecyclerViewAdapter(itemDBhelper.getLocationInventory()));
+//        recyclerView.setAdapter(new ListOfItems.SimpleItemRecyclerViewAdapter(itemDBhelper.itemList()));
+        Log.d("LocName", "" + locKey);
+        recyclerView.setAdapter(new ListOfItems.SimpleItemRecyclerViewAdapter(itemDBhelper.getLocationInventory(locKey)));
 //        ItemDatabase.INSTANCE.findItemsAtLocation(LocationList.INSTANCE.findLocationByKey(UserDatabase.location.get(userIndex)).getName()))
 //        ItemDatabase.INSTANCE.findItemsAtLocation(locName)
     }
