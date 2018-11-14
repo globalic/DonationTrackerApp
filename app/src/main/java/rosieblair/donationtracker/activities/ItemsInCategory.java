@@ -25,8 +25,8 @@ import rosieblair.donationtracker.R;
  */
 public class ItemsInCategory extends AppCompatActivity {
 
-    public static final String CATEGORY = "category";
-    public static final String LOCATION = "location";
+    private static final String CATEGORY = "category";
+    private static final String LOCATION = "location";
     private ItemDBHelper itemhelper;
     private LocationDBHelper lochelper;
 
@@ -78,7 +78,7 @@ public class ItemsInCategory extends AppCompatActivity {
          * Adapter for recycler view
          * @param items list of items
          */
-        public SimpleItemRecyclerViewAdapter(List<Item> items) {
+        SimpleItemRecyclerViewAdapter(List<Item> items) {
             mValues = items;
         }
 
@@ -119,16 +119,16 @@ public class ItemsInCategory extends AppCompatActivity {
          * Class to make viewholder
          */
         public class ViewHolder extends RecyclerView.ViewHolder {
-            public final View mView;
-            public final TextView mIdView;
-            public final TextView mContentView;
-            public Item item;
+            final View mView;
+            final TextView mIdView;
+            final TextView mContentView;
+            Item item;
 
             /**
              * Viewholder for the recycler
              * @param view View for the holder
              */
-            public ViewHolder(View view) {
+            ViewHolder(View view) {
                 super(view);
                 mView = view;
                 mIdView = view.findViewById(R.id.id);

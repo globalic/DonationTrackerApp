@@ -56,7 +56,7 @@ public class AddItemScreen extends AppCompatActivity {
     /**
      * Method used to add item into inventory
      */
-    public void add() {
+    private void add() {
 
         lochelper = new LocationDBHelper(AddItemScreen.this);
         itemhelper = new ItemDBHelper(AddItemScreen.this);
@@ -109,7 +109,7 @@ public class AddItemScreen extends AppCompatActivity {
     /**
      * Method to cancel addition of item
      */
-    public void cancel() {
+    private void cancel() {
         Log.d("Cancel", "cancel register");
         Button cancelButton = findViewById(R.id.cancelItemButton);
         cancelButton.setOnClickListener(new View.OnClickListener() {

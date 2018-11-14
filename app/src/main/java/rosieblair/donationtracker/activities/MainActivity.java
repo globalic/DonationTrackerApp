@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Method to handle a login-button press, directs the user to Login screen.
      */
-    public void pressLogin() {
+    private void pressLogin() {
         Button logButton = findViewById(R.id.loginButton);
         logButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Method to handle a register-button press, directs user to Registration screen.
      */
-    public void pressRegister() {
+    private void pressRegister() {
         Button regButton = findViewById(R.id.regButton);
         regButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Method that loads the CVS file location data into the location database
      */
-    public void populateDB() {
+    private void populateDB() {
         List<Location> locs = new ArrayList<>();
         try {
             InputStream is = getResources().openRawResource(R.raw.locationdata);

@@ -53,7 +53,7 @@ public class ListOfLocations extends AppCompatActivity {
          * Adapter that puts the list into a recycler view
          * @param items List of all locations
          */
-        public SimpleItemRecyclerViewAdapter(List<Location> items) {
+        SimpleItemRecyclerViewAdapter(List<Location> items) {
             mValues = items;
         }
 
@@ -91,16 +91,16 @@ public class ListOfLocations extends AppCompatActivity {
         }
 
         public class ViewHolder extends RecyclerView.ViewHolder {
-            public final View mView;
-            public final TextView mIdView;
-            public final TextView mContentView;
-            public Location location;
+            final View mView;
+            final TextView mIdView;
+            final TextView mContentView;
+            Location location;
 
             /**
              * Method for the recycler view holder
              * @param view view for the recycler
              */
-            public ViewHolder(View view) {
+            ViewHolder(View view) {
                 super(view);
                 mView = view;
                 mIdView = view.findViewById(R.id.id);

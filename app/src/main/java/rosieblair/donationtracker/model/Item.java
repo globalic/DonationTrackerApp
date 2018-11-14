@@ -21,7 +21,7 @@ public class Item {
     /**
      * A list of all possible categories defined for an item.
      */
-    public static final List<String> itemCategories = Arrays.asList("Clothing", "Hat", "Kitchen",
+    private static final List<String> itemCategories = Arrays.asList("Clothing", "Hat", "Kitchen",
             "Electronics", "Household", "Other");
 
     /**
@@ -42,8 +42,8 @@ public class Item {
      * @param category         the item's category
      * @param itemKey          the key that links the item to a location
      */
-    public Item(String time, String shortDescription, String fullDescription, String value,
-                String category, int itemKey) {
+    private Item(String time, String shortDescription, String fullDescription, String value,
+            String category, int itemKey) {
         this.time = time;
         this.shortDescription = shortDescription;
         this.fullDescription = fullDescription;

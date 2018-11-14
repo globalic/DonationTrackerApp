@@ -80,7 +80,7 @@ public class ItemsByName extends AppCompatActivity {
          * Recycler view for showing all the resulting items
          * @param items list of items
          */
-        public SimpleItemRecyclerViewAdapter(List<Item> items) {
+        SimpleItemRecyclerViewAdapter(List<Item> items) {
             mValues = items;
         }
 
@@ -117,16 +117,16 @@ public class ItemsByName extends AppCompatActivity {
         }
 
         public class ViewHolder extends RecyclerView.ViewHolder {
-            public final View mView;
-            public final TextView mIdView;
-            public final TextView mContentView;
-            public Item item;
+            final View mView;
+            final TextView mIdView;
+            final TextView mContentView;
+            Item item;
 
             /**
              * Viewholder for the recycler
              * @param view view for the holder
              */
-            public ViewHolder(View view) {
+            ViewHolder(View view) {
                 super(view);
                 mView = view;
                 mIdView = view.findViewById(R.id.id);

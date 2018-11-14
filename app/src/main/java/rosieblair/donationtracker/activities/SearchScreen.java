@@ -46,7 +46,7 @@ public class SearchScreen extends AppCompatActivity {
     /**
      * Method that handles searching items from location selection and input
      */
-    public void pressSearchItem() {
+    private void pressSearchItem() {
         location = findViewById(R.id.locSearchSpinner);
         item = findViewById(R.id.enterSearchItem);
         Button searchForItem = findViewById(R.id.itemSearchButton);
@@ -81,7 +81,7 @@ public class SearchScreen extends AppCompatActivity {
     /**
      * Method that handles searching items from location and category selection
      */
-    public void pressSearchCat() {
+    private void pressSearchCat() {
         location = findViewById(R.id.locSearchSpinner);
         category = findViewById(R.id.catSearchSpinner);
         Button searchForCat;
