@@ -137,7 +137,7 @@ public class ItemDBHelper extends SQLiteOpenHelper {
      * Returns a list of all of the items currently in database.
      * @return list of all items in ascending order of id.
      */
-    private List<Item> itemList() {
+    public List<Item> itemList() {
         SQLiteDatabase db = this.getReadableDatabase();
         List<Item> list = new ArrayList<>();
 
@@ -171,7 +171,7 @@ public class ItemDBHelper extends SQLiteOpenHelper {
      * @param locKey location's key
      * @return list of all items at the location (or empty list if none found)
      */
-    private List<Item> getLocationInventory(int locKey) {
+    public List<Item> getLocationInventory(int locKey) {
         List<Item> items = new ArrayList<>();
         List<Item> item_list = itemList();
         for (Item i : item_list) {

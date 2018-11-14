@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import rosieblair.donationtracker.R;
+import rosieblair.donationtracker.database.LocationDBHelper;
 import rosieblair.donationtracker.model.Location;
 
 /**
@@ -21,6 +22,7 @@ import rosieblair.donationtracker.model.Location;
  * on handsets.
  */
 public class LocationDetailFragment extends Fragment {
+    private LocationDBHelper locDBhelper;
     /**
      * The fragment argument representing the item ID that this fragment
      * represents.
@@ -43,6 +45,8 @@ public class LocationDetailFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        locDBhelper = new LocationDBHelper(getActivity());
+
         assert getArguments() != null;
         if (getArguments().containsKey(ARG_ITEM_ID)) {
             // Load the dummy content specified by the fragment
@@ -50,7 +54,7 @@ public class LocationDetailFragment extends Fragment {
             // to load content from a content provider.
             int item_id = getArguments().getInt(ARG_ITEM_ID);
             Log.d("MYAPP", "Start details for: " + item_id);
-            //mItem = LocationDBHelper.INSTANCE.findLocationByKey(item_id);
+            mItem = locDBhelper.getLocationByKey(item_id);
 
             Activity activity = this.getActivity();
             CollapsingToolbarLayout appBarLayout = activity
