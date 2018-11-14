@@ -24,28 +24,95 @@ public class User implements Serializable {
      */
     public static final List<String> types = Arrays.asList("USER", "EMPLOYEE", "MANAGER", "ADMIN");
 
+//    /**
+//     * Getters & setters for all of User's attributes
+//     * @return String for getters, void for setters
+//     */
+
     /**
-     * Getters & setters for all of User's attributes
+     * Gets the username
+     * @return the username
      */
     public String getUsername() { return username; }
+
+    /**
+     * Sets the username
+     * @param _username a username
+     */
     public void setUsername(String _username) { username = _username; }
 
+    /**
+     * Gets the password
+     * @return the password
+     */
     public String getPassword() { return password; }
+
+    /**
+     * Sets the password
+     * @param _password a password
+     */
     public void setPassword(String _password) { password = _password; }
 
+    /**
+     * Gets the email
+     * @return the email
+     */
     public String getEmail() { return email; }
+
+    /**
+     * Sets the email
+     * @param _email an email
+     */
     public void setEmail(String _email) { email = _email; }
 
+
+    /**
+     * Gets the user type
+     * @return the user type
+     */
     public String getType() { return type; }
+
+    /**
+     * Sets the user type
+     * @param _type a user type
+     */
     public void setType(String _type) { type = (types.contains(_type) ? _type : types.get(0)); }
 
+
+    /**
+     * Gets the account state
+     * @return true if locked account
+     */
     public boolean getLocked() { return locked; }
+
+    /**
+     * Sets the account state
+     * @param _locked true if account is locked
+     */
     public void setLock(boolean _locked) { locked = _locked; }
 
+    /**
+     * Gets the user id
+     * @return the user id
+     */
     public int getId() { return id; }
+
+    /**
+     * Sets the user id
+     * @param id a user id
+     */
     public void setId(int id) { this.id = id; }
 
+    /**
+     * Gets the employee id
+     * @return the employee id
+     */
     public int getEmpId() { return empId; }
+
+    /**
+     * Sets the employee id
+     * @param key an employee id
+     */
     public void setEmpId(int key) { this.empId = key; }
 
 

@@ -22,8 +22,8 @@ import rosieblair.donationtracker.model.User;
  * Class to facilitate user registration
  */
 
-public class RegistrationActivity extends AppCompatActivity implements View.OnClickListener {
-
+public class RegistrationActivity extends AppCompatActivity
+        implements View.OnClickListener {
     private final AppCompatActivity activity = RegistrationActivity.this;
     private UserDBHelper dbhelper;
     private User user;

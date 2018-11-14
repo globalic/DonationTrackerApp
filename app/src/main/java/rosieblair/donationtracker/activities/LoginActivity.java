@@ -18,7 +18,8 @@ import rosieblair.donationtracker.model.User;
 /**
  * Class to allow functionality of user login system
  */
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
+public class LoginActivity extends AppCompatActivity implements View
+        .OnClickListener {
 
     private final AppCompatActivity activity = LoginActivity.this;
     private UserDBHelper dbhelper;

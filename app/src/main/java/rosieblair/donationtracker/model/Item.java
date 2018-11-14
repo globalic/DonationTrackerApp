@@ -42,7 +42,7 @@ public class Item {
      * @param category         the item's category
      * @param itemKey          the key that links the item to a location
      */
-    @SuppressWarnings("SameParameterValue") private Item(String time, String shortDescription, String fullDescription, String value,
+    private Item(String time, String shortDescription, String fullDescription, String value,
             String category, int itemKey) {
         this.time = time;
         this.shortDescription = shortDescription;
@@ -52,63 +52,122 @@ public class Item {
         this.itemKey = itemKey;
     }
 
-    /*******************************************
-     * Getters & Setters for all of Item's attributes
-     * */
+//    /*******************************************
+//     * Getters & Setters for all of Item's attributes
+//     *
+//     * @return an int or a string for getters, void for setters
+//     */
+
+    /**
+     * Gets the item id
+     * @return the item id
+     */
     public int getId() {
         return id;
     }
 
+    /**
+     * Sets the item id
+     * @param id an item id
+     */
     public void setId(int id) {
         this.id = id;
     }
 
+    /**
+     * Gets the item donation time
+     * @return the item donation time
+     */
     public String getTime() {
         return time;
     }
 
+    /**
+     * Sets the item donation time
+     * @param time a donation time
+     */
     public void setTime(String time) {
         this.time = time;
     }
 
+    /**
+     * Gets the short item description
+     * @return the short item description
+     */
     public String getShortDescription() {
         return shortDescription;
     }
 
+    /**
+     * Sets the short item description
+     * @param shortDescription a short item description
+     */
     public void setShortDescription(String shortDescription) {
         this.shortDescription =
                 shortDescription;
     }
 
+    /**
+     * Gets the full item description
+     * @return the full item description
+     */
     public String getFullDescription() {
         return fullDescription;
     }
 
+    /**
+     * Sets the full item description
+     * @param fullDescription a detailed item description
+     */
     public void setFullDescription(String fullDescription) {
         this.fullDescription =
                 fullDescription;
     }
 
+    /**
+     * Gets the item dollar value
+     * @return the item dollar value
+     */
     public String getValue() {
         return value;
     }
 
+    /**
+     * Sets the item dollar value
+     * @param value a dollar value
+     */
     public void setValue(String value) {
         this.value = value;
     }
 
+    /**
+     * Gets the item category
+     * @return the item category
+     */
     public String getCategory() {
         return category;
     }
 
+    /**
+     * Sets the item category
+     * @param category an item category
+     */
     public void setCategory(String category) {
         this.category = category;
     }
 
+    /**
+     * Gets the item key value
+     * @return the item key value
+     */
     public int getItemKey() {
         return itemKey;
     }
 
+    /**
+     * Sets the item key value
+     * @param itemKey a key value
+     */
     public void setItemKey(int itemKey) {
         this.itemKey = itemKey;
     }

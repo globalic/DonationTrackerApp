@@ -17,7 +17,6 @@ import rosieblair.donationtracker.model.Item;
  */
 public class ItemDBHelper extends SQLiteOpenHelper {
 
-
     private static final int VERSION = 1;
     private static final String DB_NAME = "Item.db";
     private static final String ITEM_TABLE = "Item";
