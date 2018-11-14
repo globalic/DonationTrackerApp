@@ -74,7 +74,7 @@ public class ItemsByName extends AppCompatActivity {
     public class SimpleItemRecyclerViewAdapter
             extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
 
-        private List<Item> mValues;
+        private final List<Item> mValues;
 
         /**
          * Recycler view for showing all the resulting items

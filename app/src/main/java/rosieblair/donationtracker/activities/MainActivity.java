@@ -14,7 +14,6 @@ import java.io.InputStreamReader;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
 import rosieblair.donationtracker.R;
 import rosieblair.donationtracker.database.LocationDBHelper;

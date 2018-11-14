@@ -18,7 +18,7 @@ public class UserDBHelperTest3 {
     private static final int TIMEOUT = 200;
 
     private boolean testResult;
-    private UserDBHelper testDB = mock(UserDBHelper.class);
+    private final UserDBHelper testDB = mock(UserDBHelper.class);
 
 
     // Branch Coverage: username == null

@@ -28,28 +28,20 @@ public class Item {
      * No-Arg Constructor to create an Item object (for use with activities only).
      */
     public Item() {
-        this(null, null, null, null,
-                itemCategories.get(0), 1);
+        this(itemCategories.get(0));
     }
 
     /**
      * Constructor to make a new Item Object
-     *
-     * @param time             the item's donation time
-     * @param shortDescription a short description of the item
-     * @param fullDescription  a full (longer) description of the item
-     * @param value            the item's value
      * @param category         the item's category
-     * @param itemKey          the key that links the item to a location
      */
-    private Item(String time, String shortDescription, String fullDescription, String value,
-            String category, int itemKey) {
-        this.time = time;
-        this.shortDescription = shortDescription;
-        this.fullDescription = fullDescription;
-        this.value = value;
+    private Item(String category) {
+        this.time = null;
+        this.shortDescription = null;
+        this.fullDescription = null;
+        this.value = null;
         this.category = category;
-        this.itemKey = itemKey;
+        this.itemKey = 1;
     }
 
     /*******************************************

@@ -40,6 +40,7 @@ public class ItemDetailFragment extends Fragment {
             //mItem = ItemDBHelper.INSTANCE.findItemsByKey(item_id);
 
             Activity activity = this.getActivity();
+            assert activity != null;
             CollapsingToolbarLayout appBarLayout = activity.findViewById(
                     R.id.toolbar_layout);
             if (appBarLayout != null) {

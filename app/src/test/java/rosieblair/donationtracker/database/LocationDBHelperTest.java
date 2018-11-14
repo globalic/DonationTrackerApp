@@ -15,7 +15,7 @@ public class LocationDBHelperTest {
     private static final int TIMEOUT = 200;
 
     private boolean testResult;
-    private LocationDBHelper testDB = mock(LocationDBHelper.class);
+    private final LocationDBHelper testDB = mock(LocationDBHelper.class);
 
 
     // Branch Coverage: location name == null

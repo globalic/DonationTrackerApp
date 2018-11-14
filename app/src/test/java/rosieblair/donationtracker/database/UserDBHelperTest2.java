@@ -18,7 +18,7 @@ public class UserDBHelperTest2 {
     private static final int TIMEOUT = 200;
 
     private boolean result;
-    private UserDBHelper mockUserDB = mock(UserDBHelper.class);
+    private final UserDBHelper mockUserDB = mock(UserDBHelper.class);
 
     @Test (timeout = TIMEOUT)
     public void checkIfUserNull() {
