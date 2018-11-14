@@ -308,7 +308,7 @@ public class ItemDBHelper extends SQLiteOpenHelper {
      * @param name the name of item to check for
      * @return the list of any/all items found
      */
-    public List<Item> findItemsByName(String name) {
+    public List<Item> findItemsByName(CharSequence name) {
         List<Item> itemsName = new ArrayList<>();
         List<Item> items = itemList();
             for (Item d : items) {

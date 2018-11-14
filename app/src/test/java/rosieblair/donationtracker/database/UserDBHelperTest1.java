@@ -29,7 +29,7 @@ public class UserDBHelperTest1 {
     // Branch Coverage: username != null, exists, is location employee
     // Expected: count > 0 --> true
     @Test (timeout = TIMEOUT)
-    public void checkIfEmployeeExitsLocation() {
+    public void checkIfEmployeeExistsLocation() {
         when(testUserDB.checkIfEmployee("employeeName")).thenReturn(true);
         test = testUserDB.checkIfEmployee("employeeName");
         assertTrue(test);
@@ -38,7 +38,7 @@ public class UserDBHelperTest1 {
     // Branch Coverage: username != null, exists, is not location employee
     // Expected: count > 0 --> false
     @Test (timeout = TIMEOUT)
-    public void checkIfEmployeeExitsNotLocation() {
+    public void checkIfEmployeeExistsNotLocation() {
         when(testUserDB.checkIfEmployee("notEmployeeName")).thenReturn(false);
         test = testUserDB.checkIfEmployee("notEmployeeName");
         assertFalse(test);

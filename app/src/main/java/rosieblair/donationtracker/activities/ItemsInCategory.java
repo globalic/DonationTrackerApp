@@ -52,18 +52,18 @@ public class ItemsInCategory extends AppCompatActivity {
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
-        String catName = getIntent().getStringExtra(CATEGORY);
-        Log.d("catName", "" + catName);
-        String locName = getIntent().getStringExtra(LOCATION);
-        Log.d("locName", "" + locName);
-        int locKey;
-        if (!(lochelper.getLocationByName(locName) == null)) {
-            locKey = lochelper.getLocationByName(locName).getKey();
-        } else {
-            locKey = -1;
-        }
-        recyclerView.setAdapter(new ItemsInCategory.SimpleItemRecyclerViewAdapter(itemhelper
-                .findItemsByCategory(catName, locKey)));
+//        String catName = getIntent().getStringExtra(CATEGORY);
+//        Log.d("catName", "" + catName);
+//        String locName = getIntent().getStringExtra(LOCATION);
+//        Log.d("locName", "" + locName);
+//        int locKey;
+//        if (!(lochelper.getLocationByName(locName) == null)) {
+//            locKey = lochelper.getLocationByName(locName).getKey();
+//        } else {
+//            locKey = -1;
+//        }
+//        recyclerView.setAdapter(new ItemsInCategory.SimpleItemRecyclerViewAdapter(itemhelper
+//                .findItemsByCategory(catName, locKey)));
     }
 
     /**
@@ -72,7 +72,7 @@ public class ItemsInCategory extends AppCompatActivity {
     public class SimpleItemRecyclerViewAdapter
             extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
 
-        private final List<Item> mValues;
+        private List<Item> mValues;
 
         /**
          * Adapter for recycler view

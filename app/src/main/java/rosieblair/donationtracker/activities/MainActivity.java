@@ -13,6 +13,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import rosieblair.donationtracker.R;
@@ -84,11 +85,12 @@ public class MainActivity extends AppCompatActivity {
      * Method that loads the CVS file location data into the location database
      */
     private void populateDB() {
-        List<Location> locs = new ArrayList<>();
+        Collection<Location> locs = new ArrayList<>();
         try {
             InputStream is = getResources().openRawResource(R.raw.locationdata);
             BufferedReader br = new BufferedReader(new InputStreamReader(
                     is, Charset.forName("UTF-8")));
+            br.readLine();
             String line = br.readLine();
             while (line != null) {
                 Location locn = new Location();

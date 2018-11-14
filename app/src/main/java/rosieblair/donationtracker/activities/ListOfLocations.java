@@ -47,7 +47,7 @@ public class ListOfLocations extends AppCompatActivity {
     public class SimpleItemRecyclerViewAdapter
             extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
 
-        private final List<Location> mValues;
+        private List<Location> mValues;
 
         /**
          * Adapter that puts the list into a recycler view
