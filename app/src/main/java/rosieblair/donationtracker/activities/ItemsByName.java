@@ -1,6 +1,7 @@
 package rosieblair.donationtracker.activities;
 
 import rosieblair.donationtracker.R;
+
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -31,8 +32,7 @@ public class ItemsByName extends AppCompatActivity {
     public static final String NAME = "name";
     private ItemDBHelper itemhelper;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    @Override protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_items_by_name);
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -59,50 +59,54 @@ public class ItemsByName extends AppCompatActivity {
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
         String itemName = getIntent().getStringExtra(NAME);
         Log.d("itemName", "" + itemName);
-//        String locName = getIntent().getStringExtra(LOCATION);
-//        Log.d("locName", "" + locName);
-//        int locKey;
-//        if (!(lochelper.getLocationByName(locName) == null)) {
-//            locKey = lochelper.getLocationByName(locName).getKey();
-//        } else {
-//            locKey = -1;
-//        }
+        //        String locName = getIntent().getStringExtra(LOCATION);
+        //        Log.d("locName", "" + locName);
+        //        int locKey;
+        //        if (!(lochelper.getLocationByName(locName) == null)) {
+        //            locKey = lochelper.getLocationByName(locName).getKey();
+        //        } else {
+        //            locKey = -1;
+        //        }
         recyclerView.setAdapter(new ItemsByName.SimpleItemRecyclerViewAdapter(
                 itemhelper.findItemsByName(itemName)));
     }
 
     public class SimpleItemRecyclerViewAdapter
-            extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
+            extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder>
+    {
 
         private final List<Item> mValues;
 
         /**
          * Recycler view for showing all the resulting items
+         *
          * @param items list of items
          */
         SimpleItemRecyclerViewAdapter(List<Item> items) {
+            //noinspection AssignmentOrReturnOfFieldWithMutableType
             mValues = items;
         }
 
-        @Override
-        @NonNull
+        @Override @NonNull
         public ItemsByName.SimpleItemRecyclerViewAdapter.ViewHolder onCreateViewHolder(
-                @NonNull ViewGroup parent, int viewType) {
+                @NonNull ViewGroup parent, int viewType)
+        {
             View view = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.content_list_of_items, parent, false);
             return new ItemsByName.SimpleItemRecyclerViewAdapter.ViewHolder(view);
         }
 
-        @Override public void onBindViewHolder(@NonNull final ItemsByName.SimpleItemRecyclerViewAdapter.ViewHolder
-                                                     holder, int position) {
+        @Override public void onBindViewHolder(
+                @NonNull final ItemsByName.SimpleItemRecyclerViewAdapter.ViewHolder holder,
+                int position)
+        {
             holder.item = mValues.get(position);
             //changed to get id because getKey() no longer valid
             holder.mIdView.setText("" + mValues.get(position).getId());
             holder.mContentView.setText(mValues.get(position).getShortDescription());
 
             holder.mView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
+                @Override public void onClick(View v) {
                     Context context = v.getContext();
                     Intent intent = new Intent(context, ItemDetailActivity.class);
 
@@ -111,8 +115,7 @@ public class ItemsByName extends AppCompatActivity {
             });
         }
 
-        @Override
-        public int getItemCount() {
+        @Override public int getItemCount() {
             return mValues.size();
         }
 
@@ -124,6 +127,7 @@ public class ItemsByName extends AppCompatActivity {
 
             /**
              * Viewholder for the recycler
+             *
              * @param view view for the holder
              */
             ViewHolder(View view) {
@@ -133,9 +137,7 @@ public class ItemsByName extends AppCompatActivity {
                 mContentView = view.findViewById(R.id.content);
             }
 
-            @Override
-            @NonNull
-            public String toString() {
+            @Override @NonNull public String toString() {
                 return super.toString() + " '" + mContentView.getText() + "'";
             }
         }

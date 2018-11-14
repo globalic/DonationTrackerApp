@@ -54,6 +54,7 @@ public class ListOfLocations extends AppCompatActivity {
          * @param items List of all locations
          */
         SimpleItemRecyclerViewAdapter(List<Location> items) {
+            //noinspection AssignmentOrReturnOfFieldWithMutableType
             mValues = items;
         }
 
