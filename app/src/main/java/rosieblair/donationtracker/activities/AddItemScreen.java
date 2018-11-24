@@ -21,7 +21,7 @@ import rosieblair.donationtracker.model.Location;
 import rosieblair.donationtracker.database.ItemDBHelper;
 import rosieblair.donationtracker.database.LocationDBHelper;
 import rosieblair.donationtracker.model.Item;
-
+import static rosieblair.donationtracker.model.Item.keyCounter;
 /**
  * Class to allow functionality of adding items
  */
@@ -97,10 +97,11 @@ public class AddItemScreen extends AppCompatActivity {
                 newItem.setValue(value.getText().toString());
                 newItem.setCategory(category.getSelectedItem().toString());
                 newItem.setItemKey(locKey);
+                newItem.setId(++keyCounter);
                 itemhelper.addItem(newItem);
 
                 Intent intent = new Intent(getApplicationContext(), EmployeeAppScreen.class);
-                intent.putExtra("locKey", locKey);
+//                intent.putExtra("locKey", locKey);
                 startActivity(intent);
             }
         });

@@ -86,7 +86,7 @@ public class ListOfItems extends AppCompatActivity {
         @Override
         public void onBindViewHolder(final ListOfItems.SimpleItemRecyclerViewAdapter.ViewHolder holder, int position) {
             holder.item = mValues.get(position);
-            holder.mIdView.setText("" + mValues.get(position).getItemKey());
+            holder.mIdView.setText("" + mValues.get(position).getId()); //getItemKey()
             holder.mContentView.setText(mValues.get(position).getShortDescription());
 
             holder.mView.setOnClickListener(new View.OnClickListener() {
@@ -94,7 +94,7 @@ public class ListOfItems extends AppCompatActivity {
                 public void onClick(View v) {
                     Context context = v.getContext();
                     Intent intent = new Intent(context, ItemDetailActivity.class);
-                    intent.putExtra(ItemDetailFragment.ARG_ITEM_ID, holder.item.getItemKey());
+                    intent.putExtra(ItemDetailFragment.ARG_ITEM_ID, holder.item.getId()); //getItemKey()
 
                     context.startActivity(intent);
                 }
