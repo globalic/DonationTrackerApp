@@ -100,6 +100,7 @@ public class AddItemScreen extends AppCompatActivity {
                 itemhelper.addItem(newItem);
 
                 Intent intent = new Intent(getApplicationContext(), EmployeeAppScreen.class);
+                intent.putExtra("locKey", locKey);
                 startActivity(intent);
             }
         });
