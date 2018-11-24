@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import rosieblair.donationtracker.database.ItemDBHelper;
 import rosieblair.donationtracker.model.Item;
 //import model.Item;
 //import model.ItemDatabase;
@@ -22,13 +23,13 @@ import rosieblair.donationtracker.R;
  */
 public class ItemDetailFragment extends Fragment {
     public static final String ARG_ITEM_ID = "item_id";
-
+    private ItemDBHelper itemDBHelper;
     private Item mItem;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        itemDBHelper = new ItemDBHelper(getActivity());
         Log.d("MYAPP", "arguments: " + getArguments());
         assert getArguments() != null;
         if (getArguments().containsKey(ARG_ITEM_ID)) {
@@ -37,7 +38,7 @@ public class ItemDetailFragment extends Fragment {
             // to load content from a content provider.
             int item_id = getArguments().getInt(ARG_ITEM_ID);
             Log.d("MYAPP", "Start details for: " + item_id);
-            //mItem = ItemDBHelper.INSTANCE.findItemsByKey(item_id);
+            mItem = itemDBHelper.getItem(item_id);
 
             Activity activity = this.getActivity();
             assert activity != null;

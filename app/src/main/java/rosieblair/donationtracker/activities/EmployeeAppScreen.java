@@ -19,6 +19,7 @@ import rosieblair.donationtracker.R;
 public class EmployeeAppScreen extends AppCompatActivity {
 
     private final AppCompatActivity activity = EmployeeAppScreen.this;
+    public static int locKey;
 
 //    private String locName;
 
@@ -34,7 +35,9 @@ public class EmployeeAppScreen extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
+        if (getIntent().getIntExtra("locKey",0) != 0) {
+            locKey = getIntent().getIntExtra("locKey",0);
+        }
 //        init();
         pressSearch();
         pressAddDonation();
@@ -75,7 +78,7 @@ public class EmployeeAppScreen extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), AddItemScreen.class);
-                //intent.putExtra("thisLocn", loc);
+                intent.putExtra("locKey", locKey);
                 startActivity(intent);
             }
         });
@@ -100,7 +103,8 @@ public class EmployeeAppScreen extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), ListOfItems.class);
-//                intent.putExtra("thisLocn", loc);
+//                Log.d("Intent locKey", "" + getIntent().getIntExtra("locKey",0));
+                intent.putExtra("locKey", locKey);
 //                intent.putExtra(ListOfItems.LOCATION, locName);
                 startActivity(intent);
             }

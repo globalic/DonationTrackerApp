@@ -18,6 +18,8 @@ public class Item {
     private String category;
     private int itemKey;
 
+    public static int keyCounter;
+
     /**
      * A list of all possible categories defined for an item.
      */
@@ -50,6 +52,7 @@ public class Item {
         this.value = value;
         this.category = category;
         this.itemKey = itemKey;
+
     }
 
 //    /*******************************************

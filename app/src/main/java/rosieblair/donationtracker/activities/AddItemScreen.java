@@ -20,7 +20,7 @@ import rosieblair.donationtracker.model.Location;
 import rosieblair.donationtracker.database.ItemDBHelper;
 import rosieblair.donationtracker.database.LocationDBHelper;
 import rosieblair.donationtracker.model.Item;
-
+import static rosieblair.donationtracker.model.Item.keyCounter;
 /**
  * Class to allow functionality of adding items
  */
@@ -89,17 +89,24 @@ public class AddItemScreen extends AppCompatActivity {
                 String locName = location.getSelectedItem().toString();
                 loc = lochelper.getLocationByName(locName);
                 int locKey = loc.getKey();
-                newItem = new Item();
-                newItem.setTime(time.getText().toString());
-                newItem.setShortDescription(shortDescription.getText().toString());
-                newItem.setFullDescription(fullDescription.getText().toString());
-                newItem.setValue(value.getText().toString());
-                newItem.setCategory(category.getSelectedItem().toString());
-                newItem.setItemKey(locKey);
-                itemhelper.addItem(newItem);
+                if (locKey == getIntent().getIntExtra("locKey",0)) {
+                    newItem = new Item();
+                    newItem.setTime(time.getText().toString());
+                    newItem.setShortDescription(shortDescription.getText().toString());
+                    newItem.setFullDescription(fullDescription.getText().toString());
+                    newItem.setValue(value.getText().toString());
+                    newItem.setCategory(category.getSelectedItem().toString());
+                    newItem.setItemKey(locKey);
+                    newItem.setId(++keyCounter);
+                    itemhelper.addItem(newItem);
 
-                Intent intent = new Intent(getApplicationContext(), EmployeeAppScreen.class);
-                startActivity(intent);
+                    Intent intent = new Intent(getApplicationContext(), EmployeeAppScreen.class);
+//                intent.putExtra("locKey", locKey);
+                    startActivity(intent);
+                } // else show adding to wrong location message
+
+
+
             }
         });
 
