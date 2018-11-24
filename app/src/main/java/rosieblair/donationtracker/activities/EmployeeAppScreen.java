@@ -78,7 +78,7 @@ public class EmployeeAppScreen extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), AddItemScreen.class);
-                //intent.putExtra("thisLocn", loc);
+                intent.putExtra("locKey", locKey);
                 startActivity(intent);
             }
         });
