@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import rosieblair.donationtracker.database.ItemDBHelper;
+import rosieblair.donationtracker.database.LocationDBHelper;
 import rosieblair.donationtracker.model.Item;
 //import model.Item;
 //import model.ItemDatabase;
@@ -25,11 +26,13 @@ public class ItemDetailFragment extends Fragment {
     public static final String ARG_ITEM_ID = "item_id";
     private ItemDBHelper itemDBHelper;
     private Item mItem;
+    private LocationDBHelper locationHelper;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         itemDBHelper = new ItemDBHelper(getActivity());
+        locationHelper = new LocationDBHelper(getActivity());
         Log.d("MYAPP", "arguments: " + getArguments());
         assert getArguments() != null;
         if (getArguments().containsKey(ARG_ITEM_ID)) {
@@ -60,6 +63,8 @@ public class ItemDetailFragment extends Fragment {
         if (mItem != null) {
             ((TextView) rootView.findViewById(R.id.time)).setText(getResources().getString(
                     R.string.time, mItem.getTime()));
+            ((TextView) rootView.findViewById(R.id.location)).setText(getResources().getString(
+                    R.string.place, locationHelper.getLocationByKey(mItem.getItemKey()).getName()));
             ((TextView) rootView.findViewById(R.id.short_desc)).setText(getResources().getString(
                     R.string.shortdesc, mItem.getShortDescription()));
             ((TextView) rootView.findViewById(R.id.full_desc)).setText(getResources().getString(
@@ -68,9 +73,12 @@ public class ItemDetailFragment extends Fragment {
                     R.string.value, mItem.getValue()));
             ((TextView) rootView.findViewById(R.id.category)).setText(getResources().getString(
                     R.string.category, mItem.getCategory()));
-            //((TextView) rootView.findViewById(R.id.city)).setText(mItem.getCity());
-            //((TextView) rootView.findViewById(R.id.state)).setText(mItem.getState());
-            //((TextView) rootView.findViewById(R.id.zip_code)).setText(mItem.getZipCode());
+            /*((TextView) rootView.findViewById(R.id.city)).setText(getResources().getString(
+                    R.string.place, locationHelper.getLocationByKey(mItem.getItemKey()).getCity()));
+            ((TextView) rootView.findViewById(R.id.state)).setText(getResources().getString(
+                    R.string.place, locationHelper.getLocationByKey(mItem.getItemKey()).getState()));
+            ((TextView) rootView.findViewById(R.id.zip_code)).setText(getResources().getString(
+                    R.string.place, locationHelper.getLocationByKey(mItem.getItemKey()).getZipCode()));*/
         }
 
         return rootView;
