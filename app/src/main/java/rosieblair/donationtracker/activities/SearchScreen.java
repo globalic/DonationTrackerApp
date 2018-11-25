@@ -37,7 +37,7 @@ public class SearchScreen extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         lochelper = new LocationDBHelper(this);
-        ItemDBHelper itemhelper = new ItemDBHelper(this);
+        //ItemDBHelper itemhelper = new ItemDBHelper(this);
         pressSearchItem();
         pressSearchCat();
         //pressSearchLoc();
@@ -51,16 +51,16 @@ public class SearchScreen extends AppCompatActivity {
         item = findViewById(R.id.enterSearchItem);
         Button searchForItem = findViewById(R.id.itemSearchButton);
 
-        List<Location> locList = lochelper.locationList();
+        /*List<Location> locList = lochelper.locationList();
         String[] spinEntries = new String[locList.size()];
         for (int i = 0; i < locList.size(); i++) {
             spinEntries[i] = locList.get(i).getName();
-        }
+        }*/
 
-        ArrayAdapter<String> spinAdapt = new ArrayAdapter<>(this,
+        /*ArrayAdapter<String> spinAdapt = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item, spinEntries);
         spinAdapt.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        location.setAdapter(spinAdapt);
+        location.setAdapter(spinAdapt);*/
 
         searchForItem.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,7 +72,7 @@ public class SearchScreen extends AppCompatActivity {
                         //"edu.gatech.micheyang.pbjdonationtracker.ItemsByName");
                 intent.putExtra(ItemsByName.NAME, itemName);
                 //intent.putExtra(ItemsByName.LOCATION, item.locName);
-//                intent.putExtra(ItemsByName.LOCATION, );
+                intent.putExtra(ItemsByName.LOCATION, locName);
                 startActivity(intent);
             }
         });
@@ -92,11 +92,10 @@ public class SearchScreen extends AppCompatActivity {
             public void onClick(View view) {
                 String catName = category.getSelectedItem().toString();
                 String locName = location.getSelectedItem().toString();
-//                Intent intent = new Intent(getApplicationContext(), ItemsInCategory.class);
-//                        //"edu.gatech.micheyang.pbjdonationtracker.ItemsInCategory");
-//                intent.putExtra(ItemsInCategory.CATEGORY, catName);
-//                intent.putExtra(ItemsInCategory.LOCATION, locName);
-//                startActivity(intent);
+                Intent intent = new Intent(getApplicationContext(), ItemsInCategory.class);
+                intent.putExtra(ItemsInCategory.CATEGORY, catName);
+                intent.putExtra(ItemsInCategory.LOCATION, locName);
+                startActivity(intent);
             }
         });
     }

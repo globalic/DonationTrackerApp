@@ -31,6 +31,7 @@ public class ItemsByName extends AppCompatActivity {
     public static final String LOCATION = "location";
     public static final String NAME = "name";
     private ItemDBHelper itemhelper;
+    private LocationDBHelper lochelper;
 
     @Override protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,17 +39,8 @@ public class ItemsByName extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        LocationDBHelper lochelper = new LocationDBHelper(this);
+        lochelper = new LocationDBHelper(this);
         itemhelper = new ItemDBHelper(this);
-
-        /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "No search results found", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });*/
 
         View recyclerView = findViewById(R.id.dataitem_list);
         assert recyclerView != null;
@@ -59,16 +51,16 @@ public class ItemsByName extends AppCompatActivity {
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
         String itemName = getIntent().getStringExtra(NAME);
         Log.d("itemName", "" + itemName);
-        //        String locName = getIntent().getStringExtra(LOCATION);
-        //        Log.d("locName", "" + locName);
-        //        int locKey;
-        //        if (!(lochelper.getLocationByName(locName) == null)) {
-        //            locKey = lochelper.getLocationByName(locName).getKey();
-        //        } else {
-        //            locKey = -1;
-        //        }
+        String locName = getIntent().getStringExtra(LOCATION);
+        Log.d("locName", "" + locName);
+        int locKey;
+        if (!locName.equals("All locations")) {
+            locKey = lochelper.getLocationByName(locName).getKey();
+        } else {
+            locKey = -1;
+        }
         recyclerView.setAdapter(new ItemsByName.SimpleItemRecyclerViewAdapter(
-                itemhelper.findItemsByName(itemName)));
+                itemhelper.findItemsByName(itemName, locKey)));
     }
 
     public class SimpleItemRecyclerViewAdapter

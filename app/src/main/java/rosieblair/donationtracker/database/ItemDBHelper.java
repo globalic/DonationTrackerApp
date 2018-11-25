@@ -236,9 +236,13 @@ public class ItemDBHelper extends SQLiteOpenHelper {
                 if (d.getCategory().equals(category)) {
                     itemsInCat.add(d);
                 }
+            } if (itemsInCat.isEmpty()) {
+                Log.d("MYAPP", "Warning - Failed to find items for " + category
+                        + " at all locations");
+            } else {
+                Log.d("MYAPP", "Showing items for " + category
+                        + " at all locations");
             }
-            Log.d("MYAPP", "Warning - Failed to find items for: " + category
-                    + " at all locations");
         } else {
             List<Item> itemsAtLoc = getLocationInventory(locKey);
             for (Item d: itemsAtLoc) {
@@ -246,7 +250,11 @@ public class ItemDBHelper extends SQLiteOpenHelper {
                     itemsInCat.add(d);
                 }
             }
-            Log.d("MYAPP", "Warning - Failed to find items for: " + category);
+            if (itemsAtLoc.isEmpty()) {
+                Log.d("MYAPP", "Warning - Failed to find items for: " + category);
+            } else {
+                Log.d("MYAPP", "Showing this location's items for: " + category);
+            }
         }
         return itemsInCat;
     }
@@ -287,9 +295,13 @@ public class ItemDBHelper extends SQLiteOpenHelper {
                 if (d.getShortDescription().contains(name)) {
                     itemsName.add(d);
                 }
+            } if (itemsName.isEmpty()) {
+                Log.d("MYAPP", "Warning - Failed to find items containing " + name
+                        + " at all locations");
+            } else {
+                Log.d("MYAPP", "Showing items containing " + name
+                        + " at all locations");
             }
-            Log.d("MYAPP", "Warning - Failed to find items for: " + name
-                    + " at all locations");
         } else {
             List<Item> itemsAtLoc = getLocationInventory(locKey);
             for (Item d: itemsAtLoc) {
@@ -297,26 +309,12 @@ public class ItemDBHelper extends SQLiteOpenHelper {
                     itemsName.add(d);
                 }
             }
-            Log.d("MYAPP", "Warning - Failed to find items for: " + name);
-        }
-        return itemsName;
-    }
-
-    /**
-     * Fetches all items with names matching the inputted name.
-     * @param name the name of item to check for
-     * @return the list of any/all items found
-     */
-    public List<Item> findItemsByName(CharSequence name) {
-        List<Item> itemsName = new ArrayList<>();
-        List<Item> items = itemList();
-            for (Item d : items) {
-                if (d.getShortDescription().contains(name)) {
-                    itemsName.add(d);
-                }
+            if (itemsAtLoc.isEmpty()) {
+                Log.d("MYAPP", "Warning - Failed to find items containing: " + name);
+            } else {
+                Log.d("MYAPP", "Showing this location's items containing: " + name);
             }
-            Log.d("MYAPP", "Warning - Failed to find items for: " + name
-                    + " at all locations");
+        }
         return itemsName;
     }
 

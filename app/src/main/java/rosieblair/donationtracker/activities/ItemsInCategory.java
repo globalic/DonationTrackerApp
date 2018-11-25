@@ -7,6 +7,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,25 +25,18 @@ import rosieblair.donationtracker.R;
  */
 public class ItemsInCategory extends AppCompatActivity {
 
-    private static final String CATEGORY = "category";
-    private static final String LOCATION = "location";
+    public static final String CATEGORY = "category";
+    public static final String LOCATION = "location";
     private ItemDBHelper itemhelper;
     private LocationDBHelper lochelper;
 
     @Override protected void onCreate(Bundle savedInstanceState) {
+        itemhelper = new ItemDBHelper(ItemsInCategory.this);
+        lochelper = new LocationDBHelper(ItemsInCategory.this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_items_in_category);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "No search results found", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });*/
 
         View recyclerView = findViewById(R.id.dataitem_list);
         assert recyclerView != null;
@@ -50,18 +44,18 @@ public class ItemsInCategory extends AppCompatActivity {
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
-        //        String catName = getIntent().getStringExtra(CATEGORY);
-        //        Log.d("catName", "" + catName);
-        //        String locName = getIntent().getStringExtra(LOCATION);
-        //        Log.d("locName", "" + locName);
-        //        int locKey;
-        //        if (!(lochelper.getLocationByName(locName) == null)) {
-        //            locKey = lochelper.getLocationByName(locName).getKey();
-        //        } else {
-        //            locKey = -1;
-        //        }
-        //        recyclerView.setAdapter(new ItemsInCategory.SimpleItemRecyclerViewAdapter(itemhelper
-        //                .findItemsByCategory(catName, locKey)));
+        String catName = getIntent().getStringExtra(CATEGORY);
+        Log.d("catName", "" + catName);
+        String locName = getIntent().getStringExtra(LOCATION);
+        Log.d("locName", "" + locName);
+        int locKey;
+        if (!locName.equals("All locations")) {
+            locKey = lochelper.getLocationByName(locName).getKey();
+        } else {
+            locKey = -1;
+        }
+        recyclerView.setAdapter(new ItemsInCategory.SimpleItemRecyclerViewAdapter(itemhelper
+                .findItemsByCategory(catName, locKey)));
     }
 
     /**
