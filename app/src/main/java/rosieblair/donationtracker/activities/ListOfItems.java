@@ -26,12 +26,15 @@ import rosieblair.donationtracker.model.Item;
 //import model item database and stuff
 
 public class ListOfItems extends AppCompatActivity {
-    public static final String LOCATION = "location";
+    public static int locKey;
     private ItemDBHelper itemDBhelper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         itemDBhelper = new ItemDBHelper(ListOfItems.this);
+        if (getIntent().getIntExtra("locKey",0) != 0) {
+            locKey = getIntent().getIntExtra("locKey",0);
+        }
         setContentView(R.layout.activity_list_of_items);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -95,7 +98,7 @@ public class ListOfItems extends AppCompatActivity {
                     Context context = v.getContext();
                     Intent intent = new Intent(context, ItemDetailActivity.class);
                     intent.putExtra(ItemDetailFragment.ARG_ITEM_ID, holder.item.getId()); //getItemKey()
-
+                    intent.putExtra("locKey", locKey);
                     context.startActivity(intent);
                 }
             });

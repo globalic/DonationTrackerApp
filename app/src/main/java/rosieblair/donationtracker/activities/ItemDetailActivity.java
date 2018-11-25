@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 
 import rosieblair.donationtracker.R;
@@ -13,9 +14,13 @@ import rosieblair.donationtracker.R;
  * Class to allow functionality of item selection
  */
 public class ItemDetailActivity extends AppCompatActivity {
-
+    public static int locKey;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        if (getIntent().getIntExtra("locKey",0) != 0) {
+            locKey = getIntent().getIntExtra("locKey",0);
+        }
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item_detail);
         Toolbar toolbar = findViewById(R.id.detail_toolbar);
@@ -50,7 +55,9 @@ public class ItemDetailActivity extends AppCompatActivity {
             //
             // http://developer.android.com/design/patterns/navigation.html#up-vs-back
             //
-            navigateUpTo(new Intent(this, ListOfItems.class));
+            Intent intent = new Intent(this, ListOfItems.class);
+            intent.putExtra("locKey", locKey);
+            navigateUpTo(intent);
             return true;
         }
         return super.onOptionsItemSelected(item);
