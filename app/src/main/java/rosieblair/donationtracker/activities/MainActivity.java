@@ -45,7 +45,9 @@ public class MainActivity extends AppCompatActivity {
 
         dbhelper = new LocationDBHelper(activity);
 
-        populateDB();
+        if (dbhelper.locationList().isEmpty()) {
+            populateDB();
+        }
         pressLogin();
         pressRegister();
     }
@@ -78,7 +80,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-//    public static Context getContext() { return context; }
 
     /**
      * Method that loads the CVS file location data into the location database
@@ -116,6 +117,7 @@ public class MainActivity extends AppCompatActivity {
             for (Location l : locs) {
                 dbhelper.addLocation(l);
             }
+            Log.d("MYAPP", "locations added from csv file");
         }
     }
 
