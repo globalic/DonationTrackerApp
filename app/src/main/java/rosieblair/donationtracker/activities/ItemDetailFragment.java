@@ -73,12 +73,6 @@ public class ItemDetailFragment extends Fragment {
                     R.string.value, mItem.getValue()));
             ((TextView) rootView.findViewById(R.id.category)).setText(getResources().getString(
                     R.string.category, mItem.getCategory()));
-            /*((TextView) rootView.findViewById(R.id.city)).setText(getResources().getString(
-                    R.string.place, locationHelper.getLocationByKey(mItem.getItemKey()).getCity()));
-            ((TextView) rootView.findViewById(R.id.state)).setText(getResources().getString(
-                    R.string.place, locationHelper.getLocationByKey(mItem.getItemKey()).getState()));
-            ((TextView) rootView.findViewById(R.id.zip_code)).setText(getResources().getString(
-                    R.string.place, locationHelper.getLocationByKey(mItem.getItemKey()).getZipCode()));*/
         }
 
         return rootView;
