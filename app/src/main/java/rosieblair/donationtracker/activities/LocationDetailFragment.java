@@ -74,7 +74,8 @@ public class LocationDetailFragment extends Fragment {
 
         // Show the dummy content as text in a TextView.
         if (mItem != null) {
-
+            ((TextView) rootView.findViewById(R.id.type))
+                    .setText(getResources().getString(R.string.location, mItem.getLocType()));
             ((TextView) rootView.findViewById(R.id.phone_number))
                     .setText(getResources().getString(R.string.phone_num, mItem.getPhoneNumber()));
             ((TextView) rootView.findViewById(R.id.website))
