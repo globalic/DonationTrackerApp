@@ -101,7 +101,7 @@ public class ItemsByName extends AppCompatActivity {
                 @Override public void onClick(View v) {
                     Context context = v.getContext();
                     Intent intent = new Intent(context, ItemDetailActivity.class);
-
+                    intent.putExtra(ItemDetailFragment.ARG_ITEM_ID, holder.item.getId());
                     context.startActivity(intent);
                 }
             });
