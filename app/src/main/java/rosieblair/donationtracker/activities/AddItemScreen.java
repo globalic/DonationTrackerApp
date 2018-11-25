@@ -35,6 +35,7 @@ public class AddItemScreen extends AppCompatActivity {
     private EditText value;
     private Spinner category;
     private Iterable<Location> temp;
+    private TextView invalid_Location;
 
     private Location loc;
     private Item newItem;
@@ -67,7 +68,7 @@ public class AddItemScreen extends AppCompatActivity {
         category = findViewById(R.id.selectItemCategory);
 
 
-        TextView invalid_Location = findViewById(R.id.invalidLocation);
+        invalid_Location = findViewById(R.id.invalidLocation);
 
         List<Location> locList = lochelper.locationList();
         String[] spinEntries = new String[locList.size()];
@@ -103,7 +104,11 @@ public class AddItemScreen extends AppCompatActivity {
                     Intent intent = new Intent(getApplicationContext(), EmployeeAppScreen.class);
 //                intent.putExtra("locKey", locKey);
                     startActivity(intent);
-                } // else show adding to wrong location message
+                    // else show adding to wrong location message
+                } else {
+                    //invalid_Location.setText(lochelper.getLocationByKey(getIntent().getIntExtra("locKey", 0)).getName());
+                    invalid_Location.setVisibility(View.VISIBLE); //when location employee doesnt select correct location to add item to, notify
+                }
 
 
 
