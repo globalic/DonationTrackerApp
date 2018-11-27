@@ -1,5 +1,9 @@
 package rosieblair.donationtracker.activities;
 
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -111,6 +115,20 @@ public class AddItemScreen extends AppCompatActivity {
                 }
 
 
+
+                NotificationManager notif=(NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
+                String CHANNEL_ID = "my_channel_01";
+                CharSequence name = "my_channel";
+                int importance = NotificationManager.IMPORTANCE_HIGH;
+                NotificationChannel mChannel = new NotificationChannel(CHANNEL_ID, name, importance);
+                mChannel.enableLights(true);
+                notif.createNotificationChannel(mChannel);
+                Notification notify=new Notification.Builder
+                        (getApplicationContext(), CHANNEL_ID).setContentTitle("Item added").setContentText("At Location: " + locName).
+                        setContentTitle("Item added: " + shortDescription.getText().toString()).setSmallIcon(R.drawable.pbj).build();
+
+                notify.flags |= Notification.FLAG_AUTO_CANCEL;
+                notif.notify(0, notify);
 
             }
         });
