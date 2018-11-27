@@ -50,8 +50,10 @@ public class LoginActivity extends AppCompatActivity implements View
 
         Button buttonLogin = findViewById(R.id.logButton);
         Button buttonCancel = findViewById(R.id.cancelButton);
+        Button buttonGuest = findViewById(R.id.guestButton);
         buttonLogin.setOnClickListener(this);
         buttonCancel.setOnClickListener(this);
+        buttonGuest.setOnClickListener(this);
     }
 
     /**
@@ -71,6 +73,11 @@ public class LoginActivity extends AppCompatActivity implements View
                 break;
             case R.id.logButton:
                 validate();
+                break;
+            case R.id.guestButton:
+                Log.d("login", "guest");
+                Intent intent = new Intent(getApplicationContext(), AppScreen.class);
+                startActivity(intent);
                 break;
         }
     }
