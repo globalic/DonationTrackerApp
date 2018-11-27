@@ -292,7 +292,7 @@ public class ItemDBHelper extends SQLiteOpenHelper {
         List<Item> items = itemList();
         if (locKey == -1) {
             for (Item d : items) {
-                if (d.getShortDescription().contains(name)) {
+                if (d.getShortDescription().contains(name) || d.getFullDescription().contains(name)) {
                     itemsName.add(d);
                 }
             } if (itemsName.isEmpty()) {
