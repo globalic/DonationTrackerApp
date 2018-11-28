@@ -5,7 +5,8 @@
     android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.LocationEmployee">
+    tools:context=".activities.LocationEmployee"
+    android:background="#99B898">
 
     <Spinner
         android:id="@+id/employeeSelectLocSpinner"
