@@ -36,6 +36,7 @@ public class AddItemScreen extends AppCompatActivity {
     private Spinner location;
     private EditText shortDescription;
     private EditText fullDescription;
+    private EditText comments;
     private EditText value;
     private Spinner category;
     private Iterable<Location> temp;
