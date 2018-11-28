@@ -107,6 +107,20 @@ public class AddItemScreen extends AppCompatActivity {
                     newItem.setId(++keyCounter);
                     itemhelper.addItem(newItem);
 
+                    NotificationManager notif=(NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
+                    String CHANNEL_ID = "my_channel_01";
+                    CharSequence name = "my_channel";
+                    int importance = NotificationManager.IMPORTANCE_HIGH;
+                    NotificationChannel mChannel = new NotificationChannel(CHANNEL_ID, name, importance);
+                    mChannel.enableLights(true);
+                    notif.createNotificationChannel(mChannel);
+                    Notification notify=new Notification.Builder
+                            (getApplicationContext(), CHANNEL_ID).setContentTitle("Item added").setContentText("At Location: " + locName).
+                            setContentTitle("Item added: " + shortDescription.getText().toString()).setSmallIcon(R.drawable.pbj).build();
+
+                    notify.flags |= Notification.FLAG_AUTO_CANCEL;
+                    notif.notify(0, notify);
+
                     Intent intent = new Intent(getApplicationContext(), EmployeeAppScreen.class);
 //                intent.putExtra("locKey", locKey);
                     startActivity(intent);
@@ -115,22 +129,6 @@ public class AddItemScreen extends AppCompatActivity {
                     //invalid_Location.setText(lochelper.getLocationByKey(getIntent().getIntExtra("locKey", 0)).getName());
                     invalid_Location.setVisibility(View.VISIBLE); //when location employee doesnt select correct location to add item to, notify
                 }
-
-
-
-                NotificationManager notif=(NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
-                String CHANNEL_ID = "my_channel_01";
-                CharSequence name = "my_channel";
-                int importance = NotificationManager.IMPORTANCE_HIGH;
-                NotificationChannel mChannel = new NotificationChannel(CHANNEL_ID, name, importance);
-                mChannel.enableLights(true);
-                notif.createNotificationChannel(mChannel);
-                Notification notify=new Notification.Builder
-                        (getApplicationContext(), CHANNEL_ID).setContentTitle("Item added").setContentText("At Location: " + locName).
-                        setContentTitle("Item added: " + shortDescription.getText().toString()).setSmallIcon(R.drawable.pbj).build();
-
-                notify.flags |= Notification.FLAG_AUTO_CANCEL;
-                notif.notify(0, notify);
 
             }
         });
