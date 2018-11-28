@@ -308,7 +308,7 @@ public class ItemDBHelper extends SQLiteOpenHelper {
         } else {
             List<Item> itemsAtLoc = getLocationInventory(locKey);
             for (Item d: itemsAtLoc) {
-                if (d.getShortDescription().contains(name)) {
+                if (d.getShortDescription().contains(name) || d.getFullDescription().contains(name)) {
                     itemsName.add(d);
                 }
             }
