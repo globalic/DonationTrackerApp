@@ -27,6 +27,7 @@ public class ItemDBHelper extends SQLiteOpenHelper {
     private static final String FULL_COL = "full";
     private static final String VALUE_COL = "value";
     private static final String CATEGORY_COL = "category";
+    private static final String COMMENTS_COL = "comments";
     private static final String LOC_COL = "locId";
 
     /**
@@ -46,7 +47,7 @@ public class ItemDBHelper extends SQLiteOpenHelper {
         final String CREATE_IT = "CREATE TABLE " + ITEM_TABLE + "(" + ID_COL
                 + " INTEGER PRIMARY KEY AUTOINCREMENT," + TIME_COL + " TEXT,"
                 + SHORT_COL + " TEXT," + FULL_COL + " TEXT," + VALUE_COL + " TEXT,"
-                + CATEGORY_COL + " TEXT," + LOC_COL + " INTEGER" + ")";
+                + CATEGORY_COL + " TEXT," + COMMENTS_COL + " TEXT," + LOC_COL + " INTEGER" + ")";
         db.execSQL(CREATE_IT);
     }
 
@@ -73,6 +74,7 @@ public class ItemDBHelper extends SQLiteOpenHelper {
         values.put(FULL_COL, item.getFullDescription());
         values.put(VALUE_COL, item.getValue());
         values.put(CATEGORY_COL, item.getCategory());
+        values.put(COMMENTS_COL, item.getComments());
         values.put(LOC_COL, item.getItemKey());
         db.insert(ITEM_TABLE, null, values);
         db.close();
@@ -140,7 +142,7 @@ public class ItemDBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         List<Item> list = new ArrayList<>();
 
-        String[] cols = {ID_COL, TIME_COL, SHORT_COL, FULL_COL, VALUE_COL, CATEGORY_COL, LOC_COL};
+        String[] cols = {ID_COL, TIME_COL, SHORT_COL, FULL_COL, VALUE_COL, CATEGORY_COL, COMMENTS_COL, LOC_COL};
         String orderBy = ID_COL + " ASC";
 
         Cursor cursor = db.query(ITEM_TABLE, cols, null,
@@ -154,6 +156,7 @@ public class ItemDBHelper extends SQLiteOpenHelper {
                 item.setFullDescription(cursor.getString(cursor.getColumnIndex(FULL_COL)));
                 item.setValue(cursor.getString(cursor.getColumnIndex(VALUE_COL)));
                 item.setCategory(cursor.getString(cursor.getColumnIndex(CATEGORY_COL)));
+                item.setComments(cursor.getString(cursor.getColumnIndex(COMMENTS_COL)));
                 item.setItemKey(Integer.parseInt(cursor.getString(cursor.getColumnIndex(LOC_COL))));
                 list.add(item);
             } while (cursor.moveToNext());

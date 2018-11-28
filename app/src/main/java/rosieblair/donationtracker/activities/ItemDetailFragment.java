@@ -73,6 +73,8 @@ public class ItemDetailFragment extends Fragment {
                     R.string.value, mItem.getValue()));
             ((TextView) rootView.findViewById(R.id.category)).setText(getResources().getString(
                     R.string.category, mItem.getCategory()));
+            ((TextView) rootView.findViewById(R.id.comments)).setText(getResources().getString(
+                    R.string.comments, mItem.getComments()));
         }
 
         return rootView;

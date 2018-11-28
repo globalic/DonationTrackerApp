@@ -173,7 +173,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="5dp"
             android:ems="10"
-            android:hint="@string/comments"
+            android:hint="@string/comment"
             android:inputType="textMultiLine"
             android:singleLine="false" />
 

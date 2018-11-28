@@ -36,11 +36,11 @@ public class AddItemScreen extends AppCompatActivity {
     private Spinner location;
     private EditText shortDescription;
     private EditText fullDescription;
-    private EditText comments;
     private EditText value;
     private Spinner category;
     private Iterable<Location> temp;
     private TextView invalid_Location;
+    private EditText comments;
 
     private Location loc;
     private Item newItem;
@@ -71,7 +71,7 @@ public class AddItemScreen extends AppCompatActivity {
         fullDescription = findViewById(R.id.enterFullDescr);
         value = findViewById(R.id.enterItemValue);
         category = findViewById(R.id.selectItemCategory);
-
+        comments = findViewById(R.id.itemComment);
 
         invalid_Location = findViewById(R.id.invalidLocation);
 
@@ -102,6 +102,7 @@ public class AddItemScreen extends AppCompatActivity {
                     newItem.setFullDescription(fullDescription.getText().toString());
                     newItem.setValue(value.getText().toString());
                     newItem.setCategory(category.getSelectedItem().toString());
+                    newItem.setComments(comments.getText().toString());
                     newItem.setItemKey(locKey);
                     newItem.setId(++keyCounter);
                     itemhelper.addItem(newItem);

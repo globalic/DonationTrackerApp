@@ -16,6 +16,7 @@ public class Item {
     private String fullDescription;
     private String value;
     private String category;
+    private String comments;
     private int itemKey;
 
     public static int keyCounter;
@@ -31,7 +32,7 @@ public class Item {
      */
     public Item() {
         this(null, null, null, null,
-                itemCategories.get(0), 1);
+                itemCategories.get(0), null, 1);
     }
 
     /**
@@ -45,14 +46,14 @@ public class Item {
      * @param itemKey          the key that links the item to a location
      */
     private Item(String time, String shortDescription, String fullDescription, String value,
-            String category, int itemKey) {
+            String category, String comments, int itemKey) {
         this.time = time;
         this.shortDescription = shortDescription;
         this.fullDescription = fullDescription;
         this.value = value;
         this.category = category;
         this.itemKey = itemKey;
-
+        this.comments = comments;
     }
 
 //    /*******************************************
@@ -158,6 +159,10 @@ public class Item {
     public void setCategory(String category) {
         this.category = category;
     }
+
+    public String getComments() { return comments; }
+
+    public void setComments(String comments) { this.comments = comments; }
 
     /**
      * Gets the item key value
