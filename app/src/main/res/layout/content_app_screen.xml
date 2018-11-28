@@ -11,6 +11,7 @@
 
     <Button
         android:id="@+id/searchButton"
+        android:theme="@style/AppTheme.Button"
         android:layout_width="343dp"
         android:layout_height="wrap_content"
         android:text="@string/search"
@@ -23,6 +24,7 @@
 
     <Button
         android:id="@+id/locListButton"
+        android:theme="@style/AppTheme.Button"
         android:layout_width="343dp"
         android:layout_height="wrap_content"
         android:text="@string/view_locations"
@@ -71,6 +73,7 @@
 
     <Button
         android:id="@+id/logOutButton"
+        android:theme="@style/AppTheme.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="onLogOutPressed"
@@ -84,6 +87,7 @@
 
     <Button
         android:id="@+id/map"
+        android:theme="@style/AppTheme.Button"
         android:layout_width="342dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"

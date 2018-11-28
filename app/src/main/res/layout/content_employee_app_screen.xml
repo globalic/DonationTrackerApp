@@ -28,6 +28,7 @@
 
     <Button
         android:id="@+id/viewInventoryButton"
+        android:theme="@style/AppTheme.Button"
         android:layout_width="343dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="36dp"
@@ -58,6 +59,7 @@
 
     <Button
         android:id="@+id/addItemButton"
+        android:theme="@style/AppTheme.Button"
         android:layout_width="343dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="36dp"
@@ -70,6 +72,7 @@
 
     <Button
         android:id="@+id/searchButtonE"
+        android:theme="@style/AppTheme.Button"
         android:layout_width="343dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="36dp"
@@ -82,6 +85,7 @@
 
     <Button
         android:id="@+id/locListButtonE"
+        android:theme="@style/AppTheme.Button"
         android:layout_width="343dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="42dp"
@@ -133,6 +137,7 @@
 
     <Button
         android:id="@+id/logOutButtonE"
+        android:theme="@style/AppTheme.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -148,6 +153,7 @@
 
     <Button
         android:id="@+id/map1"
+        android:theme="@style/AppTheme.Button"
         android:layout_width="345dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
