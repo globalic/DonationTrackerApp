@@ -118,5 +118,6 @@
     <string name="selectAcctType">Select account type</string>
     <string name="chooseLocation">Choose a location</string>
     <string name="searchItemOrCat">Search by item or by category</string>
-
+    <string name="additionalComments">Additional Comments</string>
+    <string name="comments">Comments...</string>
 </resources>
